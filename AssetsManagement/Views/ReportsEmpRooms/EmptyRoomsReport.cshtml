@@ -1,0 +1,202 @@
+﻿
+@model BOL.ReportViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ ViewBag.Title = "ItemsOutOfLimitReport";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                @Html.Raw(Resources.DefaultResource.EmptyRoomsReport)
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="kt-subheader-search">
+    <h3 class="kt-subheader-search__title">
+        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+        @Html.Raw(Resources.DefaultResource.GlobalSearch)
+        <span class="kt-subheader-search__desc">
+            @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+        </span>
+    </h3>
+
+    @using (Html.BeginForm("EmptyRoomsReport", "ReportsEmpRooms", FormMethod.Post, new { target = "_blank" }))
+    {
+@Html.AntiForgeryToken();
+<div class="kt-form">
+    <div class="kt-grid">
+        <div class="kt-grid__item">
+
+
+
+            <div class="form-group row  mb-md-5 mt-5  ">
+                @Html.Label("lblStoreId", Resources.DefaultResource.Bulidings, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                <div class="col-4" style="">
+                    <div id="dropDownListdiv">
+                        @Html.DropDownListFor(m => m.BuildingId, Model.Buildings, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "BuildingId", name = "BuildingId" })
+                    </div>
+                </div>
+                @Html.Label("lblMainItemsId", Resources.DefaultResource.FloorDesc, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem ml-5" })
+
+                <div class="col-4" style="">
+                    @Html.DropDownListFor(m => m.FloorId, Model.Floors, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "FloorId", name = "FloorId" })
+                </div>
+
+            </div>
+            <div class="form-group row  mb-md-5 mt-5  ">
+                @Html.Label("lblRoomTypeId", Resources.DefaultResource.RoomType, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                @*<div class="col-4" style="">
+
+                    @Html.DropDownListFor(m => m.RoomTypeId, Model.RoomTypes, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", style = "width:100%;", id = "RoomTypeId", name = "RoomTypeId" })
+
+                </div>*@
+                <div class="col-4 mb-1" style="width:100%">
+                    @*<label class="form-label" for="">Members</label>*@
+                    
+                    <div class="input-group input-group-merge">
+                  @Html.DropDownListFor(x => x.members, Model.RoomTypes, Resources.DefaultResource.ListChoose, new
+                  {
+                      @id = "Members",
+                      @class = "select2 form-select",
+                      multiple = "multiple",
+                      tabindex = "3",
+                      style = "width:100%;"
+                  }
+                  );
+                        <span asp-validation-for="members" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-12 text-center">
+
+
+                    <button type="submit" class="btn btn-info btn-primary btn-icon-sm" value=@Resources.DefaultResource.Preview name="CmdSave" id="CmdSave" formmethod="post" ValidationGroup="DML">
+
+                        <i class="fa fa-print"></i>
+                        <span class="kt-nav__link-text">
+                            @Html.Raw(Resources.DefaultResource.Preview)
+                        </span>
+                    </button>
+                    @*<input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview />*@
+                    @*<input type="button" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview onclick="window.open('@Url.Action("ShowReport", "Report")')" />*@
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>}
+
+</div>
+@section scripts{
+    <script>
+
+         $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+                    /* document.getElementById("DisplayMode").value = 1;*/
+                    /* alert(id);*/
+                       $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "BuildingId":
+
+                                     PopulateDropDown("#FloorId", data.Floors);
+
+
+                                         break;
+
+
+                              }
+                     });
+                 });
+             });
+
+       
+            
+    
+
+        function PopulateDropDown(dropDownId, list) {
+            $(dropDownId).empty();
+            $(dropDownId).append("<option>@Resources.DefaultResource.ListChoose</option>")
+            $.each(list, function (index, row) {
+                if (index == 0) {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>");
+                } else {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                }
+            });
+        }
+
+
+
+        $(function () {
+
+
+            $("#BuildingId").select2();
+
+
+            $("#FloorId").select2();
+           /* $("#RoomTypeId").select2();*/
+           /* $(".select-chosen").chosen({ rtl: true }); */
+           /* $(".chosen-select").chosen();*/
+
+            $("#Members").select2();
+          
+
+        });
+
+        var operation_day = "tuesday,wednesday,thursday";
+        console.log(operation_day.split(","))
+        $('select').selectpicker('val', operation_day.split(",")); //split them and set value
+        $('select').selectpicker('refresh') //refresh ..selectpicker
+
+
+
+
+
+
+
+    </script>
+}
+
+

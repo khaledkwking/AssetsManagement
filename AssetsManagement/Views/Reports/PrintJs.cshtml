@@ -1,0 +1,19 @@
+﻿
+@{
+//ViewBag.Title = "PrintJs";
+//Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>PrintJs</h2>*@
+
+<script src="~/Scripts/Zebra/ebapi-modules.js"></script>
+<script src="~/Scripts/Zebra/ebapi.js"></script>
+<script src="~/Scripts/Zebra/eb.printer.js"></script>
+<script >
+    var myPrinter = EB.Printer.getPrinterByID("ZDesigner GC420t");
+   /* myPrinter.connect();*/
+    console.log(myPrinter.deviceName);
+   /* alert(myPrinter);*/
+
+   
+</script>

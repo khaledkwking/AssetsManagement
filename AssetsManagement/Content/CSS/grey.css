@@ -1,0 +1,58 @@
+BODY {
+	FONT-SIZE: 70%; BACKGROUND: url(../images/Main-Bg-Blue.gif) #a5c3cf repeat-x;   FONT-FAMILY: tahoma; 
+}
+A {
+	COLOR: #0085b4; TEXT-DECORATION: none; 
+}
+
+
+#nav {
+	DISPLAY: block; BACKGROUND: url(../images/Nav-bg.gif) repeat-x 50% top; MARGIN: 0px auto; WIDTH: 976px; HEIGHT: 91px
+}
+#headbar {
+	BORDER-RIGHT: #eaebed 1px solid; BORDER-TOP: #eaebed 1px solid; BACKGROUND: #f5f5f5; BORDER-LEFT: #eaebed 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #eaebed 1px solid; HEIGHT: 18px
+}
+.clr {
+	CLEAR: both
+}
+.clipcontent {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0px; WIDTH: 100%; PADDING-TOP: 0px;
+}
+.heading {
+	BACKGROUND: #f3f3f3; MARGIN-BOTTOM: 0px; BORDER-BOTTOM: #cecece 1px solid; HEIGHT: 24px; text-align :center 
+}
+.clipcontent IMG {
+	FLOAT: left; MARGIN: -13px 10px
+}
+#Footer {
+	CLEAR: both; PADDING-RIGHT: 2px; BORDER-TOP: #cecece 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 5px; MARGIN: 5px auto; WIDTH: 96%; PADDING-TOP: 5px; TEXT-ALIGN: left
+}
+.pagination {
+	BORDER-RIGHT: #9fb5bc 1px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: url(../images/HeadingBg.gif) center top; PADDING-BOTTOM: 3px; BORDER-LEFT: #9fb5bc 1px solid; WIDTH: 346px; PADDING-TOP: 3px; HEIGHT: 18px; TEXT-ALIGN: right
+}
+#logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/MSNArabiaLogo.gif) no-repeat 28% 64%; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 47px; WIDTH: 176px; PADDING-TOP: 6px; HEIGHT: 62px
+}
+.hotmail A {
+	MARGIN-TOP: 15px; DISPLAY: block; WIDTH: 39px; HEIGHT: 30px
+}
+.messanger A {
+	MARGIN-TOP: 15px; DISPLAY: block; WIDTH: 39px; HEIGHT: 30px
+}
+.spaces A {
+	MARGIN-TOP: 15px; DISPLAY: block; WIDTH: 39px; HEIGHT: 30px
+}
+.link {
+	DISPLAY: block; BACKGROUND: url(../images/link.gif) no-repeat; WIDTH: 79px; HEIGHT: 53px
+}
+#wl {
+	HEIGHT: 82px
+}
+#big3 A {
+	COLOR: #fff
+}
+#TxtAd {
+	DISPLAY: block; BACKGROUND: url(../images/homeheader.gif) repeat-x 50% bottom; MARGIN: -1px auto 0px; WIDTH: 976px; HEIGHT: 17px
+}
+.clipcontentDataList {
+	BORDER-RIGHT: #ff8787 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ff8787 1px solid; PADDING-LEFT: 0px; MARGIN-BOTTOM: 15px; PADDING-BOTTOM: 15px; BORDER-LEFT: #ff8787 1px solid; WIDTH: 100%; PADDING-TOP: 0px; BORDER-BOTTOM: #ff8787 1px solid

@@ -1,0 +1,152 @@
+﻿
+@model BOL.SuppliersViewModel 
+
+@{
+    ViewBag.Title = @Html.Raw(Resources.DefaultResource.SuppliersData);
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("SaveSupplier", "Inventory", FormMethod.Post, htmlAttributes: new { Id = "myform" }))
+{
+    @Html.AntiForgeryToken();
+
+
+    <div id="EditModal" class="modal-content">
+        <div class="modal-header">
+
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon2-checking"></i>
+            </span>
+            <h3 class="modal-title" id="exampleModalLabel">
+                @Html.Raw(Resources.DefaultResource.SuppliersData)
+            </h3>
+            <button type="button" class="close" data-dismiss="modal" onclick="Change Orders();" aria-label="Close">
+                <span class="fa fa-close"></span>
+            </button>
+
+        </div>
+        <div class="modal-body">
+            <div class="kt-portlet kt-portlet--mobile">
+
+                <div class="kt-portlet__body">
+
+                    <div id="ErrorDiv" runat="server"></div>
+                    <div class="bodyContainer">
+                        <div class="kt-portlet">
+                            <!--begin::Form-->
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="row">
+                                        <div class="col-sm-6 pull-right">
+                                            <nav class="navbar buttonsNavBar">
+                                                <div class="container-fluid">
+                                                    <ul class="nav nav-pills">
+
+                                                        @*<text>&nbsp;</text>*@
+                                                        <li id="Li2" class="pull-right">
+
+                                                            @*<input id="CmdSave" type="button" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" onclick="location.href='@Url.Action("EditUnitModal", "Items",new {Model})'" />*@
+
+                                                            <input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Inventory/SaveSupplier" formmethod="post" ValidationGroup="DML" />
+                                                            @*<input id="CmdClose" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Insert)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Items/UnitAdd/@Model.Unit_Id"/>*@
+
+                                                        </li>
+                                                        <text>&nbsp;</text>
+                                                        <li id="Li1" class="active pull-right">
+                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" formaction="/Items/cancel/@Model.Unit_Id" />*@
+                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" />*@
+                                                            <button type="button" id="CmdClose" onclick="CheckChecked();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+                                                        </li>
+                                                        <text>&nbsp;</text>
+
+                                                    </ul>
+
+                                                </div>
+                                            </nav>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 pull-right">
+                                            <div>
+                                                @*@Html.TextBoxFor(m => m.Building_Id, new { @class = "form-control hidden", @readonly = "true", @value = ViewBag.BuildingId })*@
+                                                @*@Html.HiddenFor(m => m.SelectedItem.Sup_code, new { @class = "form-control hidden", @readonly = "true", @value = ViewBag.SupId })*@
+
+                                                @*<asp:Label ID="Label4" runat="server" Text="أسم المشترك" CssClass="labelTxt"></asp:Label>*@
+
+                                                @Html.Label("Sup_code", Resources.DefaultResource.ID, new { @class = "HeadMenuItem" })
+
+                                                @Html.TextBoxFor(m => m.SelectedItem.Sup_code , new { @class = "form-control", @readonly = "true" })
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6 pull-right">
+                                            <div>
+
+                                                @Html.Label("Sup_Name", Resources.DefaultResource.TitleAr, new { @class = "HeadMenuItem", Name = "Sup_Name" })
+
+
+                                                @Html.TextBoxFor(m => m.SelectedItem.Sup_Name, new { @class = "form-control" })
+
+                                                @Html.ValidationMessageFor(m => m.SelectedItem.Sup_Name, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+                                            </div>
+
+                                        </div>
+                                    
+                                    </div>
+
+                                   
+
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 pull-right" style="">
+                                            <div>
+
+                                                @Html.Label("Item_NameEn", Resources.DefaultResource.Title, new { @class = "HeadMenuItem", Name = "Item_NameEn" })
+
+                                                @Html.TextBoxFor(m => m.SelectedItem.Sup_Ename, new { @class = "form-control" })
+
+                                                @Html.ValidationMessageFor(m => m.SelectedItem.Sup_Ename, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+                                            </div>
+
+                                        </div>
+                                      
+                                       
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <script type="text/javascript">
+                function CheckChecked() {
+                    $('#showmodal').modal('hide');
+
+                }
+                var form = $("#myform")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+
+                $.validator.unobtrusive.parse(form);
+
+                // Checkbox disable textbox
+           
+                                   
+
+            </script>
+
+
+
+        </div>
+
+    </div>
+}

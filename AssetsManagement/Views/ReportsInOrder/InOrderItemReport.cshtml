@@ -1,0 +1,250 @@
+﻿
+@model BOL.ReportViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ ViewBag.Title = "InOrderItemReport";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                @Html.Raw(Resources.DefaultResource.InOrderItemReport)
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="kt-subheader-search">
+    <h3 class="kt-subheader-search__title">
+        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+        @Html.Raw(Resources.DefaultResource.GlobalSearch)
+        <span class="kt-subheader-search__desc">
+            @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+        </span>
+    </h3>
+    @*@using (Html.BeginForm("CarList", "Cars", FormMethod.Get))
+        {
+            <p>
+                Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                <input type="submit" value="Find" />
+            </p>
+        }*@
+    @using (Html.BeginForm("InOrderItemReport", "ReportsInOrder", FormMethod.Post, new { target = "_blank" }))
+    {
+@Html.AntiForgeryToken();
+<br />
+                <br />
+                                <br />
+                                                <div class="kt-form">
+                                                    <div class="kt-grid">
+                                                        <div class="kt-grid__item">
+                                                            <div class="form-group row text-center mb-md-5 mt-5  ">
+                                                                <div class="col-3">
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    @Html.RadioButtonFor(m => m.searchType, "1", new { @class = "HeadMenuItem", onclick = " document.myform.submit();" })
+                                                                    @Html.Label("Personal", Resources.DefaultResource.InDetails, new { @class = "kt-subheader-search__desc HeadMenuItem text-start" })
+                                                                </div>
+                                                                <div class="col-3">
+
+                                                                    @Html.RadioButtonFor(m => m.searchType, "2", new { @class = "HeadMenuItem ", onclick = " document.myform.submit();" })
+                                                                    @Html.Label("Organization", Resources.DefaultResource.InTotal, new { @class = "kt-subheader-search__desc HeadMenuItem text-start" })
+
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <div class="form-group row">
+                                                                @Html.Label("", Resources.DefaultResource.FromDate, htmlAttributes: new { @class = "kt-subheader-search__desc HeadMenuItem col-1" })
+                                                                <div class="col-3">
+                                                                    <div class="kt-input-icon kt-input-icon--pill kt-input-icon--right">
+
+                                                                        <input type="text" id="FromDate" name="FromDate" value="@Model.FromDate" class="form-control date-picker" AutoComplete="Off" data-date-format="dd/mm/yyyy" />
+
+                                                                        @*@Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control", AutoComplete = "Off", data-date-format= "dd/mm/yyyy"})*@
+                                                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-search"></i></span></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-1">
+                                                                </div>
+
+                                                                @Html.Label("", Resources.DefaultResource.ToDate, htmlAttributes: new { @class = "kt-subheader-search__desc HeadMenuItem col-1" })
+                                                                <div class="col-3">
+                                                                    <div class="kt-input-icon kt-input-icon--pill kt-input-icon--right">
+                                                                        <input type="text" id="ToDate" name="ToDate" value="@Model.ToDate" class="form-control date-picker" AutoComplete="Off" data-date-format="dd/mm/yyyy" />
+
+                                                                        @*@Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control" })*@
+                                                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-search"></i></span></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                @Html.Label("lblStoreId", Resources.DefaultResource.InventoryName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                                                                <div class="col-4" style="">
+                                                                    @Html.DropDownListFor(m => m.StoreId, Model.Inventories, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "StoreId", name = "StoreId" })
+                                                                </div>
+
+                                                                @Html.Label("lblFromRoomId", Resources.DefaultResource.SupplierName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                                                                <div class="col-4" style="">
+                                                                    @Html.DropDownListFor(m => m.supplierId, Model.Suppliers, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "supplierId", name = "supplierId" })
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="form-group row">
+
+                                                                @Html.Label("lblItemName", Resources.DefaultResource.ItemName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                                                                <div class="col-4" style="">
+                                                                    @Html.DropDownListFor(m => m.ItemId, Model.Items, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "ItemId", name = "ItemId" })
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-12 text-center">
+
+                                                                    <button type="submit" class="btn btn-info btn-primary btn-icon-sm" value=@Resources.DefaultResource.Preview name="CmdSave" id="CmdSave" formmethod="post" ValidationGroup="DML">
+
+                                                                        <i class="fa fa-print"></i>
+                                                                        <span class="kt-nav__link-text">
+                                                                            @Html.Raw(Resources.DefaultResource.Preview)
+                                                                        </span>
+                                                                    </button>
+                                                                    @*<input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview />*@
+                                                                    @*<input type="button" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview onclick="window.open('@Url.Action("ShowReport", "Report")')" />*@
+
+
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>}
+</div>
+
+@*<div class="kt-portlet kt-portlet--mobile">
+        <div class="kt-portlet__head kt-portlet__head--lg">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="kt-font-brand flaticon2-checking"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    @Html.Raw(Resources.DefaultResource.OutOrderItemReport)
+
+                </h3>
+            </div>
+
+        </div>
+
+
+        <div class="kt-portlet__body">
+
+            <div class="table-responsive">
+
+
+
+
+                @if (Model != null)
+                {
+
+               }
+            </div>
+        </div>
+
+    </div>*@
+
+@*<div id="showmodal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document" style="max-width :80%; min-height :400px">
+
+
+        </div>
+    </div>*@
+@section scripts{
+    <script>
+
+         $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+                    /* document.getElementById("DisplayMode").value = 1;*/
+                    /* alert(id);*/
+                       $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "DeptId":
+
+                                     PopulateDropDown("#EmpId", data.Employees);
+
+
+                                         break;
+
+
+                              }
+                     });
+                 });
+             });
+
+
+        function PopulateDropDown(dropDownId, list) {
+            $(dropDownId).empty();
+            $(dropDownId).append("<option>@Resources.DefaultResource.ListChoose</option>")
+            $.each(list, function (index, row) {
+                if (index == 0) {
+                    $(dropDownId).append("<option value='" + row.Value + "' selected='selected'>" + row.Text + "</option>");
+                } else {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                }
+            });
+        }
+
+
+
+        $(function () {
+
+         
+            $("#StoreId").select2();
+            $("#supplierId").select2();
+
+           /* $("#RoomId").select2();*/
+            $("#ItemId").select2();
+
+
+        });
+
+
+
+
+
+
+
+
+    </script>
+}
+
+

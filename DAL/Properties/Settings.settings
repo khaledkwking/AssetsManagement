@@ -1,0 +1,31 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DAL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TempConn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=./;Initial Catalog=GPFEmployees;Persist Security Info=True;User ID=dbuser;Password=geAn9s#&gt;&gt;A</Value>
+    </Setting>
+    <Setting Name="Live" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=gpfemployeesdbserver.database.windows.net;Initial Catalog=EmployeesDatabase;Persist Security Info=True;User ID=EmployeesDBUser;Password="m=gvSL*$mp{E5t+4ApY"</Value>
+    </Setting>
+    <Setting Name="GPFAHRConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=gpfemployeesdbserver.database.windows.net;Initial Catalog=EmployeesDatabase;Persist Security Info=True;User ID=EmployeesDBUser;Password="m=gvSL*$mp{E5t+4ApY"&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=gpfemployeesdbserver.database.windows.net;Initial Catalog=EmployeesDatabase;Persist Security Info=True;User ID=EmployeesDBUser;Password="m=gvSL*$mp{E5t+4ApY"</Value>
+    </Setting>
+    <Setting Name="AssetsLive" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=./;Initial Catalog=GPFAssetsV1;Persist Security Info=True;User ID=AssetUserDB;Password=kdb34rb!@301nja#1</Value>
+    </Setting>
+    <Setting Name="GPFAAssetsConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=./;Initial Catalog=GPFAssetsV1;Persist Security Info=True;User ID=dbuser;Password=geAn9s#&amp;gt;&amp;gt;A&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=./;Initial Catalog=GPFAssetsV1;Persist Security Info=True;User ID=dbuser;Password=geAn9s#&gt;&gt;A</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

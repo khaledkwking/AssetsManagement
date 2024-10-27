@@ -1,0 +1,120 @@
+﻿
+
+@{ ViewBag.Title = @Html.Raw(Resources.DefaultResource.UnauthorisedMsg);
+   }
+
+
+<html style="background-color:#000">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>
+        @*ITRIGHT | Rent Managements Login*@
+        @Html.Raw(Resources.DefaultResource.UnauthorisedMsg)
+
+    </title>
+    <meta name="keywords" content="GPFA " />
+    <meta name="description" content="GPFA  ">
+    <meta name="author" content="GPFA">
+
+    <!-- Favicon -->
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+      <link rel="stylesheet" href="~/New/css/skins/default.css">
+      
+
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @if (Session["SiteLanguage"].ToString() == "ArabicTheme")
+    {
+    @Styles.Render("~/App_Themes/ArabicTheme/css");
+    }
+    else
+    {
+    @Styles.Render("~/App_Themes/EnglishTheme/css");
+    }
+
+
+
+</head>
+@*<body class="kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">*@
+<body class="kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-aside--minimize kt-page--loading ">
+  
+    <div id="EditModal" class="modal-content">
+        @using (Html.BeginForm("Index", "Unauthorised", FormMethod.Post, htmlAttributes: new { Id = "myform" }))
+        {
+            @*<div class="modal-header">
+
+
+            </div>*@
+            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+            <div class="modal-body">
+                <div class="kt-portlet kt-portlet--mobile">
+                    <div class="kt-portlet__head kt-portlet__head--lg">
+                        <div class="kt-portlet__head-label">
+                            <span class="kt-portlet__head-icon">
+                                <i class="kt-font-brand flaticon2-checking"></i>
+                            </span>
+                            <h3 class="kt-portlet__head-title">
+                                @Html.Raw(Resources.DefaultResource.UnauthorisedMsg)
+
+                            </h3>
+
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <div class="kt-portlet__head-wrapper">
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="kt-portlet__body align-items-center" style="min-height:600px ">
+
+
+                        <div class="row">
+                            <div class="col-12">
+
+                                <img src="~/img/access.png" style="min-height :300px" />
+
+                            </div>
+
+
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12">
+
+
+                                @Html.Label("lblNotesOrder", Resources.DefaultResource.PermissionNotValidMsg, new { @class = "col-form-label HeadMenuItem ", Name = "lblNotesOrder" })
+                            </div>
+
+
+                        </div>
+                        <br />
+                        <div class="form-row">
+                            <div class="col-12">
+                                <div class="kt-portlet__head-actions">
+
+                                    <input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.BackTitle)"
+                                           class="btn btn-3d  btn-success" title="@Html.Raw(Resources.DefaultResource.BackTitle)"
+                                           data-toggle="@Html.Raw(Resources.DefaultResource.BackTitle)" formmethod="post" style="min-width  :60px" />
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</body>
+</html>

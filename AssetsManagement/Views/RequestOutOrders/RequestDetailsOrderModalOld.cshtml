@@ -1,0 +1,182 @@
+﻿
+
+
+
+@model BOL.RequestOutOrdersViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ ViewBag.Title = @Html.Raw(Resources.DefaultResource.InOrders); }
+
+@using (Html.BeginForm("ShowOrderDetails", "RequestOutOrders", FormMethod.Post, htmlAttributes: new { Id = "myformadd" }))
+{
+@Html.AntiForgeryToken();
+<div id="EditModal" class="modal-content">
+    <div class="modal-header">
+
+        <span class="kt-portlet__head-icon">
+            <i class="kt-font-brand flaticon2-checking"></i>
+        </span>
+        <h3 class="modal-title" id="exampleModalLabel">
+            @Html.Raw(Resources.DefaultResource.RequestOrders)
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" onclick="CheckChecked();" aria-label="Close">
+            <span class="fa fa-close"></span>
+        </button>
+
+        
+    </div>
+    <div class="modal-body">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__body">
+                @*<div class="table-responsive">*@
+                <div class="row">
+                    <div class="col-sm-6 pull-right">
+                        <nav class="navbar buttonsNavBar">
+                            <div class="container-fluid">
+                                <ul class="nav nav-pills">
+                                    <li id="Li2" class="pull-right">
+                                        <button name="CmdSave" type="submit" id="CmdSave" value="CmdSave" class="btn btn-success" data-toggle="@Html.Raw(Resources.DefaultResource.Save)" formaction="/RequestOutOrders/ShowOrderDetails" formmethod="post" ValidationGroup="DML">
+                                            <i class="fas fa-save"></i>
+                                            <span class="kt-nav__link-text">
+                                                @Html.Raw(Resources.DefaultResource.Save)
+                                            </span>
+                                        </button>
+                                    </li>
+                                    <text>&nbsp;</text>
+                                    <li id="Li1" class="active pull-right">
+                                        <button type="button" id="CmdClose" onclick="CheckChecked();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+                                    </li>
+                                    &nbsp;
+
+                                    <text>&nbsp;</text>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+                @if (Model != null)
+                {
+            <table id="Outshowtable" class="table table-striped table-bordered table-hover table-checkable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.Raw(Resources.DefaultResource.No)
+                            @*@Html.ActionLink(Resources.DefaultResource.No, "OutOrderModal", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })*@
+                        </th>
+
+                        <th>
+                            @Html.Raw(Resources.DefaultResource.TitleAr)
+                            @*@Html.ActionLink(Resources.DefaultResource.TitleAr, "OutOrderModal", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })*@
+                        </th>
+
+                        <!--<th>-->
+                        @*@Html.ActionLink(Resources.DefaultResource.SerialOrBarcode, "OutOrderModal", new { Sorting_Order = ViewBag.SortingModel, Filter_Value = ViewBag.FilterValue })*@
+                        <!--@Html.Raw(Resources.DefaultResource.CountableTitle)
+    </th>-->
+                        <th>
+                            @Html.Raw(Resources.DefaultResource.ChooseBarcode)
+                            @*@Html.ActionLink(Resources.DefaultResource.Barcode, "OutOrderModal", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })*@
+                        </th>
+                        <th>
+                            @Html.Raw(Resources.DefaultResource.CurrentBarcode)
+                            @*@Html.ActionLink(Resources.DefaultResource.Barcode, "OutOrderModal", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })*@
+                        </th>
+                        <th>
+                            @Html.Raw(Resources.DefaultResource.RequiredQty)
+                            @*@Html.ActionLink(Resources.DefaultResource.InQty, "OutOrderModal", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })*@
+                        </th>
+                        @*<th>
+                            @Html.Raw(Resources.DefaultResource.Actions)
+                         
+                        </th>*@
+
+                    </tr>
+                </thead>
+
+
+                @for (int i = 0; i < Model.RequestOrdersDetails.Count; i++)
+                
+                {
+
+                @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].ItemId)
+                @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].ReqOrderId)
+                    @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].ReqOrderDetId)
+                @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].StoreId)
+                @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].MasterItemFalg)
+                    @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].Qty)
+                     @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].ItemQty)
+                      @Html.HiddenFor(modelItem => Model.RequestOrdersDetails[i].CountableFlag)
+                     
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.RequestOrdersDetails[i].ReqOrderDetId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.RequestOrdersDetails[i].Item_tbl.Item_Name)
+                </td>
+                @*<td>
+            @{ bool CurCountableFlag = false;
+                if (Model.RequestOrdersDetails[i].CountableFlag == null)
+                {
+                    //ExpiredDate =;
+
+                }
+                else if (Model.RequestOrdersDetails[i].CountableFlag.GetValueOrDefault())
+                {
+
+                    CurCountableFlag = Model.RequestOrdersDetails[i].CountableFlag.Value;
+                } }
+            <input type="checkbox" name="item.CountableFlag" value="true" @(CurCountableFlag ? "checked=\"checked\"" : "") id="item.CountableFlag" disabled />
+
+
+
+        </td>*@
+
+                <td>
+                    @Html.DropDownListFor(m => Model.RequestOrdersDetails[i].StockId, Model.StockBarCodeList, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", @required = "required", style = "width:100%;", id = "StockId", name = "StockId" })
+                    @Html.ValidationMessageFor(m => Model.RequestOrdersDetails[i].StockId, Resources.DefaultResource.RequiredField, new { @class = "text-danger" })
+                </td>
+
+                <td>
+                    @if (Model.RequestOrdersDetails[i].tbl_ItemsStock != null)
+                    {
+                        @Html.Raw(Model.RequestOrdersDetails[i].tbl_ItemsStock.Item_BarCode)
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.RequestOrdersDetails[i].Qty)
+                </td>
+
+               
+            </tr>}
+
+            </table> } @*</div>*@ @*</div>*@
+            </div>
+
+        </div>
+
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+      /*  $("#StockId").select2();*/
+
+        function CheckChecked() {
+            $('#showmodal').modal('hide');
+
+        }
+
+        //var form = $("#myformadd")
+        //    .removeData("validator")
+        //    .removeData("unobtrusiveValidation");
+
+        //$.validator.unobtrusive.parse(form);
+
+    </script>
+
+
+
+</div>
+            }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d9919e9827c4b81bd2ce111241ebd74" Name="Diagram1">
+        <EntityTypeShape EntityType="GPFAssetsModel.Building_tbl" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Floor_tbl" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Unit_tbl" Width="1.5" PointX="17.375" PointY="3.125" />
+        <AssociationConnector Association="GPFAssetsModel.FK_Floor_tbl_Building_tbl" />
+        <EntityTypeShape EntityType="GPFAssetsModel.tbUsers" Width="1.5" PointX="9.375" PointY="0.5" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Category_tbl" Width="1.5" PointX="6.875" PointY="7.25" />
+        <EntityTypeShape EntityType="GPFAssetsModel.CatMain_tbl" Width="1.5" PointX="4.25" PointY="7.5" />
+        <EntityTypeShape EntityType="GPFAssetsModel.CatSub_tbl" Width="1.5" PointX="9.875" PointY="7.5" />
+        <AssociationConnector Association="GPFAssetsModel.FK_Category_tbl_CatMain_tbl" />
+        <AssociationConnector Association="GPFAssetsModel.FK_CatSub_tbl_Category_tbl" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Item_tbl" Width="1.5" PointX="15.375" PointY="3.125" />
+        <AssociationConnector Association="GPFAssetsModel.FK_Item_tbl_CatSub_tbl" />
+        <AssociationConnector Association="GPFAssetsModel.FK_Item_tbl_Unit_tbl" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Suppliers_tbl" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GPFAssetsModel.DestroyOrders" Width="1.5" PointX="15.75" PointY="14" />
+        <EntityTypeShape EntityType="GPFAssetsModel.DestroyOrdersDetails" Width="1.5" PointX="18" PointY="14.125" />
+        <EntityTypeShape EntityType="GPFAssetsModel.HandoverOrders" Width="1.5" PointX="10.75" PointY="13" />
+        <EntityTypeShape EntityType="GPFAssetsModel.HandOverOrdersDetails" Width="1.5" PointX="13" PointY="13.25" />
+        <EntityTypeShape EntityType="GPFAssetsModel.InOdersDetails" Width="1.5" PointX="8" PointY="13.5" />
+        <EntityTypeShape EntityType="GPFAssetsModel.InOrders" Width="1.5" PointX="5.75" PointY="13.125" />
+        <EntityTypeShape EntityType="GPFAssetsModel.OutOrders" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="GPFAssetsModel.OutOrdersDetials" Width="1.5" PointX="3" PointY="12.125" />
+        <AssociationConnector Association="GPFAssetsModel.FK_DestroyOrdersDetails_DestroyOrders" />
+        <AssociationConnector Association="GPFAssetsModel.FK_HandOverOrdersDetails_HandoverOrders" />
+        <AssociationConnector Association="GPFAssetsModel.FK_InOdersDetails_InOrders" />
+        <AssociationConnector Association="GPFAssetsModel.FK_OutOrdersDetials_OutOrders" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Status" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GPFAssetsModel.tbl_ItemsStock" Width="1.5" PointX="12.625" PointY="3.125" />
+        <AssociationConnector Association="GPFAssetsModel.FK_tbl_ItemsStock_Item_tbl" />
+        <AssociationConnector Association="GPFAssetsModel.FK_tbl_ItemsStock_Status" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Room_tbl" Width="1.5" PointX="5.25" PointY="0.875" />
+        <AssociationConnector Association="GPFAssetsModel.FK_Room_tbl_Floor_tbl" />
+        <AssociationConnector Association="GPFAssetsModel.FK_tbl_ItemsStock_Room_tbl" />
+        <EntityTypeShape EntityType="GPFAssetsModel.Emp_rooms" Width="1.5" PointX="7.125" PointY="3.375" />
+        <AssociationConnector Association="GPFAssetsModel.FK_Emp_rooms_Room_tbl" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

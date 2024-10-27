@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBB7C49F-B4F1-4B75-B899-42DFCA91A875}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssetsModel.Context.cs">
+      <DependentUpon>AssetsModel.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="AssetsModel.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="AssetsModel.Designer.cs">
+      <DependentUpon>AssetsModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Building_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatMain_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatSub_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeQuantityOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeQuantityOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DestroyOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DestroyOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Emp_rooms.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Floor_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HandoverOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HandOverOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="HRModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HRModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HRModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="InOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Metadata.cs" />
+    <Compile Include="OutOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OutOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestOutOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestStatus.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnInOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnInOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnOutOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnOutOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Room_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="secureData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbLookups.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemsStock.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ItemsStockDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Setup.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbSystemPages.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbUsers.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbUsersDepts.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbUsersMainCats.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbUsersPages.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbUsersRoles.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbUsersStores.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferAssets.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferAssetsDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit_tbl.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendors.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendor_Contracts.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwAllOrders.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwChangeQuantityOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwDepartments.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwDestroyOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwEmployees.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwEmpRooms.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwHandOverOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwInOrderDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwItemsStock.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwOutOrderDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwReturnInOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwReturnOutOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwTransferAssests.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwTransferOrdersDetails.cs">
+      <DependentUpon>AssetsModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EntityDeploy Include="AssetsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AssetsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="HRModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HRModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HRModel.edmx.diagram">
+      <DependentUpon>HRModel.edmx</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AssetsModel.Context.tt">
+      <DependentUpon>AssetsModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssetsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AssetsModel.tt">
+      <DependentUpon>AssetsModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssetsModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="HRModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRModel.edmx</DependentUpon>
+      <LastGenOutput>HRModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="HRModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HRModel.edmx</DependentUpon>
+      <LastGenOutput>HRModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework.DynamicFilters">
+      <Version>3.2.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

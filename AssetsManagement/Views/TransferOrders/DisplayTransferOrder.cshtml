@@ -1,0 +1,448 @@
+﻿@*@using  MultipleModelInOneView;*@
+
+
+@model BOL.TransferOrdersViewModel
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ //ViewBag.Title = @Html.Raw(Resources.DefaultResource.Rooms);
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            @*Url.Action("ItemsStockList", new { Page_No, EmpId = @ViewBag.EmpId,  Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })*@
+            @if (@ViewBag.EmpId != null)
+            {
+<span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href='@Url.Action("Employees", "HR", new { EmpId = @ViewBag.EmpId })' class="kt-subheader__breadcrumbs-link">
+                    @Html.Raw(ViewBag.EmpName as string)
+                </a>}
+
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("DisplayTransferOrder", "TransferOrders", FormMethod.Post, htmlAttributes: new { id = "myform", name = "myform" }))
+{
+@Html.AntiForgeryToken();
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    @* First source items *@
+    <div class="row table-responsive" style="height:600px">
+
+        <div class="col-12">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-checking"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            @Html.Raw(Resources.DefaultResource.TransferOrderDetails)
+
+                        </h3>
+
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+
+                                @*<button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="Addbtn"
+                                        onclick="location.href='@Url.Action("DisplayTransferOrder", "TransferOrders",new {Id=""})'">
+
+                                    <i class="la la-plus"></i>
+                                    <span class="kt-nav__link-text">
+                                        @Html.Raw(Resources.DefaultResource.NewRecord)
+                                    </span>
+                                </button>*@
+                               
+                                <button name="CmdSave" type="submit" id="CmdSave" value="CmdSave" class="btn btn-success" formmethod="post" ValidationGroup="DML"
+                                    style="@(Model.SelectedItem.ConfirmFlag == 1 ? "display:none" : "")" >
+                                    <i class="fa-floppy-disk"></i>
+                                    <span class="kt-nav__link-text">
+                                        @Html.Raw(Resources.DefaultResource.ConfirmTransfer)
+                                    </span>
+                                </button>
+                                @*<input id="CmdSave" value="@Html.Raw(Resources.DefaultResource.Save )" name="CmdSave" type="submit" onclick="OnSubmit()" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.TransferAsset)" data-toggle="@Html.Raw(Resources.DefaultResource.TransferAsset)" formaction="/Inventory/AssetItemsList" formmethod="post" ValidationGroup="DML" />*@
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="kt-portlet__body">
+                    @Html.HiddenFor(m => m.DisplayMode, new { @class = "form-control hidden", id = "DisplayMode", name = "DisplayMode" })
+
+                    @Html.HiddenFor(m => m.PostFlag, new { @class = "hidden", id = "PostFlag", name = "PostFlag" })
+
+                    @Html.HiddenFor(m => m.SelectedItem.ConfirmFlag, new { @class = "hidden" })
+
+                    @*<form method="post" id="ChangeEvent">*@
+                    @*@Html.RadioButton("A1", "1", ViewData["IsSelected"] == "1", new { onclick = "document.getElementById('ChangeEvent').submit();" })*@
+                    @*</form>*@
+                    <div >
+                        @*start of part of drowdawn lists*@
+                       
+
+                            <div class="form-group row ">
+
+                                @Html.Label("lblTransferOrderId", Resources.DefaultResource.VoucherNum, new { @class = "col-2 col-form-label HeadMenuItem ", Name = "lblOutOrder" })
+                                <div class="col-3">
+                                    @Html.TextBoxFor(m => m.SelectedItem.TransferOrderId, new { @class = "form-control", @readonly = "true" })
+                                </div>
+
+                                @Html.Label("lblStoreId_From", Resources.DefaultResource.FromInventory, new { @class = "col-2 col-form-label HeadMenuItem", Name = "lblStoreId_From" })
+                                <div class="col-3">
+                                    @Html.DropDownListFor(m => m.SelectedItem.StoreId_From, Model.FromStores, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", @required = "required", @readonly = "true", style = "width:100%; pointer-events:none", name = "SelectedItem.StoreId_From" })
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.StoreId_From, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="form-group row ">
+                                @Html.Label("lblOutOrderDate", Resources.DefaultResource.VoucherDate, new { @class = "col-2 col-form-label HeadMenuItem", Name = "lblOutOrderDate" })
+                                <div class="col-3">
+
+                                    @{ string ExpiredDate = "";
+                                        if (Model.SelectedItem.TransferOrderDate == null)
+                                        {
+                                            //ExpiredDate =;
+                                        }
+                                        else
+                                        {
+                                            ExpiredDate = Model.SelectedItem.TransferOrderDate.Value.ToString("dd/MM/yyyy");
+                                        } }
+                                    <input type="text" name="SelectedItem.TransferOrderDate" value="@ExpiredDate" class="form-control" AutoComplete="Off" data-date-format="dd/mm/yyyy" id="SelectedItem.TransferOrderDate" required readonly />
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.TransferOrderDate, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+                                </div>
+
+                                @Html.Label("lblToStoreId", Resources.DefaultResource.ToInventory, new { @class = "col-2 col-form-label HeadMenuItem" })
+
+                                <div class="col-3" style="@(Model.EditMode == "Edit" ? "pointer-events:none" : "")">
+
+                                    @Html.DropDownListFor(m => m.SelectedItem.StoreId_To, Model.ToStores, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", @required = "required", @readonly = "true",style = "width:100%; pointer-events:none", name = "SelectedItem.StoreId_To" })
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.StoreId_To, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="form-group row">
+
+                                @Html.Label("OutOrder", Resources.DefaultResource.Notes, new { @class = "col-2 col-form-label HeadMenuItem ", Name = "lblOutOrder" })
+                                <div class="col-8">
+                                    @Html.TextAreaFor(m => m.SelectedItem.Remarks, 3, 55, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.Remarks, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*End of dropdown lists*@
+                   
+                            <div id="DivMsg" class="ErrorMsglbl" runat="server">
+                                @*check message error or warning*@
+                                @if (TempData["Message"] != null)
+                                {
+                        <div class="alert alert-success alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            </button>
+                            @Html.Raw(Resources.DefaultResource.SaveMessage)
+                        </div>}
+                                @if (TempData["warningMessage"] != null)
+                                {
+                        <div class="alert alert-warning alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            </button>
+
+                            @TempData["warningMessage"]
+
+                        </div>}
+
+                            </div>
+                            @if (Model != null)
+                            {
+                        <table id="showtable" class="table table-striped table-bordered table-hover table-checkable">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>
+                                        @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                                        @Html.ActionLink(Resources.DefaultResource.No, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+
+
+                                    <th>
+                                        @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                                        @Html.ActionLink(Resources.DefaultResource.ID, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+
+
+                                    <th>
+                                        @Html.ActionLink(Resources.DefaultResource.TitleAr, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingModel, Filter_Value = ViewBag.FilterValue })
+                                        @*@Html.Raw(Resources.DefaultResource.CarModel)*@
+                                    </th>
+                                    <th>
+
+                                        @Html.ActionLink(Resources.DefaultResource.RFID, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+
+                                    <th>
+
+                                        @Html.ActionLink(Resources.DefaultResource.Barcode, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+
+                                    <th>
+
+                                        @Html.ActionLink(Resources.DefaultResource.RequiredQty, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+
+                                    <th>
+
+                                        @Html.ActionLink(Resources.DefaultResource.CurrentTransferQuantity, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+                                    <th>
+
+                                        @Html.ActionLink(Resources.DefaultResource.CurrentTransferItemQuantity, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+                                    <th>
+
+                                        @Html.ActionLink(Resources.DefaultResource.Quantity, "DisplayTransferOrder", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                                    </th>
+
+
+
+
+
+                                </tr>
+                            </thead>
+
+                            @*@foreach (var item in Model.TransferOrdersDetails)*@
+                            @{ int sno = 0; }
+                            @for (int i = 0; i < Model.TransferOrdersDetails.Count; i++)
+                            {@*@for (int i = 0; i < Model.SelectedItem.OutOrdersDetials.Count; i++)*@
+
+                        <tr style="color:@(Model.TransferOrdersDetails[i].StockId == 0 ? "red" : "")">
+                            @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].TransferOrderDetId)
+                            @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].StockId)
+                            @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].StockDetId)
+                            <td>
+                                @{ sno++; }
+                                @sno
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].ItemId)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].ItemId)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].tbl_ItemsStock.Item_tbl.Item_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].Item_RFID)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].Item_RFID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].Item_BarCode)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].Item_BarCode)
+                            </td>
+                            @*<td>
+         @Html.DisplayFor(modelItem => item.Item_RFID)
+        </td>*@
+                            <td>
+                                @*@Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].Qty)*@
+                                @*@Html.TextBoxFor(modelItem => Model.TransferOrdersDetails[i].Qty, new { @class = "form-control", @disabled = (Model.TransferOrdersDetails[i].Item_tbl.CountableFlag ? "false" : "true") })*@
+                                @*@disabled*@
+
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].Qty)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].Qty)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].InStoreQty)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].InStoreQty)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].InStoreItemQty)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].InStoreItemQty)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.TransferOrdersDetails[i].tbl_ItemsStock.ItemQty)
+                                @Html.HiddenFor(modelItem => Model.TransferOrdersDetails[i].tbl_ItemsStock.ItemQty)
+                            </td>
+
+
+                            @*<td width="7%">
+            <button id="CmdDel" name="CmdDel" type="submit" value="CmdDel" data-toggle="kt-tooltip" title=" @Html.Raw(Resources.DefaultResource.Delete)" class="btn btn-outline-danger btn-sm btn-icon"
+                    formaction="/TransferOrders/DisplayTransferOrder/@i" formmethod="post" onclick="return confirm('@Html.Raw(Resources.DefaultResource.DelMessage)');">
+                <i class="la la-close"></i>
+            </button>
+        </td>*@
+                        </tr>}
+                        </table> @*<div class="paginationCust pagedList">
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager((PagedList.IPagedList)Model.SelectedItem.OutOrdersDetials, Page_No => Url.Action("DisplayTransferOrder", new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })
+                 , PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>*@}
+
+                      
+
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+        @* End of First Source items *@
+        @* second target items *@
+
+
+       
+
+        @* End of second target items *@
+
+    </div>
+</div>
+}
+@*for Valiadtion*@
+@*<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+@*<script defer src="~/Scripts/jquery.min.js"></script>*@
+<script defer src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+@section scripts
+    {
+    <script type="text/javascript">
+
+            //alert(document.getElementsByName("OrganizedFlag").value);
+            // Begin :: function when change select From Part
+                   //$(function () {
+
+                   //  $("#dropDownListdiv").on("change", "select", function () {
+
+                   //      var value = $(this).val();
+                   //      var id = $(this).attr("id");
+                   //     /*   alert(id);*/
+                   //      if (id != 'ActionType' && id!='StoreId_To') {
+                   //          document.getElementById("DisplayMode").value = id;
+                   //          const form = document.getElementById('myform');
+                   //         /* form.action = "LoadData";*/
+                   //          form.name = "submit";
+                   //          form.value = "submit";
+                   //          form.submit();
+
+                   //         /* document.myform.submit();*/
+
+                   //          //SetTempData();
+                   //          //function SetTempData() {
+                   //          //    $.ajax({
+                   //          //        type: "POST",
+                   //          //        url: '/Inventory/SetTempData',     //your action
+                   //          //        data: $('#myform').serialize(),   //your form name.it takes all the values of model
+                   //          //        dataType: 'json',
+                   //          //        success: function (result) {
+                   //          //            console.log(result);
+                   //          //        }
+                   //          //    });
+                   //          //   }
+
+                   //         /* document.myform.submit();*/
+                   //      }
+
+                   //    /*  setDropDrownList(string type, int value, int SearchType)*/
+
+                   //  });
+                   //});
+
+            //$('input[type=radio][name=ReaderType]').change(function () {
+
+            //        if (this.value == '1') {
+            //            //$("#Barcodediv").hide();
+            //            //$("#Scannerdiv").Show();
+            //            /*$('#Barcodediv').css('display', 'none');*/
+            //            //document.myform.name = "CmdScan";
+            //            //document.myform.value = "CmdScan";
+            //            document.myform.submit();
+            //        }
+            //        else if (this.value == '2') {
+
+            //            document.myform.submit();
+            //        }
+            //    });
+            // End :: function when change select From Part
+
+    
+            
+            //document.getElementById("Barcode").onkeydown = function (e) {
+
+            //    const form = document.getElementById('myform');
+            //    /* form.action = "LoadData";*/
+            //    if (e.key === "Enter") {
+            //        form.name = "CmdBarcode";
+            //        form.value = "CmdBarcode";
+            //        document.getElementById("PostFlag").value = 3;
+            //        form.submit();
+            //     /*   alert(e.key);*/
+            //    }
+
+
+            //}
+
+
+        $(function () {
+            $("#SelectedItem_StoreId_From").select2();
+            $("#SelectedItem_StoreId_To").select2();
+        });
+
+
+        //var form = $("#myform")
+        //    .removeData("validator")
+        //    .removeData("unobtrusiveValidation");
+
+        //$.validator.unobtrusive.parse(form);
+
+
+
+    </script>
+    @*Display message to user*@
+    @if (TempData["ErroMessage"] != null)
+    {
+<script type="text/javascript">
+
+                      alert('@TempData["ErroMessage"]');
+
+</script>
+}
+}
+
+

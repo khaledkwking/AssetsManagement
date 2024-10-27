@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76E4C80A-7E53-4C14-BD68-8C3D3DE5DF3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BOL</RootNamespace>
+    <AssemblyName>BOL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.22\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.22.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.22\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\WebCarApplication\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\AssetsManagement\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataModel.cs" />
+    <Compile Include="Model\Buildings\EmpRoomsManager.cs" />
+    <Compile Include="Model\Buildings\SetupManager.cs" />
+    <Compile Include="Model\Inventory\ItemsStockDetailsManager.cs" />
+    <Compile Include="Model\Inventory\TransferAssetsDetailsManager.cs" />
+    <Compile Include="Model\Inventory\TransferAssetsManager.cs" />
+    <Compile Include="Model\Orders\RequestOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\RequestOutOrdersManager.cs" />
+    <Compile Include="Model\Orders\ReturnOutOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\ReturnInOrdersManager.cs" />
+    <Compile Include="Model\Reports\UnitOfReports.cs" />
+    <Compile Include="Model\Lookup\UnitsManager.cs" />
+    <Compile Include="Model\Orders\ReturnInOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\ReturnOutOrdersManager.cs" />
+    <Compile Include="Model\Orders\DestroyOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\ChangeQuantityOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\ChangeQuantityOrdersManager.cs" />
+    <Compile Include="Model\Orders\TransferOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\InOdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\DestroyOrdersManager.cs" />
+    <Compile Include="Model\Orders\HandOverOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\TransferOrdersManager.cs" />
+    <Compile Include="Model\Orders\OutOrdersDetailsManager.cs" />
+    <Compile Include="Model\Orders\InOrdersManager.cs" />
+    <Compile Include="Model\Orders\HandoverOrdersManager.cs" />
+    <Compile Include="Model\Orders\OutOrdersManager.cs" />
+    <Compile Include="Model\Items\CategoryManager.cs" />
+    <Compile Include="Model\HR\EmployeesManager.cs" />
+    <Compile Include="Model\HR\DepartmentManager.cs" />
+    <Compile Include="Model\Orders\SuppliersManager.cs" />
+    <Compile Include="Model\Inventory\ItemsStockManager.cs" />
+    <Compile Include="Model\Items\ItemsManager.cs" />
+    <Compile Include="Model\Items\CatSubManager.cs" />
+    <Compile Include="Model\Buildings\FloorsManager.cs" />
+    <Compile Include="Model\IRepository.cs" />
+    <Compile Include="Model\Buildings\BuildingsManager.cs" />
+    <Compile Include="Model\Reports\vwEmpRoomsManager.cs" />
+    <Compile Include="Model\Reports\vwItemsStockManager.cs" />
+    <Compile Include="Model\Reports\vwReturnOutOrdersDetailsManager.cs" />
+    <Compile Include="Model\Reports\vwReturnInOrdersDetailsManager.cs" />
+    <Compile Include="Model\Reports\vwChangeQuantityOrdersDetailsManager.cs" />
+    <Compile Include="Model\Reports\vwAllOrdersManager.cs" />
+    <Compile Include="Model\Reports\vwTransferAssestsManager.cs" />
+    <Compile Include="Model\Reports\vwTransferOrdersDetailsManager.cs" />
+    <Compile Include="Model\Reports\vwHandOverOrdersDetailsManager.cs" />
+    <Compile Include="Model\Reports\vwDestroyOrdersDetailsManager.cs" />
+    <Compile Include="Model\Reports\VwInOrderDetailsManager.cs" />
+    <Compile Include="Model\Reports\VwOutOrderDetailsManager.cs" />
+    <Compile Include="Model\Repository_HR.cs" />
+    <Compile Include="Model\Buildings\RoomsManager.cs" />
+    <Compile Include="Model\Items\CatMainManager.cs" />
+    <Compile Include="Model\Lookup\StatusManager.cs" />
+    <Compile Include="Model\Lookup\tbLookupsManager.cs" />
+    <Compile Include="Model\Repository.cs" />
+    <Compile Include="Model\UnitOfWork.cs" />
+    <Compile Include="Model\Users\UsersMainCatsManager.cs" />
+    <Compile Include="Model\Users\UsersDeptsManager.cs" />
+    <Compile Include="Model\Users\UsersStoresManager.cs" />
+    <Compile Include="Model\Users\UsersRolesManager.cs" />
+    <Compile Include="Model\Users\SystemPagesManager.cs" />
+    <Compile Include="Model\Users\UsersPagesManager.cs" />
+    <Compile Include="Model\Users\UsersManager.cs" />
+    <Compile Include="Model\Vendors\VendorContractsManager.cs" />
+    <Compile Include="Model\Vendors\VendorsManager.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SesssionUser.cs" />
+    <Compile Include="ViewModels\BuildingsViews\EmpRoomsViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViews\ItemsStockDetailsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\InOrders\InOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\InOrders\InOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\RequestOutOrders\RequestOrdersDetailsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\RequestOutOrders\RequestOutOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\ReturnInOrders\ReturnInOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\ReturnOutOrders\ReturnOutOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\ReturnInOrders\ReturnInOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\ReturnOutOrders\ReturnOutOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\DestoryOrders\DestroyOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\ChangeOrders\ChangeQuantityOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\ChangeOrders\ChangeQuantityOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\TransferOrders\TransferOrdersDetailsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\DestoryOrders\DestroyOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\HandoverOrders\HandoverOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\TransferOrders\TransferOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\OutOrders\OutOrdersDetialsViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViews\ReaderItemsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\HandoverOrders\HandoverOrdersViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViews\OutOrders\OutOrdersViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViews\SuppliersViewModel.cs" />
+    <Compile Include="ViewModels\ItemsViews\ItemsStructureViewModel.cs" />
+    <Compile Include="ViewModels\ItemsViews\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\HRViews\EmployeesViewModel.cs" />
+    <Compile Include="ViewModels\HRViews\DepartementsViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViews\ItemsStockViewModel.cs" />
+    <Compile Include="ViewModels\ItemsViews\ItemsViewModel.cs" />
+    <Compile Include="ViewModels\ItemsViews\CatSubViewModel.cs" />
+    <Compile Include="ViewModels\BuildingsViews\RoomsViewModel.cs" />
+    <Compile Include="ViewModels\BuildingsViews\FloorsViewModel.cs" />
+    <Compile Include="ViewModels\BuildingsViews\BuildingsViewModel.cs" />
+    <Compile Include="ViewModels\ItemsViews\CatMainViewModel.cs" />
+    <Compile Include="ViewModels\LookupViews\UnitsViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ReportViews\ReportViewModel.cs" />
+    <Compile Include="ViewModels\TransferAssetsViews\TransferAssetsViewModel.cs" />
+    <Compile Include="ViewModels\Users\UsersMainCatsViewModel.cs" />
+    <Compile Include="ViewModels\Users\UsersDeptsViewModel.cs" />
+    <Compile Include="ViewModels\Users\UsersStoresViewModel.cs" />
+    <Compile Include="ViewModels\Users\UsersViewModel.cs" />
+    <Compile Include="ViewModels\Users\UsersPagesViewModel.cs" />
+    <Compile Include="ViewModels\Vendors\VendorContractsViewModel.cs" />
+    <Compile Include="ViewModels\Vendors\VendorsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

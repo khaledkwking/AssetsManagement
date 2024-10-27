@@ -1,0 +1,738 @@
+﻿/*---------------------------------------------------------------------------------------
+BookKeeper Web Application CSS
+Creted by: Mahmoud Abdallah
+Developers Studio
+www.dvstudio.us
+mahmoud@dvstudio.com
+26 October 2014
+------------------------------------------------------------------------------------*/
+
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'feather';
+    src: url('../Fonts/feather/feather.eot?-9jv4cc');
+    src: url('../Fonts/feather/feather.eot?#iefix-9jv4cc') format('embedded-opentype'), url('../Fonts/feather/feather.woff?-9jv4cc') format('woff'), url('../Fonts/feather/feather.ttf?-9jv4cc') format('truetype'), url('../Fonts/feather/feather.svg?-9jv4cc#feather') format('svg');
+}
+
+body {
+}
+
+.anyHorSpace {
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 102, 0,.7);
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+}
+/*Login CSS*/
+.LognInTextBox {
+    width: 350px;
+    Height: 40px;
+    vertical-align: middle;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+    .LognInTextBox:focus::-webkit-input-placeholder {
+        transition: opacity 0.3s 0.3s ease;
+        opacity: 0;
+    }
+
+.DVLogo {
+    width: 164px;
+    height: 41px;
+}
+
+.SpanHeight {
+    height: 20px;
+}
+
+.NonOpecity {
+    opacity: 0.9;
+}
+
+.LoginBtn {
+    width: 150px;
+    height: 40px;
+    /*background-color:#f59a1c;*/
+    background: radial-gradient(ellipse at center, #ee4c8d 0%,#b53467 100%);
+    font-size: 1.2em;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+    .LoginBtn:hover {
+        color: #8d1645;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        transition: 0.2s ease;
+        transform: scale(1.2);
+    }
+
+    .LoginBtn:focus {
+        color: #8d1645;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+        transition: 0.2s ease;
+        transform: scale(1);
+    }
+
+.LoginErrorMsg {
+    font-size: 1.2em;
+    color: red;
+    border: solid;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+/*Management Master Page CSS-------------------------*/
+.ManagementMastePageBody {
+    direction: rtl;
+    margin: 0 auto;
+    background-image: url(../Images/MainBG6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100%;
+    overflow: hidden;
+    /*overflow-y: scroll;*/
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+    /*border-radius: 5px;*/
+    background-color: rgba(0, 0, 50,0.2);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(255, 255, 255,0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    /*border-radius: 8px;*/
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    width: 100%;
+    height: 75px;
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(0, 0, 0,0.5);
+    top: 0;
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    /*opacity:0.3;*/
+    /*position: relative;*/
+    overflow: hidden;
+}
+
+
+.ChellegeLogo {
+    margin-left: 1%;
+    /*margin-right: 25%;*/
+    opacity: 0.9;
+}
+
+.Time {
+    direction: ltr;
+    position: fixed;
+    /*background-color: rgba(255, 255, 255,0);*/
+    font-family: Tahoma;
+    margin-right: 0px;
+    color: rgba(255, 255, 255, 1);
+    text-align: right;
+    z-index: 90;
+}
+
+.ManagementMastePageFooter {
+    font-family: feather;
+    text-align: left;
+    font-size: 1.2vw;
+    width: 100%;
+    height: 22px;
+    padding-left: 10px;
+    bottom: 0;
+    position: fixed;
+    background-color: rgba(255, 255, 255,0.5);
+    z-index: 100;
+}
+
+.MainTable {
+    width: 100%;
+    margin-right: 0;
+}
+
+.HeightFull {
+    width: 56px;
+    height: 100%;
+    position: fixed;
+    margin-right: 0;
+    background-color: rgba(0, 0, 50,0.5);
+    vertical-align: top;
+    z-index: 100;
+}
+
+.MainButtonscolm {
+    position: fixed;
+    vertical-align: top;
+    z-index: 100;
+}
+
+.MainButtons {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    padding: 3px 3px 3px 3px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-position: center;
+    /*background: radial-gradient(ellipse at top, #ee4c8d 10%,#b53467 100%);*/
+    border: none;
+    border-radius: 1px;
+    /*box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(0, 0, 0, 0.3);*/
+    cursor: default;
+    /*position: relative;
+    overflow: hidden;*/
+}
+
+    .MainButtons:hover {
+        transition: 0.1s ease;
+        transform: scale(1.1);
+        background-repeat: no-repeat;
+        margin-left: 1%;
+        margin-right: 1%;
+        background-position: center;
+    }
+
+    .MainButtons:focus {
+        transition: 0.1s ease;
+        transform: scale(1.1);
+        background-repeat: no-repeat;
+        margin-left: 1%;
+        margin-right: 1%;
+        background-position: center;
+    }
+
+.NavegationArea {
+    font-family: feather;
+    text-align: center;
+    font-size: 15px;
+    width: 250px;
+    height: 83%;
+    padding: 5px, 5px, 5px,5px;
+    position: fixed;
+    background-color: rgba(255, 255, 255,0.6);
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    z-index: 1;
+    vertical-align: middle;
+}
+
+.NavAreaTextBox {
+    width: 200px;
+    Height: 30px;
+    vertical-align: middle;
+    font-size: 20px;
+    font-family: feather;
+    text-align: center;
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+    .NavAreaTextBox:focus::-webkit-input-placeholder {
+        transition: opacity 0.3s 0.3s ease;
+        opacity: 0;
+    }
+
+.NavAreaMainButtons {
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    padding: 3px 3px 3px 3px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-position: center;
+    background-color: #75bf2b;
+    border: none;
+    border-radius: 5px;
+    cursor: default;
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+    .NavAreaMainButtons:hover {
+        transition: 0.1s ease;
+        transform: scale(1.1);
+    }
+
+    .NavAreaMainButtons:focus {
+        transition: 0.1s ease;
+        transform: scale(1.1);
+    }
+
+.NavAreaDropDownList {
+    width: 240px;
+    Height: 30px;
+    vertical-align: middle;
+    font-size: 20px;
+    font-family: feather;
+    text-align: center;
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*Management Page CSS*/
+.Content {
+    direction: rtl;
+    width: 70%;
+    font-family: feather;
+    text-align: center;
+    font-size: 15px;
+    height: 83%;
+    padding: 10px, 10px, 10px,10px;
+    position: absolute;
+    background-color: rgba(255, 255, 255,0.7);
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    vertical-align: middle;
+    z-index: 100;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.ContentPagesbasic {
+}
+
+
+/*modal*/
+.popupControl {
+    background-color: #FFFFFF;
+    position: absolute;
+    visibility: hidden;
+    border-style: solid;
+    border-color: Black;
+    border-width: 2px;
+}
+
+.modalBackground {
+    background-color: rgb(0, 0, 0);
+    opacity: 0.8;
+}
+
+.modalPopup {
+    font-family: feather;
+    font-size: 13px;
+    color: gray;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    vertical-align: top;
+    text-align: left;
+    line-height: 0.5em;
+    width: 550px;
+    height: 250px;
+    position: relative;
+    /*margin: 10% auto;*/
+    /* Default minimise animation */
+    -webkit-animation: minimise 500ms linear;
+    -moz-animation: minimise 500ms linear;
+    animation: minimise 500ms linear;
+    /* Prettify */
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #ccc);
+    background: -webkit-linear-gradient(#fff, #ccc);
+    background: -o-linear-gradient(#fff, #ccc);
+    background: linear-gradient(#fff, #ccc);
+    text-shadow: 0 1px 0 #fff;
+    -webkit-animation-name: bounce;
+    -moz-animation-name: bounce;
+    animation-name: bounce;
+}
+
+    .modalPopup:hover,
+    .modalPopup:focus {
+        background: -moz-linear-gradient(#fff, #ccc);
+        background: -webkit-linear-gradient(#fff, #ccc);
+        background: -o-linear-gradient(#fff, #ccc);
+        background: linear-gradient(#fff, #ccc);
+    }
+
+@-webkit-keyframes bounce {
+    0% {
+        -webkit-transform: scale3d(0.1,0.1,1);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+
+    55% {
+        -webkit-transform: scale3d(1.08,1.08,1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0);
+    }
+
+    75% {
+        -webkit-transform: scale3d(0.95,0.95,1);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1,1,1);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+}
+
+@-webkit-keyframes minimise {
+    0% {
+        -webkit-transform: scale3d(1,1,1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(0.1,0.1,1);
+    }
+}
+
+@-moz-keyframes bounce {
+    0% {
+        -moz-transform: scale3d(0.1,0.1,1);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+
+    55% {
+        -moz-transform: scale3d(1.08,1.08,1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0);
+    }
+
+    75% {
+        -moz-transform: scale3d(0.95,0.95,1);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    100% {
+        -moz-transform: scale3d(1,1,1);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+}
+
+@-moz-keyframes minimise {
+    0% {
+        -moz-transform: scale3d(1,1,1);
+    }
+
+    100% {
+        -moz-transform: scale3d(0.1,0.1,1);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale3d(0.1,0.1,1);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+
+    55% {
+        transform: scale3d(1.08,1.08,1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0);
+    }
+
+    75% {
+        transform: scale3d(0.95,0.95,1);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    100% {
+        transform: scale3d(1,1,1);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+}
+
+@keyframes minimise {
+    0% {
+        transform: scale3d(1,1,1);
+    }
+
+    100% {
+        transform: scale3d(0.1,0.1,1);
+    }
+}
+
+/* Modal close link */
+.PopClosBtns {
+    background-color: transparent;
+    background-image: url(../close.png);
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 35px;
+    height: 35px;
+    text-decoration: none;
+    text-shadow: none;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    border-style: none;
+}
+
+    /* Reset native styles */
+    .PopClosBtns:focus {
+        outline: none;
+    }
+
+    /* Create close button */
+    .PopClosBtns:after {
+        display: block;
+        /* Position */
+        position: absolute;
+        padding: 1px 1px 1px 2px;
+        /* Style */
+    }
+
+    .PopClosBtns:focus:after,
+    .PopClosBtns:hover:after {
+        -webkit-transform: scale(1.1,1.1);
+        -moz-transform: scale(1.1,1.1);
+        transform: scale(1.1,1.1);
+    }
+
+    .PopClosBtns:focus:after {
+    }
+
+.ChallengePicLogo {
+    width: 250px;
+    height: 55px;
+}
+
+/*Notifications modal*/
+.NotificationPopupControl {
+    background-color: #FFFFFF;
+    position: absolute;
+    visibility: hidden;
+    border-style: solid;
+    border-color: Black;
+    border-width: 2px;
+}
+
+.NotificationModalBackground {
+    background-color: rgb(0, 0, 0);
+    opacity: 0.8;
+}
+
+.NotificationModalPopup {
+    font-family: feather;
+    font-size: 13px;
+    color: gray;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    vertical-align: top;
+    text-align: left;
+    line-height: 0.5em;
+    width: 250px;
+    height: 95%;
+    position: relative;
+    right: 100px;
+    /* Default minimise animation */
+    -webkit-animation: minimise 300ms ease-in-out;
+    -moz-animation: minimise 300ms ease-in-out;
+    animation: minimise 300ms ease-in-out;
+    /* Prettify */
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #ccc);
+    background: -webkit-linear-gradient(#fff, #ccc);
+    background: -o-linear-gradient(#fff, #ccc);
+    background: linear-gradient(#fff, #ccc);
+    text-shadow: 0 1px 0 #fff;
+    -webkit-animation-name: SlideFromRigt;
+    -moz-animation-name: SlideFromRigt;
+    animation-name: SlideFromRigt;
+}
+
+    .NotificationModalPopup:hover,
+    .NotificationModalPopup:hover, :focus {
+        background: -moz-linear-gradient(#fff, #ccc);
+        background: -webkit-linear-gradient(#fff, #ccc);
+        background: -o-linear-gradient(#fff, #ccc);
+        background: linear-gradient(#fff, #ccc);
+    }
+
+@-webkit-keyframes SlideFromRigt {
+    0% {
+        -webkit-transform: translateY(250px);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+
+    55% {
+        -webkit-transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0);
+    }
+
+    75% {
+        -webkit-transform: translateY(-20px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    100% {
+        -webkit-transform: translateY(-30px);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+}
+
+@-webkit-keyframes minimise {
+    0% {
+        -webkit-transform: translateY(-5px);
+    }
+
+    100% {
+        -webkit-transform: translateY(-10px);
+    }
+}
+
+@-moz-keyframes bounce {
+    0% {
+        -moz-transform: translateX(0px);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+
+    55% {
+        -moz-transform: translateX(55px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0);
+    }
+
+    75% {
+        -moz-transform: translateX(75px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    100% {
+        -moz-transform: translateX(100px);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+}
+
+@-moz-keyframes minimise {
+    0% {
+        -moz-transform: translateX(0px);
+    }
+
+    100% {
+        -moz-transform: translateX(100px);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateX(0px);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+
+    55% {
+        transform: translateX(55px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0);
+    }
+
+    75% {
+        transform: translateX(75px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.9);
+    }
+
+    100% {
+        transform: translateX(100px);
+        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    }
+}
+
+@keyframes minimise {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+/* Modal close link */
+.NotificationPopClosBtns {
+    background-color: transparent;
+    background-image: url(../close.png);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 35px;
+    height: 35px;
+    text-decoration: none;
+    text-shadow: none;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    border-style: none;
+}
+
+    /* Reset native styles */
+    .NotificationPopClosBtns:focus {
+        outline: none;
+    }
+
+    /* Create close button */
+    .NotificationPopClosBtns:after {
+        display: block;
+        /* Position */
+        position: absolute;
+        padding: 1px 1px 1px 2px;
+        /* Style */
+    }
+
+    .NotificationPopClosBtns:focus:after,
+    .NotificationPopClosBtns:hover:after {
+        -webkit-transform: scale(1.1,1.1);
+        -moz-transform: scale(1.1,1.1);
+        transform: scale(1.1,1.1);
+    }
+
+    .NotificationPopClosBtns:focus:after {
+    }
+
+
+
+
+.menuButtons {
+    width: 240px;
+    height: 30px;
+    background-color: transparent;
+    margin-left: 1%;
+    margin-right: 1%;
+    color: white;
+    font-size: 15pt;
+    text-align: right;
+    border: none;
+    cursor: default;
+}
+
+    .menuButtons:hover {
+        background-repeat: no-repeat;
+        color: #000;
+        font-size: 15pt;
+    }
+
+    .menuButtons:focus {
+        background-repeat: no-repeat;
+        color: #000;
+        font-size: 15pt;
+    }
+
+   

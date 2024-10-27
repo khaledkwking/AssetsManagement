@@ -1,0 +1,44 @@
+﻿@using ReportViewerForMvc
+@{
+    ViewBag.Title = "ShowReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.AntiForgeryToken();
+
+@*<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+        </div>
+    </div>
+</div>*@
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    @* First source items *@
+    <div class="row">
+
+        <div class="col-12">
+            <div class="kt-portlet kt-portlet--mobile">
+
+                <div class="kt-portlet__body" style="min-height:600px">
+                    @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { style = "min-height:700px", AsyncRendering = "true" });
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

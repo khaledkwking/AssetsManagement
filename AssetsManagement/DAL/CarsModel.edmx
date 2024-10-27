@@ -1,0 +1,2280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CARACCOUNTLASTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accounting">
+          <Key>
+            <PropertyRef Name="accountid" />
+          </Key>
+          <Property Name="accountid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="accountname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AccountSName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccountparentId" Type="int" />
+          <Property Name="root" Type="bit" />
+          <Property Name="Totalfromvalue" Type="money" />
+          <Property Name="Totaltovalue" Type="money" />
+          <Property Name="notes" Type="ntext" />
+          <Property Name="startbalancefrom" Type="float" />
+          <Property Name="startdate" Type="smalldatetime" />
+          <Property Name="startbalanceto" Type="float" />
+          <Property Name="balance" Type="bit" />
+          <Property Name="accountType" Type="int" />
+          <Property Name="ClosedTo" Type="bigint" />
+          <Property Name="MainNode" Type="bit" />
+          <Property Name="ProcessFlag" Type="bit" />
+          <Property Name="display_Flag" Type="bit" />
+          <Property Name="AccLevel" Type="int" />
+          <Property Name="MainParentAccId" Type="bigint" />
+          <Property Name="LastSerialNo" Type="varchar" MaxLength="50" />
+          <Property Name="CurId" Type="bigint" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="BlockServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlockId" Type="int" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="Year" Type="nvarchar" MaxLength="50" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="int" />
+          <Property Name="Note" Type="ntext" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Carid" />
+          </Key>
+          <Property Name="Carid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarBoardNo" Type="int" />
+          <Property Name="CarBoardType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SkeltonNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AppNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AppStartDate" Type="smalldatetime" />
+          <Property Name="AppEndDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsurNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="InsurCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsurDate" Type="smalldatetime" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="DayRentValue" Type="money" />
+          <Property Name="DayKmeterValue" Type="money" />
+          <Property Name="HourRentValue" Type="money" />
+          <Property Name="HourKmeterValue" Type="money" />
+          <Property Name="MonthRentValue" Type="money" />
+          <Property Name="MonthKmeterValue" Type="money" />
+          <Property Name="DayRentValue_Driver" Type="money" />
+          <Property Name="DayKmeterValue_Driver" Type="money" />
+          <Property Name="CarStatus" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="OnwerId" Type="int" />
+          <Property Name="MinMonthRentValue" Type="money" />
+          <Property Name="MinHourRentValue" Type="money" />
+          <Property Name="MaintanceKmeter" Type="int" />
+          <Property Name="CaridOld" Type="int" />
+          <Property Name="CarModeltype" Type="int" />
+          <Property Name="InsurType" Type="varchar" MaxLength="300" />
+          <Property Name="InsurDateShamal" Type="smalldatetime" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="CarStatus">
+          <Key>
+            <PropertyRef Name="CarStausId" />
+          </Key>
+          <Property Name="CarStausId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarStatusDesc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cde_QidTypes">
+          <Key>
+            <PropertyRef Name="QidTypeId" />
+          </Key>
+          <Property Name="QidTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QidTypeDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contracts">
+          <Key>
+            <PropertyRef Name="contractid" />
+          </Key>
+          <Property Name="contractid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractCode" Type="varchar" MaxLength="50" />
+          <Property Name="Carid" Type="int" />
+          <Property Name="custid" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="RentPeroid" Type="int" />
+          <Property Name="amount" Type="money" />
+          <Property Name="fils" Type="nvarchar" MaxLength="50" />
+          <Property Name="kd" Type="nvarchar" MaxLength="50" />
+          <Property Name="textamount" Type="nvarchar" MaxLength="100" />
+          <Property Name="paymentamount" Type="money" />
+          <Property Name="RemainAmount" Type="float" />
+          <Property Name="Totalamount" Type="float" />
+          <Property Name="Engtextamount" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExitCounter" Type="float" />
+          <Property Name="EnsurType" Type="nvarchar" MaxLength="50" />
+          <Property Name="startdate" Type="smalldatetime" />
+          <Property Name="enddate" Type="smalldatetime" />
+          <Property Name="empid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="ExtraKmPrice" Type="money" />
+          <Property Name="Part1" Type="ntext" />
+          <Property Name="part2" Type="ntext" />
+          <Property Name="ReturnDate" Type="smalldatetime" />
+          <Property Name="RentNum" Type="int" />
+          <Property Name="ExistTime" Type="varchar" MaxLength="50" />
+          <Property Name="ReturnTime" Type="varchar" MaxLength="50" />
+          <Property Name="ReturnCounter" Type="float" />
+          <Property Name="KmDaily" Type="int" />
+          <Property Name="Finish" Type="bit" />
+          <Property Name="RealReturnCounter" Type="float" />
+          <Property Name="CounterIncAmount" Type="money" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="AddAmount" Type="money" />
+          <Property Name="contractidOld" Type="int" />
+          <Property Name="Serial" Type="bigint" />
+          <Property Name="LatePrice" Type="float" />
+          <Property Name="DriverName" Type="varchar" MaxLength="150" />
+          <Property Name="DriverLicenceNo" Type="varchar" MaxLength="50" />
+          <Property Name="DriverLicenceDate" Type="smalldatetime" />
+          <Property Name="Cancel" Type="bit" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="CostCenters">
+          <Key>
+            <PropertyRef Name="costid" />
+          </Key>
+          <Property Name="costid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="costName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="costCode" Type="varchar" MaxLength="50" />
+          <Property Name="costSName" Type="nvarchar" MaxLength="100" />
+          <Property Name="costparentId" Type="int" />
+          <Property Name="root" Type="bit" />
+          <Property Name="Totalfromvalue" Type="money" />
+          <Property Name="Totaltovalue" Type="money" />
+          <Property Name="notes" Type="ntext" />
+          <Property Name="startbalancefrom" Type="float" />
+          <Property Name="startdate" Type="smalldatetime" />
+          <Property Name="startbalanceto" Type="float" />
+          <Property Name="balance" Type="bit" />
+          <Property Name="costType" Type="int" />
+          <Property Name="ClosedTo" Type="bigint" />
+          <Property Name="MainNode" Type="bit" />
+          <Property Name="ProcessFlag" Type="bit" />
+          <Property Name="display_Flag" Type="bit" />
+          <Property Name="LastSerialNo" Type="varchar" MaxLength="50" />
+          <Property Name="AccLevel" Type="int" />
+          <Property Name="MainParentAccId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="cust">
+          <Key>
+            <PropertyRef Name="custid" />
+          </Key>
+          <Property Name="custid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="custname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustEnName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NatID" Type="int" />
+          <Property Name="NatIdType" Type="nvarchar" MaxLength="50" />
+          <Property Name="NatIdDate" Type="smalldatetime" />
+          <Property Name="NatIdSource" Type="nvarchar" MaxLength="50" />
+          <Property Name="civilid" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="LicenceNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LicenceSource" Type="nvarchar" MaxLength="50" />
+          <Property Name="LicenceStartDate" Type="smalldatetime" />
+          <Property Name="LicenceEndDate" Type="smalldatetime" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherNatId" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherNatIdSource" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherNatIdDate" Type="smalldatetime" />
+          <Property Name="FatherTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherMoblie" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkAddress" Type="varchar" MaxLength="200" />
+          <Property Name="blockno" Type="nvarchar" MaxLength="50" />
+          <Property Name="region" Type="nvarchar" MaxLength="100" />
+          <Property Name="st" Type="nvarchar" MaxLength="100" />
+          <Property Name="house" Type="nvarchar" MaxLength="50" />
+          <Property Name="Floor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Building" Type="nvarchar" MaxLength="80" />
+          <Property Name="LicenceType" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Debits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusId" Type="int" />
+          <Property Name="CarId" Type="int" />
+          <Property Name="EnterDate" Type="smalldatetime" />
+          <Property Name="RValue" Type="smallmoney" />
+          <Property Name="Notes" Type="varchar" MaxLength="200" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="emp">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empname" Type="nvarchar" MaxLength="50" />
+          <Property Name="pw" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="flag" Type="int" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="FIGURES">
+          <Key>
+            <PropertyRef Name="Figure" />
+          </Key>
+          <Property Name="Figure" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FigureInWords" Type="nvarchar" MaxLength="15" />
+          <Property Name="EngFigureInWords" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FIGURES2">
+          <Key>
+            <PropertyRef Name="Figure" />
+          </Key>
+          <Property Name="Figure" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FigureInWords" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="FingerImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractId" Type="int" />
+          <Property Name="fingerImage" Type="image" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="FUNCTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEXT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="TypeDesc" Type="varchar" MaxLength="100" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Lawsuits">
+          <Key>
+            <PropertyRef Name="LawsuitId" />
+          </Key>
+          <Property Name="LawsuitId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LawsuitDate" Type="smalldatetime" />
+          <Property Name="LawsuitNo" Type="varchar" MaxLength="50" />
+          <Property Name="Contractid" Type="int" />
+          <Property Name="CarNo" Type="varchar" MaxLength="50" />
+          <Property Name="CarID" Type="int" />
+          <Property Name="Note" Type="text" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Maintance">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainDateFrom" Type="smalldatetime" />
+          <Property Name="MainDateTo" Type="smalldatetime" />
+          <Property Name="CarID" Type="int" />
+          <Property Name="Note" Type="text" />
+          <Property Name="Contractid" Type="int" />
+          <Property Name="CounterNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ExistTime" Type="varchar" MaxLength="50" />
+          <Property Name="ReturnTime" Type="varchar" MaxLength="50" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelDesc" Type="varchar" MaxLength="300" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Months">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MonthDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="EngMonthDesc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nats">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NatDesc" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficeName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="PaymentCodes">
+          <Key>
+            <PropertyRef Name="PayId" />
+          </Key>
+          <Property Name="PayId" Type="int" Nullable="false" />
+          <Property Name="PayDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="PayDescEng" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="PaymentDate" Type="smalldatetime" />
+          <Property Name="BillNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="money" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="PaymentSourceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="printed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contractid" Type="int" Nullable="false" />
+          <Property Name="pmonth" Type="int" />
+          <Property Name="pyear" Type="int" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="qids">
+          <Key>
+            <PropertyRef Name="qidid" />
+          </Key>
+          <Property Name="qidid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qidcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="qidDate" Type="smalldatetime" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="edit" Type="bit" />
+          <Property Name="recitetype" Type="int" />
+          <Property Name="underupdate" Type="bit" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="BrachId" Type="bigint" />
+          <Property Name="EmpId" Type="bigint" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="repeated" Type="bit" />
+          <Property Name="BankAccId" Type="bigint" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvId" Type="bigint" />
+          <Property Name="ReorderInvId" Type="bigint" />
+          <Property Name="PaymentType" Type="bit" />
+          <Property Name="PaymentTo" Type="varchar" MaxLength="300" />
+          <Property Name="QidSerial" Type="bigint" />
+          <Property Name="Contractid" Type="int" />
+          <Property Name="Carid" Type="int" />
+          <Property Name="Custid" Type="int" />
+          <Property Name="ReorderId" Type="bigint" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="qidsDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qidid" Type="bigint" Nullable="false" />
+          <Property Name="FromValue" Type="money" />
+          <Property Name="ToValue" Type="money" />
+          <Property Name="ACCOUNTID" Type="bigint" Nullable="false" />
+          <Property Name="type" Type="smallint" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="EnterDate" Type="datetime" />
+          <Property Name="Detcode" Type="int" />
+          <Property Name="QidType" Type="int" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="ActionType" Type="int" />
+          <Property Name="CostId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Recite">
+          <Key>
+            <PropertyRef Name="reciteid" />
+          </Key>
+          <Property Name="reciteid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="smalldatetime" />
+          <Property Name="ReciteAmount" Type="money" />
+          <Property Name="textamount" Type="nvarchar" MaxLength="100" />
+          <Property Name="Engtextamount" Type="nvarchar" MaxLength="100" />
+          <Property Name="kd" Type="nvarchar" MaxLength="50" />
+          <Property Name="fils" Type="int" />
+          <Property Name="contractid" Type="int" />
+          <Property Name="type" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="get" Type="bit" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="RecitePersonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GetPersonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarNo" Type="varchar" MaxLength="50" />
+          <Property Name="ContractNo" Type="varchar" MaxLength="50" />
+          <Property Name="CarId" Type="int" />
+          <Property Name="CustId" Type="int" />
+          <Property Name="PaymentId" Type="int" />
+          <Property Name="PayType" Type="int" />
+          <Property Name="RecCode" Type="int" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="RentPeriods">
+          <Key>
+            <PropertyRef Name="PeriodId" />
+          </Key>
+          <Property Name="PeriodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PeriodDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="PeriodDescEng" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Recid" />
+          </Key>
+          <Property Name="Recid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="smalldatetime" />
+          <Property Name="CustName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CustTel" Type="varchar" MaxLength="50" />
+          <Property Name="CarType" Type="varchar" MaxLength="80" />
+          <Property Name="CotractNo" Type="varchar" MaxLength="50" />
+          <Property Name="amount" Type="money" />
+          <Property Name="paymentamount" Type="money" />
+          <Property Name="RemainAmount" Type="money" />
+          <Property Name="Carid" Type="int" />
+          <Property Name="RecDate" Type="smalldatetime" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="SeviceId" />
+          </Key>
+          <Property Name="SeviceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="ServiceDescEng" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="setup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="empid" Type="int" />
+          <Property Name="custid" Type="int" />
+          <Property Name="reciteid" Type="int" />
+          <Property Name="rentid" Type="int" />
+          <Property Name="blockid" Type="int" />
+          <Property Name="contractid" Type="int" />
+          <Property Name="ownerid" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyName1" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyOwner" Type="nvarchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar" MaxLength="400" />
+          <Property Name="Engaddress" Type="nvarchar" MaxLength="400" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="200" />
+          <Property Name="logon" Type="nvarchar" MaxLength="50" />
+          <Property Name="AreaDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Part1" Type="ntext" />
+          <Property Name="Part2" Type="ntext" />
+          <Property Name="ArbTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="EngTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="ArbTelTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="EngTelTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="ArbMobile" Type="nvarchar" MaxLength="200" />
+          <Property Name="EngMobile" Type="nvarchar" MaxLength="200" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Engfax" Type="nvarchar" MaxLength="50" />
+          <Property Name="custaccid" Type="smallint" />
+          <Property Name="suppaccid" Type="smallint" />
+          <Property Name="changeid" Type="int" />
+          <Property Name="productid" Type="int" />
+          <Property Name="orderid" Type="int" />
+          <Property Name="accountid" Type="int" />
+          <Property Name="qidid" Type="int" />
+          <Property Name="salesaccid" Type="smallint" />
+          <Property Name="salesAgalaccid" Type="bigint" />
+          <Property Name="purchaseaccid" Type="smallint" />
+          <Property Name="purchaseAgalaccid" Type="bigint" />
+          <Property Name="boxaccid" Type="bigint" />
+          <Property Name="bankaccid" Type="bigint" />
+          <Property Name="PurReorderaccid" Type="bigint" />
+          <Property Name="SalReorderaccid" Type="bigint" />
+          <Property Name="PurReorderAgalaccid" Type="bigint" />
+          <Property Name="SalReorderAgalaccid" Type="bigint" />
+          <Property Name="Discountaccid" Type="bigint" />
+          <Property Name="Paymentsaccid" Type="bigint" />
+          <Property Name="purchasePayaccid" Type="bigint" />
+          <Property Name="Mainsalesaccid" Type="bigint" />
+          <Property Name="MainPurchaseaccid" Type="bigint" />
+          <Property Name="OsalAccId" Type="bigint" />
+          <Property Name="DeductAccId" Type="bigint" />
+          <Property Name="MovmentProfitsAccid" Type="bigint" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CARACCOUNTWeb.dbo.SetupCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SetupCodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="SupCode" Type="varchar" MaxLength="50" />
+          <Property Name="CustCode" Type="varchar" MaxLength="50" />
+          <Property Name="invSaleCode" Type="varchar" MaxLength="50" />
+          <Property Name="InvpurchasesCode" Type="varchar" MaxLength="50" />
+          <Property Name="StoresCode" Type="varchar" MaxLength="50" />
+          <Property Name="ACCountCode" Type="varchar" MaxLength="50" />
+          <Property Name="Qid" Type="varchar" MaxLength="50" />
+          <Property Name="QidIn" Type="varchar" MaxLength="50" />
+          <Property Name="QidOut" Type="varchar" MaxLength="50" />
+          <Property Name="EmpCode" Type="varchar" MaxLength="50" />
+          <Property Name="SalInvSerial" Type="bigint" />
+          <Property Name="PurchInvSerial" Type="bigint" />
+          <Property Name="InQidSerial" Type="bigint" />
+          <Property Name="OutQidSerial" Type="bigint" />
+          <Property Name="QidSeial" Type="bigint" />
+          <Property Name="BranchCode" Type="varchar" MaxLength="50" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <EntityType Name="USER_FUNCTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="FUNCTION_ID" Type="int" Nullable="false" />
+          <Property Name="FOpen" Type="bit" />
+          <Property Name="FUpdate" Type="bit" />
+          <Property Name="FSave" Type="bit" />
+          <Property Name="FDel" Type="bit" />
+          <Property Name="Type" Type="int" />
+          <Property Name="FCommit" Type="bit" />
+        </EntityType>
+        <EntityType Name="violations">
+          <Key>
+            <PropertyRef Name="violationId" />
+          </Key>
+          <Property Name="violationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="violationDate" Type="smalldatetime" />
+          <Property Name="violationNo" Type="varchar" MaxLength="50" />
+          <Property Name="CarID" Type="int" />
+          <Property Name="Note" Type="text" />
+          <Property Name="Contractid" Type="int" />
+          <Property Name="BookNo" Type="int" />
+          <Property Name="ViolationTime" Type="varchar" MaxLength="100" />
+          <Property Name="OrgId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cars_CarStatus">
+          <End Role="CarStatus" Type="Self.CarStatus" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarStatus">
+              <PropertyRef Name="CarStausId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="CarStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Models">
+          <End Role="Models" Type="Self.Models" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Models">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="CarModeltype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_Cars">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Carid" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="Carid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_cust">
+          <End Role="cust" Type="Self.cust" Multiplicity="0..1" />
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cust">
+              <PropertyRef Name="custid" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="custid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cust_Nats1">
+          <End Role="Nats" Type="Self.Nats" Multiplicity="0..1" />
+          <End Role="cust" Type="Self.cust" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nats">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cust">
+              <PropertyRef Name="NatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maintance_Cars">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Maintance" Type="Self.Maintance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Carid" />
+            </Principal>
+            <Dependent Role="Maintance">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_qids_Contracts">
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="qids" Type="Self.qids" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracts">
+              <PropertyRef Name="contractid" />
+            </Principal>
+            <Dependent Role="qids">
+              <PropertyRef Name="Contractid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_qids_Recite">
+          <End Role="Recite" Type="Self.Recite" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="qids" Type="Self.qids" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recite">
+              <PropertyRef Name="reciteid" />
+            </Principal>
+            <Dependent Role="qids">
+              <PropertyRef Name="ReorderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_qidsDetails_qids">
+          <End Role="qids" Type="Self.qids" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="qidsDetails" Type="Self.qidsDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="qids">
+              <PropertyRef Name="qidid" />
+            </Principal>
+            <Dependent Role="qidsDetails">
+              <PropertyRef Name="qidid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_violations_Cars">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="violations" Type="Self.violations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Carid" />
+            </Principal>
+            <Dependent Role="violations">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CARACCOUNTLASTModelStoreContainer">
+          <EntitySet Name="accounting" EntityType="Self.accounting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlockServices" EntityType="Self.BlockServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarStatus" EntityType="Self.CarStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cde_QidTypes" EntityType="Self.Cde_QidTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contracts" EntityType="Self.Contracts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CostCenters" EntityType="Self.CostCenters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cust" EntityType="Self.cust" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Debits" EntityType="Self.Debits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emp" EntityType="Self.emp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FIGURES" EntityType="Self.FIGURES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FIGURES2" EntityType="Self.FIGURES2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FingerImages" EntityType="Self.FingerImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FUNCTIONS" EntityType="Self.FUNCTIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lawsuits" EntityType="Self.Lawsuits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maintance" EntityType="Self.Maintance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Months" EntityType="Self.Months" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nats" EntityType="Self.Nats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentCodes" EntityType="Self.PaymentCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="printed" EntityType="Self.printed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="qids" EntityType="Self.qids" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="qidsDetails" EntityType="Self.qidsDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recite" EntityType="Self.Recite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentPeriods" EntityType="Self.RentPeriods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="setup" EntityType="Self.setup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_FUNCTION" EntityType="Self.USER_FUNCTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="violations" EntityType="Self.violations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SetupCodes" EntityType="Self.SetupCodes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SetupCodes].[Id] AS [Id], 
+    [SetupCodes].[SupCode] AS [SupCode], 
+    [SetupCodes].[CustCode] AS [CustCode], 
+    [SetupCodes].[invSaleCode] AS [invSaleCode], 
+    [SetupCodes].[InvpurchasesCode] AS [InvpurchasesCode], 
+    [SetupCodes].[StoresCode] AS [StoresCode], 
+    [SetupCodes].[ACCountCode] AS [ACCountCode], 
+    [SetupCodes].[Qid] AS [Qid], 
+    [SetupCodes].[QidIn] AS [QidIn], 
+    [SetupCodes].[QidOut] AS [QidOut], 
+    [SetupCodes].[EmpCode] AS [EmpCode], 
+    [SetupCodes].[SalInvSerial] AS [SalInvSerial], 
+    [SetupCodes].[PurchInvSerial] AS [PurchInvSerial], 
+    [SetupCodes].[InQidSerial] AS [InQidSerial], 
+    [SetupCodes].[OutQidSerial] AS [OutQidSerial], 
+    [SetupCodes].[QidSeial] AS [QidSeial], 
+    [SetupCodes].[BranchCode] AS [BranchCode], 
+    [SetupCodes].[OrgId] AS [OrgId]
+    FROM [dbo].[SetupCodes] AS [SetupCodes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cars_CarStatus" Association="Self.FK_Cars_CarStatus">
+            <End Role="CarStatus" EntitySet="CarStatus" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Models" Association="Self.FK_Cars_Models">
+            <End Role="Models" EntitySet="Models" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_Cars" Association="Self.FK_Contracts_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_cust" Association="Self.FK_Contracts_cust">
+            <End Role="cust" EntitySet="cust" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cust_Nats1" Association="Self.FK_cust_Nats1">
+            <End Role="Nats" EntitySet="Nats" />
+            <End Role="cust" EntitySet="cust" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintance_Cars" Association="Self.FK_Maintance_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Maintance" EntitySet="Maintance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_qids_Contracts" Association="Self.FK_qids_Contracts">
+            <End Role="Contracts" EntitySet="Contracts" />
+            <End Role="qids" EntitySet="qids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_qids_Recite" Association="Self.FK_qids_Recite">
+            <End Role="Recite" EntitySet="Recite" />
+            <End Role="qids" EntitySet="qids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_qidsDetails_qids" Association="Self.FK_qidsDetails_qids">
+            <End Role="qids" EntitySet="qids" />
+            <End Role="qidsDetails" EntitySet="qidsDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_violations_Cars" Association="Self.FK_violations_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="violations" EntitySet="violations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CARACCOUNTLASTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="accounting">
+          <Key>
+            <PropertyRef Name="accountid" />
+          </Key>
+          <Property Name="accountid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="accountname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountSName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountparentId" Type="Int32" />
+          <Property Name="root" Type="Boolean" />
+          <Property Name="Totalfromvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Totaltovalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="startbalancefrom" Type="Double" />
+          <Property Name="startdate" Type="DateTime" Precision="0" />
+          <Property Name="startbalanceto" Type="Double" />
+          <Property Name="balance" Type="Boolean" />
+          <Property Name="accountType" Type="Int32" />
+          <Property Name="ClosedTo" Type="Int64" />
+          <Property Name="MainNode" Type="Boolean" />
+          <Property Name="ProcessFlag" Type="Boolean" />
+          <Property Name="display_Flag" Type="Boolean" />
+          <Property Name="AccLevel" Type="Int32" />
+          <Property Name="MainParentAccId" Type="Int64" />
+          <Property Name="LastSerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurId" Type="Int64" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BlockService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlockId" Type="Int32" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Carid" />
+          </Key>
+          <Property Name="Carid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarBoardNo" Type="Int32" />
+          <Property Name="CarBoardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SkeltonNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AppNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AppStartDate" Type="DateTime" Precision="0" />
+          <Property Name="AppEndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsurNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InsurCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsurDate" Type="DateTime" Precision="0" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DayRentValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DayKmeterValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HourRentValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HourKmeterValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MonthRentValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MonthKmeterValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DayRentValue_Driver" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DayKmeterValue_Driver" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CarStatus" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="OnwerId" Type="Int32" />
+          <Property Name="MinMonthRentValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MinHourRentValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaintanceKmeter" Type="Int32" />
+          <Property Name="CaridOld" Type="Int32" />
+          <Property Name="CarModeltype" Type="Int32" />
+          <Property Name="InsurType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="InsurDateShamal" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_Contracts_Cars" FromRole="Cars" ToRole="Contracts" />
+          <NavigationProperty Name="Maintances" Relationship="Self.FK_Maintance_Cars" FromRole="Cars" ToRole="Maintance" />
+          <NavigationProperty Name="violations" Relationship="Self.FK_violations_Cars" FromRole="Cars" ToRole="violations" />
+          <Property Name="OrgId" Type="Int32" />
+          <NavigationProperty Name="CarStatu" Relationship="CARACCOUNTLASTModel.FK_Cars_CarStatus" FromRole="Car" ToRole="CarStatu" />
+          <NavigationProperty Name="Model" Relationship="CARACCOUNTLASTModel.FK_Cars_Models" FromRole="Car" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="CarStatu">
+          <Key>
+            <PropertyRef Name="CarStausId" />
+          </Key>
+          <Property Name="CarStausId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarStatusDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cars" Relationship="CARACCOUNTLASTModel.FK_Cars_CarStatus" FromRole="CarStatu" ToRole="Car" />
+        </EntityType>
+        <EntityType Name="Cde_QidTypes">
+          <Key>
+            <PropertyRef Name="QidTypeId" />
+          </Key>
+          <Property Name="QidTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QidTypeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="contractid" />
+          </Key>
+          <Property Name="contractid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Carid" Type="Int32" />
+          <Property Name="custid" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RentPeroid" Type="Int32" />
+          <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fils" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="textamount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="paymentamount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RemainAmount" Type="Double" />
+          <Property Name="Totalamount" Type="Double" />
+          <Property Name="Engtextamount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExitCounter" Type="Double" />
+          <Property Name="EnsurType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="startdate" Type="DateTime" Precision="0" />
+          <Property Name="enddate" Type="DateTime" Precision="0" />
+          <Property Name="empid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraKmPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Part1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="part2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+          <Property Name="RentNum" Type="Int32" />
+          <Property Name="ExistTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReturnTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReturnCounter" Type="Double" />
+          <Property Name="KmDaily" Type="Int32" />
+          <Property Name="Finish" Type="Boolean" />
+          <Property Name="RealReturnCounter" Type="Double" />
+          <Property Name="CounterIncAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AddAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="contractidOld" Type="Int32" />
+          <Property Name="Serial" Type="Int64" />
+          <Property Name="LatePrice" Type="Double" />
+          <Property Name="DriverName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DriverLicenceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DriverLicenceDate" Type="DateTime" Precision="0" />
+          <Property Name="Cancel" Type="Boolean" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_Contracts_Cars" FromRole="Contracts" ToRole="Cars" />
+          <NavigationProperty Name="qids" Relationship="Self.FK_qids_Contracts" FromRole="Contracts" ToRole="qids" />
+          <Property Name="OrgId" Type="Int32" />
+          <NavigationProperty Name="cust" Relationship="CARACCOUNTLASTModel.FK_Contracts_cust" FromRole="Contract" ToRole="cust" />
+        </EntityType>
+        <EntityType Name="CostCenter">
+          <Key>
+            <PropertyRef Name="costid" />
+          </Key>
+          <Property Name="costid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="costName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="costCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="costSName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="costparentId" Type="Int32" />
+          <Property Name="root" Type="Boolean" />
+          <Property Name="Totalfromvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Totaltovalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="startbalancefrom" Type="Double" />
+          <Property Name="startdate" Type="DateTime" Precision="0" />
+          <Property Name="startbalanceto" Type="Double" />
+          <Property Name="balance" Type="Boolean" />
+          <Property Name="costType" Type="Int32" />
+          <Property Name="ClosedTo" Type="Int64" />
+          <Property Name="MainNode" Type="Boolean" />
+          <Property Name="ProcessFlag" Type="Boolean" />
+          <Property Name="display_Flag" Type="Boolean" />
+          <Property Name="LastSerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccLevel" Type="Int32" />
+          <Property Name="MainParentAccId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Debit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusId" Type="Int32" />
+          <Property Name="CarId" Type="Int32" />
+          <Property Name="EnterDate" Type="DateTime" Precision="0" />
+          <Property Name="RValue" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="emp">
+          <Key>
+            <PropertyRef Name="empid" />
+          </Key>
+          <Property Name="empid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pw" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="flag" Type="Int32" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FIGURE">
+          <Key>
+            <PropertyRef Name="Figure1" />
+          </Key>
+          <Property Name="Figure1" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FigureInWords" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EngFigureInWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FIGURES2">
+          <Key>
+            <PropertyRef Name="Figure" />
+          </Key>
+          <Property Name="Figure" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FigureInWords" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FUNCTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEXT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="TypeDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Lawsuit">
+          <Key>
+            <PropertyRef Name="LawsuitId" />
+          </Key>
+          <Property Name="LawsuitId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LawsuitDate" Type="DateTime" Precision="0" />
+          <Property Name="LawsuitNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contractid" Type="Int32" />
+          <Property Name="CarNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Maintance">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainDateFrom" Type="DateTime" Precision="0" />
+          <Property Name="MainDateTo" Type="DateTime" Precision="0" />
+          <Property Name="CarID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contractid" Type="Int32" />
+          <Property Name="CounterNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ExistTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReturnTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_Maintance_Cars" FromRole="Maintance" ToRole="Cars" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelDesc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" />
+          <NavigationProperty Name="Cars" Relationship="CARACCOUNTLASTModel.FK_Cars_Models" FromRole="Model" ToRole="Car" />
+        </EntityType>
+        <EntityType Name="Month">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MonthDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EngMonthDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PaymentCode">
+          <Key>
+            <PropertyRef Name="PayId" />
+          </Key>
+          <Property Name="PayId" Type="Int32" Nullable="false" />
+          <Property Name="PayDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PayDescEng" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="BillNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PaymentSourceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="printed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contractid" Type="Int32" Nullable="false" />
+          <Property Name="pmonth" Type="Int32" />
+          <Property Name="pyear" Type="Int32" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="qid">
+          <Key>
+            <PropertyRef Name="qidid" />
+          </Key>
+          <Property Name="qidid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qidcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="qidDate" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="edit" Type="Boolean" />
+          <Property Name="recitetype" Type="Int32" />
+          <Property Name="underupdate" Type="Boolean" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BrachId" Type="Int64" />
+          <Property Name="EmpId" Type="Int64" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="repeated" Type="Boolean" />
+          <Property Name="BankAccId" Type="Int64" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvId" Type="Int64" />
+          <Property Name="ReorderInvId" Type="Int64" />
+          <Property Name="PaymentType" Type="Boolean" />
+          <Property Name="PaymentTo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="QidSerial" Type="Int64" />
+          <Property Name="Contractid" Type="Int32" />
+          <Property Name="Carid" Type="Int32" />
+          <Property Name="Custid" Type="Int32" />
+          <Property Name="ReorderId" Type="Int64" />
+          <Property Name="OfficeId" Type="Int32" />
+          <NavigationProperty Name="Contract" Relationship="Self.FK_qids_Contracts" FromRole="qids" ToRole="Contracts" />
+          <NavigationProperty Name="Recite" Relationship="Self.FK_qids_Recite" FromRole="qids" ToRole="Recite" />
+          <NavigationProperty Name="qidsDetails" Relationship="Self.FK_qidsDetails_qids" FromRole="qids" ToRole="qidsDetails" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="qidsDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qidid" Type="Int64" Nullable="false" />
+          <Property Name="FromValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ToValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ACCOUNTID" Type="Int64" Nullable="false" />
+          <Property Name="type" Type="Int16" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnterDate" Type="DateTime" Precision="3" />
+          <Property Name="Detcode" Type="Int32" />
+          <Property Name="QidType" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ActionType" Type="Int32" />
+          <Property Name="CostId" Type="Int64" />
+          <NavigationProperty Name="qid" Relationship="Self.FK_qidsDetails_qids" FromRole="qidsDetails" ToRole="qids" />
+        </EntityType>
+        <EntityType Name="Recite">
+          <Key>
+            <PropertyRef Name="reciteid" />
+          </Key>
+          <Property Name="reciteid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="ReciteAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="textamount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Engtextamount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="kd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fils" Type="Int32" />
+          <Property Name="contractid" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="get" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecitePersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GetPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContractNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarId" Type="Int32" />
+          <Property Name="CustId" Type="Int32" />
+          <Property Name="PaymentId" Type="Int32" />
+          <Property Name="PayType" Type="Int32" />
+          <Property Name="RecCode" Type="Int32" />
+          <NavigationProperty Name="qids" Relationship="Self.FK_qids_Recite" FromRole="Recite" ToRole="qids" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RentPeriod">
+          <Key>
+            <PropertyRef Name="PeriodId" />
+          </Key>
+          <Property Name="PeriodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PeriodDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodDescEng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Recid" />
+          </Key>
+          <Property Name="Recid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="CustName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarType" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CotractNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="paymentamount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RemainAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Carid" Type="Int32" />
+          <Property Name="RecDate" Type="DateTime" Precision="0" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="SeviceId" />
+          </Key>
+          <Property Name="SeviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceDescEng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="setup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="empid" Type="Int32" />
+          <Property Name="custid" Type="Int32" />
+          <Property Name="reciteid" Type="Int32" />
+          <Property Name="rentid" Type="Int32" />
+          <Property Name="blockid" Type="Int32" />
+          <Property Name="contractid" Type="Int32" />
+          <Property Name="ownerid" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Engaddress" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="logon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Part1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Part2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArbTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EngTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ArbTelTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EngTelTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ArbMobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EngMobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Engfax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="custaccid" Type="Int16" />
+          <Property Name="suppaccid" Type="Int16" />
+          <Property Name="changeid" Type="Int32" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="orderid" Type="Int32" />
+          <Property Name="accountid" Type="Int32" />
+          <Property Name="qidid" Type="Int32" />
+          <Property Name="salesaccid" Type="Int16" />
+          <Property Name="salesAgalaccid" Type="Int64" />
+          <Property Name="purchaseaccid" Type="Int16" />
+          <Property Name="purchaseAgalaccid" Type="Int64" />
+          <Property Name="boxaccid" Type="Int64" />
+          <Property Name="bankaccid" Type="Int64" />
+          <Property Name="PurReorderaccid" Type="Int64" />
+          <Property Name="SalReorderaccid" Type="Int64" />
+          <Property Name="PurReorderAgalaccid" Type="Int64" />
+          <Property Name="SalReorderAgalaccid" Type="Int64" />
+          <Property Name="Discountaccid" Type="Int64" />
+          <Property Name="Paymentsaccid" Type="Int64" />
+          <Property Name="purchasePayaccid" Type="Int64" />
+          <Property Name="Mainsalesaccid" Type="Int64" />
+          <Property Name="MainPurchaseaccid" Type="Int64" />
+          <Property Name="OsalAccId" Type="Int64" />
+          <Property Name="DeductAccId" Type="Int64" />
+          <Property Name="MovmentProfitsAccid" Type="Int64" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="USER_FUNCTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="FUNCTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="FOpen" Type="Boolean" />
+          <Property Name="FUpdate" Type="Boolean" />
+          <Property Name="FSave" Type="Boolean" />
+          <Property Name="FDel" Type="Boolean" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="FCommit" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="violation">
+          <Key>
+            <PropertyRef Name="violationId" />
+          </Key>
+          <Property Name="violationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="violationDate" Type="DateTime" Precision="0" />
+          <Property Name="violationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contractid" Type="Int32" />
+          <Property Name="BookNo" Type="Int32" />
+          <Property Name="ViolationTime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_violations_Cars" FromRole="violations" ToRole="Cars" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SetupCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="SupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="invSaleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvpurchasesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StoresCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACCountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QidIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QidOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalInvSerial" Type="Int64" />
+          <Property Name="PurchInvSerial" Type="Int64" />
+          <Property Name="InQidSerial" Type="Int64" />
+          <Property Name="OutQidSerial" Type="Int64" />
+          <Property Name="QidSeial" Type="Int64" />
+          <Property Name="BranchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Contracts_Cars">
+          <End Role="Cars" Type="Self.Car" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Carid" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="Carid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maintance_Cars">
+          <End Role="Cars" Type="Self.Car" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Maintance" Type="Self.Maintance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Carid" />
+            </Principal>
+            <Dependent Role="Maintance">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_violations_Cars">
+          <End Role="Cars" Type="Self.Car" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="violations" Type="Self.violation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Carid" />
+            </Principal>
+            <Dependent Role="violations">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_qids_Contracts">
+          <End Role="Contracts" Type="Self.Contract" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="qids" Type="Self.qid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracts">
+              <PropertyRef Name="contractid" />
+            </Principal>
+            <Dependent Role="qids">
+              <PropertyRef Name="Contractid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_qids_Recite">
+          <End Role="Recite" Type="Self.Recite" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="qids" Type="Self.qid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recite">
+              <PropertyRef Name="reciteid" />
+            </Principal>
+            <Dependent Role="qids">
+              <PropertyRef Name="ReorderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_qidsDetails_qids">
+          <End Role="qids" Type="Self.qid" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="qidsDetails" Type="Self.qidsDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="qids">
+              <PropertyRef Name="qidid" />
+            </Principal>
+            <Dependent Role="qidsDetails">
+              <PropertyRef Name="qidid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CARACCOUNTLASTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accountings" EntityType="Self.accounting" />
+          <EntitySet Name="BlockServices" EntityType="Self.BlockService" />
+          <EntitySet Name="Cars" EntityType="Self.Car" />
+          <EntitySet Name="CarStatus" EntityType="Self.CarStatu" />
+          <EntitySet Name="Cde_QidTypes" EntityType="Self.Cde_QidTypes" />
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <EntitySet Name="CostCenters" EntityType="Self.CostCenter" />
+          <EntitySet Name="Debits" EntityType="Self.Debit" />
+          <EntitySet Name="emps" EntityType="Self.emp" />
+          <EntitySet Name="FIGURES" EntityType="Self.FIGURE" />
+          <EntitySet Name="FIGURES2" EntityType="Self.FIGURES2" />
+          <EntitySet Name="FUNCTIONS" EntityType="Self.FUNCTION" />
+          <EntitySet Name="Lawsuits" EntityType="Self.Lawsuit" />
+          <EntitySet Name="Maintances" EntityType="Self.Maintance" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="Months" EntityType="Self.Month" />
+          <EntitySet Name="Offices" EntityType="Self.Office" />
+          <EntitySet Name="PaymentCodes" EntityType="Self.PaymentCode" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="printeds" EntityType="Self.printed" />
+          <EntitySet Name="qids" EntityType="Self.qid" />
+          <EntitySet Name="qidsDetails" EntityType="Self.qidsDetail" />
+          <EntitySet Name="Recites" EntityType="Self.Recite" />
+          <EntitySet Name="RentPeriods" EntityType="Self.RentPeriod" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="setups" EntityType="Self.setup" />
+          <EntitySet Name="USER_FUNCTION" EntityType="Self.USER_FUNCTION" />
+          <EntitySet Name="violations" EntityType="Self.violation" />
+          <EntitySet Name="SetupCodes" EntityType="Self.SetupCode" />
+          <AssociationSet Name="FK_Contracts_Cars" Association="Self.FK_Contracts_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintance_Cars" Association="Self.FK_Maintance_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Maintance" EntitySet="Maintances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_violations_Cars" Association="Self.FK_violations_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="violations" EntitySet="violations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_qids_Contracts" Association="Self.FK_qids_Contracts">
+            <End Role="Contracts" EntitySet="Contracts" />
+            <End Role="qids" EntitySet="qids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_qids_Recite" Association="Self.FK_qids_Recite">
+            <End Role="Recite" EntitySet="Recites" />
+            <End Role="qids" EntitySet="qids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_qidsDetails_qids" Association="Self.FK_qidsDetails_qids">
+            <End Role="qids" EntitySet="qids" />
+            <End Role="qidsDetails" EntitySet="qidsDetails" />
+          </AssociationSet>
+          <EntitySet Name="FingerImages" EntityType="CARACCOUNTLASTModel.FingerImage" />
+          <AssociationSet Name="FK_Cars_CarStatus" Association="CARACCOUNTLASTModel.FK_Cars_CarStatus">
+            <End Role="CarStatu" EntitySet="CarStatus" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Models" Association="CARACCOUNTLASTModel.FK_Cars_Models">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <EntitySet Name="custs" EntityType="CARACCOUNTLASTModel.cust" />
+          <EntitySet Name="Nats" EntityType="CARACCOUNTLASTModel.Nat" />
+          <AssociationSet Name="FK_Contracts_cust" Association="CARACCOUNTLASTModel.FK_Contracts_cust">
+            <End Role="cust" EntitySet="custs" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cust_Nats1" Association="CARACCOUNTLASTModel.FK_cust_Nats1">
+            <End Role="Nat" EntitySet="Nats" />
+            <End Role="cust" EntitySet="custs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="FingerImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractId" Type="Int32" />
+          <Property Name="fingerImage1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OrgId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Cars_CarStatus">
+          <End Type="CARACCOUNTLASTModel.CarStatu" Role="CarStatu" Multiplicity="0..1" />
+          <End Type="CARACCOUNTLASTModel.Car" Role="Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarStatu">
+              <PropertyRef Name="CarStausId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Models">
+          <End Type="CARACCOUNTLASTModel.Model" Role="Model" Multiplicity="0..1" />
+          <End Type="CARACCOUNTLASTModel.Car" Role="Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarModeltype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="cust">
+          <Key>
+            <PropertyRef Name="custid" />
+          </Key>
+          <Property Name="custid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="custname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustEnName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NatID" Type="Int32" />
+          <Property Name="NatIdType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NatIdDate" Type="DateTime" Precision="0" />
+          <Property Name="NatIdSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="civilid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LicenceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LicenceSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LicenceStartDate" Type="DateTime" Precision="0" />
+          <Property Name="LicenceEndDate" Type="DateTime" Precision="0" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherNatId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherNatIdSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherNatIdDate" Type="DateTime" Precision="0" />
+          <Property Name="FatherTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherMoblie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="blockno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="st" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="house" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Floor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="LicenceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrgId" Type="Int32" />
+          <NavigationProperty Name="Contracts" Relationship="CARACCOUNTLASTModel.FK_Contracts_cust" FromRole="cust" ToRole="Contract" />
+          <NavigationProperty Name="Nat" Relationship="CARACCOUNTLASTModel.FK_cust_Nats1" FromRole="cust" ToRole="Nat" />
+        </EntityType>
+        <EntityType Name="Nat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NatDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="custs" Relationship="CARACCOUNTLASTModel.FK_cust_Nats1" FromRole="Nat" ToRole="cust" />
+        </EntityType>
+        <Association Name="FK_Contracts_cust">
+          <End Type="CARACCOUNTLASTModel.cust" Role="cust" Multiplicity="0..1" />
+          <End Type="CARACCOUNTLASTModel.Contract" Role="Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cust">
+              <PropertyRef Name="custid" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="custid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cust_Nats1">
+          <End Type="CARACCOUNTLASTModel.Nat" Role="Nat" Multiplicity="0..1" />
+          <End Type="CARACCOUNTLASTModel.cust" Role="cust" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cust">
+              <PropertyRef Name="NatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CARACCOUNTLASTModelStoreContainer" CdmEntityContainer="CARACCOUNTLASTEntities">
+          <EntitySetMapping Name="accountings">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.accounting">
+              <MappingFragment StoreEntitySet="accounting">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="accountid" ColumnName="accountid" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="accountname" ColumnName="accountname" />
+                <ScalarProperty Name="AccountSName" ColumnName="AccountSName" />
+                <ScalarProperty Name="AccountparentId" ColumnName="AccountparentId" />
+                <ScalarProperty Name="root" ColumnName="root" />
+                <ScalarProperty Name="Totalfromvalue" ColumnName="Totalfromvalue" />
+                <ScalarProperty Name="Totaltovalue" ColumnName="Totaltovalue" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="startbalancefrom" ColumnName="startbalancefrom" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="startbalanceto" ColumnName="startbalanceto" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="accountType" ColumnName="accountType" />
+                <ScalarProperty Name="ClosedTo" ColumnName="ClosedTo" />
+                <ScalarProperty Name="MainNode" ColumnName="MainNode" />
+                <ScalarProperty Name="ProcessFlag" ColumnName="ProcessFlag" />
+                <ScalarProperty Name="display_Flag" ColumnName="display_Flag" />
+                <ScalarProperty Name="AccLevel" ColumnName="AccLevel" />
+                <ScalarProperty Name="MainParentAccId" ColumnName="MainParentAccId" />
+                <ScalarProperty Name="LastSerialNo" ColumnName="LastSerialNo" />
+                <ScalarProperty Name="CurId" ColumnName="CurId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlockServices">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.BlockService">
+              <MappingFragment StoreEntitySet="BlockServices">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Car">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Carid" ColumnName="Carid" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="CarColor" ColumnName="CarColor" />
+                <ScalarProperty Name="CarBoardNo" ColumnName="CarBoardNo" />
+                <ScalarProperty Name="CarBoardType" ColumnName="CarBoardType" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="CarType" ColumnName="CarType" />
+                <ScalarProperty Name="SkeltonNo" ColumnName="SkeltonNo" />
+                <ScalarProperty Name="AppNo" ColumnName="AppNo" />
+                <ScalarProperty Name="AppStartDate" ColumnName="AppStartDate" />
+                <ScalarProperty Name="AppEndDate" ColumnName="AppEndDate" />
+                <ScalarProperty Name="InsurNo" ColumnName="InsurNo" />
+                <ScalarProperty Name="InsurCompany" ColumnName="InsurCompany" />
+                <ScalarProperty Name="InsurDate" ColumnName="InsurDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DayRentValue" ColumnName="DayRentValue" />
+                <ScalarProperty Name="DayKmeterValue" ColumnName="DayKmeterValue" />
+                <ScalarProperty Name="HourRentValue" ColumnName="HourRentValue" />
+                <ScalarProperty Name="HourKmeterValue" ColumnName="HourKmeterValue" />
+                <ScalarProperty Name="MonthRentValue" ColumnName="MonthRentValue" />
+                <ScalarProperty Name="MonthKmeterValue" ColumnName="MonthKmeterValue" />
+                <ScalarProperty Name="DayRentValue_Driver" ColumnName="DayRentValue_Driver" />
+                <ScalarProperty Name="DayKmeterValue_Driver" ColumnName="DayKmeterValue_Driver" />
+                <ScalarProperty Name="CarStatus" ColumnName="CarStatus" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="OnwerId" ColumnName="OnwerId" />
+                <ScalarProperty Name="MinMonthRentValue" ColumnName="MinMonthRentValue" />
+                <ScalarProperty Name="MinHourRentValue" ColumnName="MinHourRentValue" />
+                <ScalarProperty Name="MaintanceKmeter" ColumnName="MaintanceKmeter" />
+                <ScalarProperty Name="CaridOld" ColumnName="CaridOld" />
+                <ScalarProperty Name="CarModeltype" ColumnName="CarModeltype" />
+                <ScalarProperty Name="InsurType" ColumnName="InsurType" />
+                <ScalarProperty Name="InsurDateShamal" ColumnName="InsurDateShamal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarStatus">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.CarStatu">
+              <MappingFragment StoreEntitySet="CarStatus">
+                <ScalarProperty Name="CarStausId" ColumnName="CarStausId" />
+                <ScalarProperty Name="CarStatusDesc" ColumnName="CarStatusDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cde_QidTypes">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Cde_QidTypes">
+              <MappingFragment StoreEntitySet="Cde_QidTypes">
+                <ScalarProperty Name="QidTypeId" ColumnName="QidTypeId" />
+                <ScalarProperty Name="QidTypeDesc" ColumnName="QidTypeDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Contract">
+              <MappingFragment StoreEntitySet="Contracts">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="contractid" ColumnName="contractid" />
+                <ScalarProperty Name="ContractCode" ColumnName="ContractCode" />
+                <ScalarProperty Name="Carid" ColumnName="Carid" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="RentPeroid" ColumnName="RentPeroid" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="fils" ColumnName="fils" />
+                <ScalarProperty Name="kd" ColumnName="kd" />
+                <ScalarProperty Name="textamount" ColumnName="textamount" />
+                <ScalarProperty Name="paymentamount" ColumnName="paymentamount" />
+                <ScalarProperty Name="RemainAmount" ColumnName="RemainAmount" />
+                <ScalarProperty Name="Totalamount" ColumnName="Totalamount" />
+                <ScalarProperty Name="Engtextamount" ColumnName="Engtextamount" />
+                <ScalarProperty Name="ExitCounter" ColumnName="ExitCounter" />
+                <ScalarProperty Name="EnsurType" ColumnName="EnsurType" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="enddate" ColumnName="enddate" />
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ExtraKmPrice" ColumnName="ExtraKmPrice" />
+                <ScalarProperty Name="Part1" ColumnName="Part1" />
+                <ScalarProperty Name="part2" ColumnName="part2" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="RentNum" ColumnName="RentNum" />
+                <ScalarProperty Name="ExistTime" ColumnName="ExistTime" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="ReturnCounter" ColumnName="ReturnCounter" />
+                <ScalarProperty Name="KmDaily" ColumnName="KmDaily" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="RealReturnCounter" ColumnName="RealReturnCounter" />
+                <ScalarProperty Name="CounterIncAmount" ColumnName="CounterIncAmount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="AddAmount" ColumnName="AddAmount" />
+                <ScalarProperty Name="contractidOld" ColumnName="contractidOld" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="LatePrice" ColumnName="LatePrice" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DriverLicenceNo" ColumnName="DriverLicenceNo" />
+                <ScalarProperty Name="DriverLicenceDate" ColumnName="DriverLicenceDate" />
+                <ScalarProperty Name="Cancel" ColumnName="Cancel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CostCenters">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.CostCenter">
+              <MappingFragment StoreEntitySet="CostCenters">
+                <ScalarProperty Name="costid" ColumnName="costid" />
+                <ScalarProperty Name="costName" ColumnName="costName" />
+                <ScalarProperty Name="costCode" ColumnName="costCode" />
+                <ScalarProperty Name="costSName" ColumnName="costSName" />
+                <ScalarProperty Name="costparentId" ColumnName="costparentId" />
+                <ScalarProperty Name="root" ColumnName="root" />
+                <ScalarProperty Name="Totalfromvalue" ColumnName="Totalfromvalue" />
+                <ScalarProperty Name="Totaltovalue" ColumnName="Totaltovalue" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="startbalancefrom" ColumnName="startbalancefrom" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="startbalanceto" ColumnName="startbalanceto" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="costType" ColumnName="costType" />
+                <ScalarProperty Name="ClosedTo" ColumnName="ClosedTo" />
+                <ScalarProperty Name="MainNode" ColumnName="MainNode" />
+                <ScalarProperty Name="ProcessFlag" ColumnName="ProcessFlag" />
+                <ScalarProperty Name="display_Flag" ColumnName="display_Flag" />
+                <ScalarProperty Name="LastSerialNo" ColumnName="LastSerialNo" />
+                <ScalarProperty Name="AccLevel" ColumnName="AccLevel" />
+                <ScalarProperty Name="MainParentAccId" ColumnName="MainParentAccId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Debits">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Debit">
+              <MappingFragment StoreEntitySet="Debits">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="EnterDate" ColumnName="EnterDate" />
+                <ScalarProperty Name="RValue" ColumnName="RValue" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emps">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.emp">
+              <MappingFragment StoreEntitySet="emp">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="empname" ColumnName="empname" />
+                <ScalarProperty Name="pw" ColumnName="pw" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIGURES">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.FIGURE">
+              <MappingFragment StoreEntitySet="FIGURES">
+                <ScalarProperty Name="Figure1" ColumnName="Figure" />
+                <ScalarProperty Name="FigureInWords" ColumnName="FigureInWords" />
+                <ScalarProperty Name="EngFigureInWords" ColumnName="EngFigureInWords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIGURES2">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.FIGURES2">
+              <MappingFragment StoreEntitySet="FIGURES2">
+                <ScalarProperty Name="Figure" ColumnName="Figure" />
+                <ScalarProperty Name="FigureInWords" ColumnName="FigureInWords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNCTIONS">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.FUNCTION">
+              <MappingFragment StoreEntitySet="FUNCTIONS">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TypeDesc" ColumnName="TypeDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lawsuits">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Lawsuit">
+              <MappingFragment StoreEntitySet="Lawsuits">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="LawsuitId" ColumnName="LawsuitId" />
+                <ScalarProperty Name="LawsuitDate" ColumnName="LawsuitDate" />
+                <ScalarProperty Name="LawsuitNo" ColumnName="LawsuitNo" />
+                <ScalarProperty Name="Contractid" ColumnName="Contractid" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maintances">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Maintance">
+              <MappingFragment StoreEntitySet="Maintance">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="MainDateFrom" ColumnName="MainDateFrom" />
+                <ScalarProperty Name="MainDateTo" ColumnName="MainDateTo" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Contractid" ColumnName="Contractid" />
+                <ScalarProperty Name="CounterNo" ColumnName="CounterNo" />
+                <ScalarProperty Name="ExistTime" ColumnName="ExistTime" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Model">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="ModelDesc" ColumnName="ModelDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Months">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Month">
+              <MappingFragment StoreEntitySet="Months">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MonthDesc" ColumnName="MonthDesc" />
+                <ScalarProperty Name="EngMonthDesc" ColumnName="EngMonthDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentCodes">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.PaymentCode">
+              <MappingFragment StoreEntitySet="PaymentCodes">
+                <ScalarProperty Name="PayDescEng" ColumnName="PayDescEng" />
+                <ScalarProperty Name="PayId" ColumnName="PayId" />
+                <ScalarProperty Name="PayDesc" ColumnName="PayDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="PaymentSourceName" ColumnName="PaymentSourceName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="printeds">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.printed">
+              <MappingFragment StoreEntitySet="printed">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="contractid" ColumnName="contractid" />
+                <ScalarProperty Name="pmonth" ColumnName="pmonth" />
+                <ScalarProperty Name="pyear" ColumnName="pyear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="qids">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.qid">
+              <MappingFragment StoreEntitySet="qids">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="qidid" ColumnName="qidid" />
+                <ScalarProperty Name="qidcode" ColumnName="qidcode" />
+                <ScalarProperty Name="qidDate" ColumnName="qidDate" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="edit" ColumnName="edit" />
+                <ScalarProperty Name="recitetype" ColumnName="recitetype" />
+                <ScalarProperty Name="underupdate" ColumnName="underupdate" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="BrachId" ColumnName="BrachId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="repeated" ColumnName="repeated" />
+                <ScalarProperty Name="BankAccId" ColumnName="BankAccId" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="InvId" ColumnName="InvId" />
+                <ScalarProperty Name="ReorderInvId" ColumnName="ReorderInvId" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="PaymentTo" ColumnName="PaymentTo" />
+                <ScalarProperty Name="QidSerial" ColumnName="QidSerial" />
+                <ScalarProperty Name="Contractid" ColumnName="Contractid" />
+                <ScalarProperty Name="Carid" ColumnName="Carid" />
+                <ScalarProperty Name="Custid" ColumnName="Custid" />
+                <ScalarProperty Name="ReorderId" ColumnName="ReorderId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="qidsDetails">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.qidsDetail">
+              <MappingFragment StoreEntitySet="qidsDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="qidid" ColumnName="qidid" />
+                <ScalarProperty Name="FromValue" ColumnName="FromValue" />
+                <ScalarProperty Name="ToValue" ColumnName="ToValue" />
+                <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EnterDate" ColumnName="EnterDate" />
+                <ScalarProperty Name="Detcode" ColumnName="Detcode" />
+                <ScalarProperty Name="QidType" ColumnName="QidType" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="CostId" ColumnName="CostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recites">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Recite">
+              <MappingFragment StoreEntitySet="Recite">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="reciteid" ColumnName="reciteid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ReciteAmount" ColumnName="ReciteAmount" />
+                <ScalarProperty Name="textamount" ColumnName="textamount" />
+                <ScalarProperty Name="Engtextamount" ColumnName="Engtextamount" />
+                <ScalarProperty Name="kd" ColumnName="kd" />
+                <ScalarProperty Name="fils" ColumnName="fils" />
+                <ScalarProperty Name="contractid" ColumnName="contractid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="get" ColumnName="get" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RecitePersonName" ColumnName="RecitePersonName" />
+                <ScalarProperty Name="AccountantName" ColumnName="AccountantName" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="GetPersonName" ColumnName="GetPersonName" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="CustId" ColumnName="CustId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PayType" ColumnName="PayType" />
+                <ScalarProperty Name="RecCode" ColumnName="RecCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentPeriods">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.RentPeriod">
+              <MappingFragment StoreEntitySet="RentPeriods">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="PeriodDescEng" ColumnName="PeriodDescEng" />
+                <ScalarProperty Name="PeriodId" ColumnName="PeriodId" />
+                <ScalarProperty Name="PeriodDesc" ColumnName="PeriodDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Recid" ColumnName="Recid" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="CustName" ColumnName="CustName" />
+                <ScalarProperty Name="CustTel" ColumnName="CustTel" />
+                <ScalarProperty Name="CarType" ColumnName="CarType" />
+                <ScalarProperty Name="CotractNo" ColumnName="CotractNo" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="paymentamount" ColumnName="paymentamount" />
+                <ScalarProperty Name="RemainAmount" ColumnName="RemainAmount" />
+                <ScalarProperty Name="Carid" ColumnName="Carid" />
+                <ScalarProperty Name="RecDate" ColumnName="RecDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="ServiceDescEng" ColumnName="ServiceDescEng" />
+                <ScalarProperty Name="SeviceId" ColumnName="SeviceId" />
+                <ScalarProperty Name="ServiceDesc" ColumnName="ServiceDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="setups">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.setup">
+              <MappingFragment StoreEntitySet="setup">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="reciteid" ColumnName="reciteid" />
+                <ScalarProperty Name="rentid" ColumnName="rentid" />
+                <ScalarProperty Name="blockid" ColumnName="blockid" />
+                <ScalarProperty Name="contractid" ColumnName="contractid" />
+                <ScalarProperty Name="ownerid" ColumnName="ownerid" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyName1" ColumnName="CompanyName1" />
+                <ScalarProperty Name="CompanyOwner" ColumnName="CompanyOwner" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="Engaddress" ColumnName="Engaddress" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="logon" ColumnName="logon" />
+                <ScalarProperty Name="AreaDesc" ColumnName="AreaDesc" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Part1" ColumnName="Part1" />
+                <ScalarProperty Name="Part2" ColumnName="Part2" />
+                <ScalarProperty Name="ArbTitle" ColumnName="ArbTitle" />
+                <ScalarProperty Name="EngTitle" ColumnName="EngTitle" />
+                <ScalarProperty Name="ArbTelTitle" ColumnName="ArbTelTitle" />
+                <ScalarProperty Name="EngTelTitle" ColumnName="EngTelTitle" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="ArbMobile" ColumnName="ArbMobile" />
+                <ScalarProperty Name="EngMobile" ColumnName="EngMobile" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="Engfax" ColumnName="Engfax" />
+                <ScalarProperty Name="custaccid" ColumnName="custaccid" />
+                <ScalarProperty Name="suppaccid" ColumnName="suppaccid" />
+                <ScalarProperty Name="changeid" ColumnName="changeid" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="accountid" ColumnName="accountid" />
+                <ScalarProperty Name="qidid" ColumnName="qidid" />
+                <ScalarProperty Name="salesaccid" ColumnName="salesaccid" />
+                <ScalarProperty Name="salesAgalaccid" ColumnName="salesAgalaccid" />
+                <ScalarProperty Name="purchaseaccid" ColumnName="purchaseaccid" />
+                <ScalarProperty Name="purchaseAgalaccid" ColumnName="purchaseAgalaccid" />
+                <ScalarProperty Name="boxaccid" ColumnName="boxaccid" />
+                <ScalarProperty Name="bankaccid" ColumnName="bankaccid" />
+                <ScalarProperty Name="PurReorderaccid" ColumnName="PurReorderaccid" />
+                <ScalarProperty Name="SalReorderaccid" ColumnName="SalReorderaccid" />
+                <ScalarProperty Name="PurReorderAgalaccid" ColumnName="PurReorderAgalaccid" />
+                <ScalarProperty Name="SalReorderAgalaccid" ColumnName="SalReorderAgalaccid" />
+                <ScalarProperty Name="Discountaccid" ColumnName="Discountaccid" />
+                <ScalarProperty Name="Paymentsaccid" ColumnName="Paymentsaccid" />
+                <ScalarProperty Name="purchasePayaccid" ColumnName="purchasePayaccid" />
+                <ScalarProperty Name="Mainsalesaccid" ColumnName="Mainsalesaccid" />
+                <ScalarProperty Name="MainPurchaseaccid" ColumnName="MainPurchaseaccid" />
+                <ScalarProperty Name="OsalAccId" ColumnName="OsalAccId" />
+                <ScalarProperty Name="DeductAccId" ColumnName="DeductAccId" />
+                <ScalarProperty Name="MovmentProfitsAccid" ColumnName="MovmentProfitsAccid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_FUNCTION">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.USER_FUNCTION">
+              <MappingFragment StoreEntitySet="USER_FUNCTION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="FUNCTION_ID" ColumnName="FUNCTION_ID" />
+                <ScalarProperty Name="FOpen" ColumnName="FOpen" />
+                <ScalarProperty Name="FUpdate" ColumnName="FUpdate" />
+                <ScalarProperty Name="FSave" ColumnName="FSave" />
+                <ScalarProperty Name="FDel" ColumnName="FDel" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FCommit" ColumnName="FCommit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="violations">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.violation">
+              <MappingFragment StoreEntitySet="violations">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="violationId" ColumnName="violationId" />
+                <ScalarProperty Name="violationDate" ColumnName="violationDate" />
+                <ScalarProperty Name="violationNo" ColumnName="violationNo" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Contractid" ColumnName="Contractid" />
+                <ScalarProperty Name="BookNo" ColumnName="BookNo" />
+                <ScalarProperty Name="ViolationTime" ColumnName="ViolationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SetupCodes">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.SetupCode">
+              <MappingFragment StoreEntitySet="SetupCodes">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SupCode" ColumnName="SupCode" />
+                <ScalarProperty Name="CustCode" ColumnName="CustCode" />
+                <ScalarProperty Name="invSaleCode" ColumnName="invSaleCode" />
+                <ScalarProperty Name="InvpurchasesCode" ColumnName="InvpurchasesCode" />
+                <ScalarProperty Name="StoresCode" ColumnName="StoresCode" />
+                <ScalarProperty Name="ACCountCode" ColumnName="ACCountCode" />
+                <ScalarProperty Name="Qid" ColumnName="Qid" />
+                <ScalarProperty Name="QidIn" ColumnName="QidIn" />
+                <ScalarProperty Name="QidOut" ColumnName="QidOut" />
+                <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+                <ScalarProperty Name="SalInvSerial" ColumnName="SalInvSerial" />
+                <ScalarProperty Name="PurchInvSerial" ColumnName="PurchInvSerial" />
+                <ScalarProperty Name="InQidSerial" ColumnName="InQidSerial" />
+                <ScalarProperty Name="OutQidSerial" ColumnName="OutQidSerial" />
+                <ScalarProperty Name="QidSeial" ColumnName="QidSeial" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FingerImages">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.FingerImage">
+              <MappingFragment StoreEntitySet="FingerImages">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="fingerImage1" ColumnName="fingerImage" />
+                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="custs">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.cust">
+              <MappingFragment StoreEntitySet="cust">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="st" ColumnName="st" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="blockno" ColumnName="blockno" />
+                <ScalarProperty Name="WorkAddress" ColumnName="WorkAddress" />
+                <ScalarProperty Name="FatherCity" ColumnName="FatherCity" />
+                <ScalarProperty Name="FatherAddress" ColumnName="FatherAddress" />
+                <ScalarProperty Name="FatherMoblie" ColumnName="FatherMoblie" />
+                <ScalarProperty Name="FatherTel" ColumnName="FatherTel" />
+                <ScalarProperty Name="FatherNatIdDate" ColumnName="FatherNatIdDate" />
+                <ScalarProperty Name="FatherNatIdSource" ColumnName="FatherNatIdSource" />
+                <ScalarProperty Name="FatherNatId" ColumnName="FatherNatId" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="LicenceEndDate" ColumnName="LicenceEndDate" />
+                <ScalarProperty Name="LicenceStartDate" ColumnName="LicenceStartDate" />
+                <ScalarProperty Name="LicenceSource" ColumnName="LicenceSource" />
+                <ScalarProperty Name="LicenceNo" ColumnName="LicenceNo" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="civilid" ColumnName="civilid" />
+                <ScalarProperty Name="NatIdSource" ColumnName="NatIdSource" />
+                <ScalarProperty Name="NatIdDate" ColumnName="NatIdDate" />
+                <ScalarProperty Name="NatIdType" ColumnName="NatIdType" />
+                <ScalarProperty Name="NatID" ColumnName="NatID" />
+                <ScalarProperty Name="CustEnName" ColumnName="CustEnName" />
+                <ScalarProperty Name="custname" ColumnName="custname" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nats">
+            <EntityTypeMapping TypeName="CARACCOUNTLASTModel.Nat">
+              <MappingFragment StoreEntitySet="Nats">
+                <ScalarProperty Name="NatDesc" ColumnName="NatDesc" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,108 @@
+H1 {
+	FONT-SIZE: 138.5%
+}
+H2 {
+	FONT-SIZE: 123.1%
+}
+H3 {
+	FONT-SIZE: 108%
+}
+H1 {
+	MARGIN: 0px 0px 1em
+}
+H2 {
+	MARGIN: 0px 0px 1em
+}
+H3 {
+	MARGIN: 0px 0px 1em
+}
+H1 {
+	FONT-WEIGHT: bold
+}
+H2 {
+	FONT-WEIGHT: bold
+}
+H3 {
+	FONT-WEIGHT: bold
+}
+H4 {
+	FONT-WEIGHT: bold
+}
+H5 {
+	FONT-WEIGHT: bold
+}
+H6 {
+	FONT-WEIGHT: bold
+}
+STRONG {
+	FONT-WEIGHT: bold
+}
+abbr {
+	CURSOR: help; BORDER-BOTTOM: #000 1px dotted
+}
+ACRONYM {
+	CURSOR: help; BORDER-BOTTOM: #000 1px dotted
+}
+EM {
+	FONT-STYLE: italic
+}
+BLOCKQUOTE {
+	MARGIN: 1em
+}
+UL {
+	MARGIN: 1em
+}
+OL {
+	MARGIN: 1em
+}
+DL {
+	MARGIN: 1em
+}
+OL {
+	MARGIN-RIGHT: 2em
+}
+UL {
+	MARGIN-RIGHT: 2em
+}
+DL {
+	MARGIN-RIGHT: 2em
+}
+OL LI {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-TYPE: decimal
+}
+UL LI {
+	LIST-STYLE-POSITION: outside; LIST-STYLE-TYPE: disc
+}
+DL DD {
+	MARGIN-RIGHT: 1em
+}
+TABLE {
+	WIDTH: 100%
+}
+TH {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em
+}
+TD {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em
+}
+TH {
+	FONT-WEIGHT: bold
+}
+CAPTION {
+	MARGIN-BOTTOM: 0.5em; TEXT-ALIGN: center
+}
+P {
+	MARGIN-BOTTOM: 1em
+}
+FIELDSET {
+	MARGIN-BOTTOM: 1em
+}
+TABLE {
+	MARGIN-BOTTOM: 1em
+}
+PRE {
+	MARGIN-BOTTOM: 1em
+}
+UNKNOWN {
+	WIDTH: 11.9em
+}

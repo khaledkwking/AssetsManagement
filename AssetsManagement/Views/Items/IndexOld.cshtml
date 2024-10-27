@@ -1,0 +1,263 @@
+﻿@model BOL.UnitsViewModel
+@using PagedList.Mvc;
+@using BOL;
+@{
+    ViewBag.Title = "CarList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .SelectedCustomer {
+            background-color: gray;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    @*<h1>List of Customers</h1>*@
+
+    <div class="kt-subheader-search">
+        <h3 class="kt-subheader-search__title">
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+            @Html.Raw(Resources.DefaultResource.GlobalSearch)
+            <span class="kt-subheader-search__desc">
+                @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+                @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+            </span>
+        </h3>
+        @*@using (Html.BeginForm("CarList", "Cars", FormMethod.Get))
+            {
+                <p>
+                    Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                    <input type="submit" value="Find" />
+                </p>
+            }*@
+        @using (Html.BeginForm("index", "Items", FormMethod.Get))
+        {
+            <div class="kt-form">
+                <div class="kt-grid">
+                    <div class="kt-grid__item">
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="kt-input-icon kt-input-icon--pill kt-input-icon--right">
+                                    @*<asp:TextBox ID="SearchTextBox" runat="server" CssClass="form-control "></asp:TextBox>*@
+
+                                    @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control" })
+                                    <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-search"></i></span></span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="kt-grid__item kt-grid__item--middle">
+                                    <div class="kt-margin-top-20 kt--visible-tablet-and-mobile"></div>
+
+                                    @*<asp:LinkButton ID="SearchLinkButton" runat="server" Text="<%$ Resources:DefaultResource, Search%>"
+                                        CssClass="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" />*@
+                                    <input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Search />
+
+                                    <input type="reset" class="btn btn-upper btn-bold btn-font-sm btn-default" value=@Resources.DefaultResource.Search />
+                                    @*<asp:LinkButton ID="ClearLinkButton" runat="server" Text="<%$ Resources:DefaultResource, Clear%>"
+                                        CssClass="btn btn-upper btn-bold btn-font-sm btn-default" OnClick="ClearLinkButton_Click" />*@
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="kt-portlet kt-portlet--mobile">
+        <div class="kt-portlet__head kt-portlet__head--lg">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="kt-font-brand flaticon2-checking"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    @Html.Raw(Resources.DefaultResource.Car_DataTitle)
+
+                </h3>
+            </div>
+            <div class="kt-portlet__head-toolbar">
+                <div class="kt-portlet__head-wrapper">
+                    <div class="kt-portlet__head-actions">
+                        <a href="#" class="btn btn-brand btn-elevate btn-icon-sm" id="Addbtn">
+                            <i class="la la-plus"></i>
+                            <span class="kt-nav__link-text">
+                                @Html.Raw(Resources.DefaultResource.NewRecord)
+                            </span>
+                        </a>
+                        @*<div class="">
+
+                            <input type="button" value="@Html.Raw(Resources.DefaultResource.NewRecord)" data-toggle="tooltip" class="btn btn-brand btn-elevate btn-icon-sm" />
+                            <i class="la la-plus"></i>
+                        </div>*@
+                        @*<asp:LinkButton ID="Addbtn" runat="server" CssClass="btn btn-brand btn-elevate btn-icon-sm" data-toggle="tooltip"
+                        title="@Html.Raw(Resources.DefaultResource.NewRecord)" data-original-title="@Html.Raw(Resources.DefaultResource.NewRecord)">
+            <i class="la la-plus"></i>
+            @Html.Raw(Resources.DefaultResource.NewRecord)
+        </asp:LinkButton>*@
+                        @*<asp:LinkButton ID="CancelButtonBack" runat="server" CssClass="btn btn-success" data-toggle="tooltip"
+                        title="<%$ Resources:DefaultResource, Cancel%>" data-original-title="<%$ Resources:DefaultResource, BackButton%>" >
+
+            <asp:Literal runat="server" Text="<%$ Resources:DefaultResource, BackButton%>" />
+        </asp:LinkButton>*@
+                        <!--<div id="AddDiv" class="btn btn-brand btn-elevate btn-icon-sm">
+    <input type="button" id="Addbtn" class="btn" value="Add" />-->
+                        @*@Html.ActionLink(Resources.DefaultResource.NewRecord, "EditOfficeModal", "Offices")*@
+                        @*@Html.ActionLink(Resources.DefaultResource.NewRecord, "EditOfficeModal")*@
+                        <!--<i class="la la-plus">
+        </i>
+    </div>-->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+
+            <div class="table-responsive">
+                <table id="showtable" class="table table-striped table-bordered table-hover table-checkable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                                @Html.ActionLink(Resources.DefaultResource.CarNo, "Index", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+                            </th>
+                            <th>
+                                @Html.Raw(Resources.DefaultResource.CarColor)
+                            </th>
+                            <th>
+                                @Html.Raw(Resources.DefaultResource.Actions)
+                            </th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var item in Model.Units)
+                    {
+                        if (Model.SelectedUnit != null)
+                        {
+                            if (item.Unit_Id == Model.SelectedUnit.Unit_Id)
+                            {
+                                @:<tr class="SelectedCustomer">
+                            }
+                            else
+                            {
+                                @:<tr>
+                            }
+                        }
+                        else
+                        { 
+                                @: <tr>
+                         }
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unit_Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unit_Name)
+                            </td>
+
+
+                            <td>
+                                <form method="post">
+
+                                    @*<input type="button" id="Showbtn" class="btn btn-sm btn-pill btn-icon btn-outline-primary btn-icon-md" value="Edit" />*@
+                                    <a href="#" id="Showbtn" data-toggle="kt-tooltip" title=" @Html.Raw(Resources.DefaultResource.Edite)" class="btn btn-sm btn-icon btn-outline-primary btn-icon-md">
+                                        <i class="fa fa-edit"></i>
+                                        @*<span class="kt-nav__link-text">   </span>*@
+                                    </a>
+                                    <a href="#" id="Showbtn" data-toggle="kt-tooltip" title=" @Html.Raw(Resources.DefaultResource.Delete)" class="btn btn-outline-danger btn-sm btn-icon"  OnClientClick="javascript:if(!confirm('This action will delete the record and all related Records!')){return false;}">
+                                        <i class="la la-close"></i>
+                                        @*<span class="kt-nav__link-text">         </span>*@
+                                    </a>
+                                </form>
+
+                                @*@Html.ActionLink(Resources.DefaultResource.EditTitle, "select", "Offices", new { id = item.OfficeId }, new { @class = "btn btn-sm btn-pill btn-icon btn-outline-primary btn-icon-md" }) |*@
+                                @*@Html.ActionLink("Details", "Details", new { id = item.Carid }, new { @class = "btn btn-sm btn-pill btn-icon btn-outline-primary btn-icon-md" }) |*@
+                                @*@Html.ActionLink(Resources.DefaultResource.DeleteTitle, "delete", "Offices", new { id = item.OfficeId }, new { @class = "btn btn-sm btn-pill btn-icon btn-outline-primary btn-icon-md", onclick = "return confirm('Are sure wants to delete?');" })*@
+
+                            </td>
+
+                        @:</tr>
+                    }
+
+                </table>
+
+                            <br />
+                            <div class="paginationCust">
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                                @Html.PagedListPager((PagedList.IPagedList)Model.Units, Page_No => Url.Action("Index", new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="showmodal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg">
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+    @section scripts{
+          <script>
+         $("#showtable").on("click", "#Showbtn", function ()
+        {
+             
+             var id = $(this).closest("tr").find("td").eq(0).html();
+             
+            $.ajax({
+                url: "@Url.Action("EditModal", "Items")",
+                data: { id: id },
+                success: function (data) {
+                    $("#showmodal .modal-dialog").html(data);
+                    $("#showmodal").modal("show");
+                }
+                
+            });
+        });
+
+           $("#Addbtn").click(function () {
+                            
+               /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+
+                $.ajax({
+                    url: "@Url.Action("EditModal", "Items")",
+                    data: { id: ''},
+                    success: function (data) {
+                        $("#showmodal .modal-dialog").html(data);
+                        $("#showmodal").modal("show");
+                    }
+                });
+            });
+
+
+
+
+
+                    </script>
+                }
+                @{
+
+                }
+
+            </body>
+        </html>

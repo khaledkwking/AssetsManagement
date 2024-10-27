@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GPFEmployeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GPFEmployees.dbo.vwDepartments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ManagerFullNameAr" />
+            <PropertyRef Name="ManagerFullNameEn" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Manager_Id" Type="int" />
+          <Property Name="Parent_Id" Type="int" />
+          <Property Name="Created_at" Type="datetime" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="ManagerFullNameAr" Type="nvarchar" MaxLength="203" Nullable="false" />
+          <Property Name="ManagerFullNameEn" Type="nvarchar" MaxLength="203" Nullable="false" />
+          <Property Name="ManagerEmail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GPFEmployees.dbo.vwEmployees' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwEmployees">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FULL_NAME_AR" />
+            <PropertyRef Name="FULL_NAME_En" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="First_Name_Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="Second_Name_Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="Third_Name_Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fourth_Name_Ar" Type="nvarchar" MaxLength="50" />
+          <Property Name="FULL_NAME_AR" Type="nvarchar" MaxLength="203" Nullable="false" />
+          <Property Name="First_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Second_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Third_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fourth_Name_En" Type="nvarchar" MaxLength="50" />
+          <Property Name="FULL_NAME_En" Type="nvarchar" MaxLength="203" Nullable="false" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Internal_Phone_Ext" Type="nvarchar" MaxLength="50" />
+          <Property Name="Civil_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Civil_Id_Expire_Date" Type="datetime" />
+          <Property Name="Birthdate" Type="datetime" />
+          <Property Name="Country_Id" Type="int" />
+          <Property Name="City_Id" Type="int" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="Street" Type="nvarchar" MaxLength="500" />
+          <Property Name="Building_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Residency_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Residency_Id_Expire_Date" Type="datetime" />
+          <Property Name="Passport_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passport_Id_Expire_Date" Type="datetime" />
+          <Property Name="Fingerprint_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bank_Id" Type="int" />
+          <Property Name="Department_Id" Type="int" />
+          <Property Name="Job_Id" Type="int" />
+          <Property Name="Education_Level_Id" Type="int" />
+          <Property Name="Education_Qualification_Id" Type="int" />
+          <Property Name="Job_Degree_Id" Type="int" />
+          <Property Name="Job_Classification_Id" Type="int" />
+          <Property Name="Job_Level_Id" Type="int" />
+          <Property Name="Education_Level_Country_Id" Type="int" />
+          <Property Name="Education_Level_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bank_Account" Type="nvarchar" MaxLength="50" />
+          <Property Name="GPF_Join_Date" Type="datetime" />
+          <Property Name="GPF_End_Date" Type="datetime" />
+          <Property Name="Is_Deactivated" Type="int" />
+          <Property Name="Deactivated_Date" Type="datetime" />
+          <Property Name="First_Job_Date" Type="datetime" />
+          <Property Name="End_Job_Date_Before_GPF" Type="datetime" />
+          <Property Name="Salary" Type="varchar" MaxLength="50" />
+          <Property Name="Salary_Cross" Type="varchar" MaxLength="50" />
+          <Property Name="Allow_Overtime" Type="int" />
+          <Property Name="Marital_Status_Id" Type="int" />
+          <Property Name="Children_Count" Type="int" />
+          <Property Name="Office_Location_Id" Type="int" />
+          <Property Name="Contract_Type" Type="int" />
+          <Property Name="Is_Delegated" Type="int" />
+          <Property Name="Created_at" Type="datetime" />
+          <Property Name="Updated_at" Type="datetime" />
+          <Property Name="Deleted_at" Type="datetime" />
+          <Property Name="CountryTitleAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryTitleEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityTitleAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityTitleEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankTitleAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankTitleEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeptTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="Manager_Id" Type="int" />
+          <Property Name="ManagerFullNameAr" Type="nvarchar" MaxLength="203" />
+          <Property Name="ManagerFullNameEn" Type="nvarchar" MaxLength="203" />
+          <Property Name="ManagerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="EducationLevelTitleAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationLevelTitleEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationQualificationTitleAr" Type="nvarchar" MaxLength="250" />
+          <Property Name="EducationQualificationTitleEn" Type="nvarchar" MaxLength="250" />
+          <Property Name="JobDegreeTitleAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobDegreeTitleEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobClassificationAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobClassificationEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobLevelAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="Job_LevelEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatusAr" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatusEn" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="GPFEmployeesModelStoreContainer">
+          <EntitySet Name="vwDepartments" EntityType="Self.vwDepartments" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwDepartments].[Id] AS [Id], 
+    [vwDepartments].[Name] AS [Name], 
+    [vwDepartments].[Manager_Id] AS [Manager_Id], 
+    [vwDepartments].[Parent_Id] AS [Parent_Id], 
+    [vwDepartments].[Created_at] AS [Created_at], 
+    [vwDepartments].[Updated_at] AS [Updated_at], 
+    [vwDepartments].[Deleted_at] AS [Deleted_at], 
+    [vwDepartments].[ManagerFullNameAr] AS [ManagerFullNameAr], 
+    [vwDepartments].[ManagerFullNameEn] AS [ManagerFullNameEn], 
+    [vwDepartments].[ManagerEmail] AS [ManagerEmail]
+    FROM [dbo].[vwDepartments] AS [vwDepartments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwEmployees" EntityType="Self.vwEmployees" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEmployees].[Id] AS [Id], 
+    [vwEmployees].[First_Name_Ar] AS [First_Name_Ar], 
+    [vwEmployees].[Second_Name_Ar] AS [Second_Name_Ar], 
+    [vwEmployees].[Third_Name_Ar] AS [Third_Name_Ar], 
+    [vwEmployees].[Fourth_Name_Ar] AS [Fourth_Name_Ar], 
+    [vwEmployees].[FULL_NAME_AR] AS [FULL_NAME_AR], 
+    [vwEmployees].[First_Name_En] AS [First_Name_En], 
+    [vwEmployees].[Second_Name_En] AS [Second_Name_En], 
+    [vwEmployees].[Third_Name_En] AS [Third_Name_En], 
+    [vwEmployees].[Fourth_Name_En] AS [Fourth_Name_En], 
+    [vwEmployees].[FULL_NAME_En] AS [FULL_NAME_En], 
+    [vwEmployees].[Gender] AS [Gender], 
+    [vwEmployees].[Email] AS [Email], 
+    [vwEmployees].[Phone] AS [Phone], 
+    [vwEmployees].[Internal_Phone_Ext] AS [Internal_Phone_Ext], 
+    [vwEmployees].[Civil_Id] AS [Civil_Id], 
+    [vwEmployees].[Civil_Id_Expire_Date] AS [Civil_Id_Expire_Date], 
+    [vwEmployees].[Birthdate] AS [Birthdate], 
+    [vwEmployees].[Country_Id] AS [Country_Id], 
+    [vwEmployees].[City_Id] AS [City_Id], 
+    [vwEmployees].[Region] AS [Region], 
+    [vwEmployees].[Street] AS [Street], 
+    [vwEmployees].[Building_Number] AS [Building_Number], 
+    [vwEmployees].[Address] AS [Address], 
+    [vwEmployees].[Residency_Id] AS [Residency_Id], 
+    [vwEmployees].[Residency_Id_Expire_Date] AS [Residency_Id_Expire_Date], 
+    [vwEmployees].[Passport_Id] AS [Passport_Id], 
+    [vwEmployees].[Passport_Id_Expire_Date] AS [Passport_Id_Expire_Date], 
+    [vwEmployees].[Fingerprint_Id] AS [Fingerprint_Id], 
+    [vwEmployees].[Bank_Id] AS [Bank_Id], 
+    [vwEmployees].[Department_Id] AS [Department_Id], 
+    [vwEmployees].[Job_Id] AS [Job_Id], 
+    [vwEmployees].[Education_Level_Id] AS [Education_Level_Id], 
+    [vwEmployees].[Education_Qualification_Id] AS [Education_Qualification_Id], 
+    [vwEmployees].[Job_Degree_Id] AS [Job_Degree_Id], 
+    [vwEmployees].[Job_Classification_Id] AS [Job_Classification_Id], 
+    [vwEmployees].[Job_Level_Id] AS [Job_Level_Id], 
+    [vwEmployees].[Education_Level_Country_Id] AS [Education_Level_Country_Id], 
+    [vwEmployees].[Education_Level_Name] AS [Education_Level_Name], 
+    [vwEmployees].[Bank_Account] AS [Bank_Account], 
+    [vwEmployees].[GPF_Join_Date] AS [GPF_Join_Date], 
+    [vwEmployees].[GPF_End_Date] AS [GPF_End_Date], 
+    [vwEmployees].[Is_Deactivated] AS [Is_Deactivated], 
+    [vwEmployees].[Deactivated_Date] AS [Deactivated_Date], 
+    [vwEmployees].[First_Job_Date] AS [First_Job_Date], 
+    [vwEmployees].[End_Job_Date_Before_GPF] AS [End_Job_Date_Before_GPF], 
+    [vwEmployees].[Salary] AS [Salary], 
+    [vwEmployees].[Salary_Cross] AS [Salary_Cross], 
+    [vwEmployees].[Allow_Overtime] AS [Allow_Overtime], 
+    [vwEmployees].[Marital_Status_Id] AS [Marital_Status_Id], 
+    [vwEmployees].[Children_Count] AS [Children_Count], 
+    [vwEmployees].[Office_Location_Id] AS [Office_Location_Id], 
+    [vwEmployees].[Contract_Type] AS [Contract_Type], 
+    [vwEmployees].[Is_Delegated] AS [Is_Delegated], 
+    [vwEmployees].[Created_at] AS [Created_at], 
+    [vwEmployees].[Updated_at] AS [Updated_at], 
+    [vwEmployees].[Deleted_at] AS [Deleted_at], 
+    [vwEmployees].[CountryTitleAr] AS [CountryTitleAr], 
+    [vwEmployees].[CountryTitleEN] AS [CountryTitleEN], 
+    [vwEmployees].[CityTitleAr] AS [CityTitleAr], 
+    [vwEmployees].[CityTitleEn] AS [CityTitleEn], 
+    [vwEmployees].[BankTitleAr] AS [BankTitleAr], 
+    [vwEmployees].[BankTitleEn] AS [BankTitleEn], 
+    [vwEmployees].[DeptTitle] AS [DeptTitle], 
+    [vwEmployees].[Manager_Id] AS [Manager_Id], 
+    [vwEmployees].[ManagerFullNameAr] AS [ManagerFullNameAr], 
+    [vwEmployees].[ManagerFullNameEn] AS [ManagerFullNameEn], 
+    [vwEmployees].[ManagerEmail] AS [ManagerEmail], 
+    [vwEmployees].[JobTitle] AS [JobTitle], 
+    [vwEmployees].[EducationLevelTitleAr] AS [EducationLevelTitleAr], 
+    [vwEmployees].[EducationLevelTitleEn] AS [EducationLevelTitleEn], 
+    [vwEmployees].[EducationQualificationTitleAr] AS [EducationQualificationTitleAr], 
+    [vwEmployees].[EducationQualificationTitleEn] AS [EducationQualificationTitleEn], 
+    [vwEmployees].[JobDegreeTitleAr] AS [JobDegreeTitleAr], 
+    [vwEmployees].[JobDegreeTitleEn] AS [JobDegreeTitleEn], 
+    [vwEmployees].[JobClassificationAr] AS [JobClassificationAr], 
+    [vwEmployees].[JobClassificationEn] AS [JobClassificationEn], 
+    [vwEmployees].[JobLevelAr] AS [JobLevelAr], 
+    [vwEmployees].[Job_LevelEn] AS [Job_LevelEn], 
+    [vwEmployees].[MaritalStatusAr] AS [MaritalStatusAr], 
+    [vwEmployees].[MaritalStatusEn] AS [MaritalStatusEn]
+    FROM [dbo].[vwEmployees] AS [vwEmployees]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GPFEmployeesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vwDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ManagerFullNameAr" />
+            <PropertyRef Name="ManagerFullNameEn" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manager_Id" Type="Int32" />
+          <Property Name="Parent_Id" Type="Int32" />
+          <Property Name="Created_at" Type="DateTime" Precision="3" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="ManagerFullNameAr" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManagerFullNameEn" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManagerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwEmployees">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FULL_NAME_AR" />
+            <PropertyRef Name="FULL_NAME_En" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="First_Name_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Second_Name_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Third_Name_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fourth_Name_Ar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FULL_NAME_AR" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Second_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Third_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fourth_Name_En" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FULL_NAME_En" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Internal_Phone_Ext" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Civil_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Civil_Id_Expire_Date" Type="DateTime" Precision="3" />
+          <Property Name="Birthdate" Type="DateTime" Precision="3" />
+          <Property Name="Country_Id" Type="Int32" />
+          <Property Name="City_Id" Type="Int32" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Building_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Residency_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Residency_Id_Expire_Date" Type="DateTime" Precision="3" />
+          <Property Name="Passport_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passport_Id_Expire_Date" Type="DateTime" Precision="3" />
+          <Property Name="Fingerprint_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Id" Type="Int32" />
+          <Property Name="Department_Id" Type="Int32" />
+          <Property Name="Job_Id" Type="Int32" />
+          <Property Name="Education_Level_Id" Type="Int32" />
+          <Property Name="Education_Qualification_Id" Type="Int32" />
+          <Property Name="Job_Degree_Id" Type="Int32" />
+          <Property Name="Job_Classification_Id" Type="Int32" />
+          <Property Name="Job_Level_Id" Type="Int32" />
+          <Property Name="Education_Level_Country_Id" Type="Int32" />
+          <Property Name="Education_Level_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bank_Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GPF_Join_Date" Type="DateTime" Precision="3" />
+          <Property Name="GPF_End_Date" Type="DateTime" Precision="3" />
+          <Property Name="Is_Deactivated" Type="Int32" />
+          <Property Name="Deactivated_Date" Type="DateTime" Precision="3" />
+          <Property Name="First_Job_Date" Type="DateTime" Precision="3" />
+          <Property Name="End_Job_Date_Before_GPF" Type="DateTime" Precision="3" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary_Cross" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Allow_Overtime" Type="Int32" />
+          <Property Name="Marital_Status_Id" Type="Int32" />
+          <Property Name="Children_Count" Type="Int32" />
+          <Property Name="Office_Location_Id" Type="Int32" />
+          <Property Name="Contract_Type" Type="Int32" />
+          <Property Name="Is_Delegated" Type="Int32" />
+          <Property Name="Created_at" Type="DateTime" Precision="3" />
+          <Property Name="Updated_at" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_at" Type="DateTime" Precision="3" />
+          <Property Name="CountryTitleAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryTitleEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityTitleAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityTitleEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankTitleAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankTitleEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeptTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Manager_Id" Type="Int32" />
+          <Property Name="ManagerFullNameAr" Type="String" MaxLength="203" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerFullNameEn" Type="String" MaxLength="203" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EducationLevelTitleAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationLevelTitleEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationQualificationTitleAr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EducationQualificationTitleEn" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="JobDegreeTitleAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobDegreeTitleEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobClassificationAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobClassificationEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobLevelAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_LevelEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatusAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatusEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="GPFEmployeesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vwDepartments" EntityType="Self.vwDepartments" />
+          <EntitySet Name="vwEmployees" EntityType="Self.vwEmployees" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GPFEmployeesModelStoreContainer" CdmEntityContainer="GPFEmployeesEntities">
+          <EntitySetMapping Name="vwDepartments">
+            <EntityTypeMapping TypeName="GPFEmployeesModel.vwDepartments">
+              <MappingFragment StoreEntitySet="vwDepartments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="ManagerFullNameAr" ColumnName="ManagerFullNameAr" />
+                <ScalarProperty Name="ManagerFullNameEn" ColumnName="ManagerFullNameEn" />
+                <ScalarProperty Name="ManagerEmail" ColumnName="ManagerEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEmployees">
+            <EntityTypeMapping TypeName="GPFEmployeesModel.vwEmployees">
+              <MappingFragment StoreEntitySet="vwEmployees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="First_Name_Ar" ColumnName="First_Name_Ar" />
+                <ScalarProperty Name="Second_Name_Ar" ColumnName="Second_Name_Ar" />
+                <ScalarProperty Name="Third_Name_Ar" ColumnName="Third_Name_Ar" />
+                <ScalarProperty Name="Fourth_Name_Ar" ColumnName="Fourth_Name_Ar" />
+                <ScalarProperty Name="FULL_NAME_AR" ColumnName="FULL_NAME_AR" />
+                <ScalarProperty Name="First_Name_En" ColumnName="First_Name_En" />
+                <ScalarProperty Name="Second_Name_En" ColumnName="Second_Name_En" />
+                <ScalarProperty Name="Third_Name_En" ColumnName="Third_Name_En" />
+                <ScalarProperty Name="Fourth_Name_En" ColumnName="Fourth_Name_En" />
+                <ScalarProperty Name="FULL_NAME_En" ColumnName="FULL_NAME_En" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Internal_Phone_Ext" ColumnName="Internal_Phone_Ext" />
+                <ScalarProperty Name="Civil_Id" ColumnName="Civil_Id" />
+                <ScalarProperty Name="Civil_Id_Expire_Date" ColumnName="Civil_Id_Expire_Date" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Building_Number" ColumnName="Building_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Residency_Id" ColumnName="Residency_Id" />
+                <ScalarProperty Name="Residency_Id_Expire_Date" ColumnName="Residency_Id_Expire_Date" />
+                <ScalarProperty Name="Passport_Id" ColumnName="Passport_Id" />
+                <ScalarProperty Name="Passport_Id_Expire_Date" ColumnName="Passport_Id_Expire_Date" />
+                <ScalarProperty Name="Fingerprint_Id" ColumnName="Fingerprint_Id" />
+                <ScalarProperty Name="Bank_Id" ColumnName="Bank_Id" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+                <ScalarProperty Name="Education_Level_Id" ColumnName="Education_Level_Id" />
+                <ScalarProperty Name="Education_Qualification_Id" ColumnName="Education_Qualification_Id" />
+                <ScalarProperty Name="Job_Degree_Id" ColumnName="Job_Degree_Id" />
+                <ScalarProperty Name="Job_Classification_Id" ColumnName="Job_Classification_Id" />
+                <ScalarProperty Name="Job_Level_Id" ColumnName="Job_Level_Id" />
+                <ScalarProperty Name="Education_Level_Country_Id" ColumnName="Education_Level_Country_Id" />
+                <ScalarProperty Name="Education_Level_Name" ColumnName="Education_Level_Name" />
+                <ScalarProperty Name="Bank_Account" ColumnName="Bank_Account" />
+                <ScalarProperty Name="GPF_Join_Date" ColumnName="GPF_Join_Date" />
+                <ScalarProperty Name="GPF_End_Date" ColumnName="GPF_End_Date" />
+                <ScalarProperty Name="Is_Deactivated" ColumnName="Is_Deactivated" />
+                <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+                <ScalarProperty Name="First_Job_Date" ColumnName="First_Job_Date" />
+                <ScalarProperty Name="End_Job_Date_Before_GPF" ColumnName="End_Job_Date_Before_GPF" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Salary_Cross" ColumnName="Salary_Cross" />
+                <ScalarProperty Name="Allow_Overtime" ColumnName="Allow_Overtime" />
+                <ScalarProperty Name="Marital_Status_Id" ColumnName="Marital_Status_Id" />
+                <ScalarProperty Name="Children_Count" ColumnName="Children_Count" />
+                <ScalarProperty Name="Office_Location_Id" ColumnName="Office_Location_Id" />
+                <ScalarProperty Name="Contract_Type" ColumnName="Contract_Type" />
+                <ScalarProperty Name="Is_Delegated" ColumnName="Is_Delegated" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+                <ScalarProperty Name="Deleted_at" ColumnName="Deleted_at" />
+                <ScalarProperty Name="CountryTitleAr" ColumnName="CountryTitleAr" />
+                <ScalarProperty Name="CountryTitleEN" ColumnName="CountryTitleEN" />
+                <ScalarProperty Name="CityTitleAr" ColumnName="CityTitleAr" />
+                <ScalarProperty Name="CityTitleEn" ColumnName="CityTitleEn" />
+                <ScalarProperty Name="BankTitleAr" ColumnName="BankTitleAr" />
+                <ScalarProperty Name="BankTitleEn" ColumnName="BankTitleEn" />
+                <ScalarProperty Name="DeptTitle" ColumnName="DeptTitle" />
+                <ScalarProperty Name="Manager_Id" ColumnName="Manager_Id" />
+                <ScalarProperty Name="ManagerFullNameAr" ColumnName="ManagerFullNameAr" />
+                <ScalarProperty Name="ManagerFullNameEn" ColumnName="ManagerFullNameEn" />
+                <ScalarProperty Name="ManagerEmail" ColumnName="ManagerEmail" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="EducationLevelTitleAr" ColumnName="EducationLevelTitleAr" />
+                <ScalarProperty Name="EducationLevelTitleEn" ColumnName="EducationLevelTitleEn" />
+                <ScalarProperty Name="EducationQualificationTitleAr" ColumnName="EducationQualificationTitleAr" />
+                <ScalarProperty Name="EducationQualificationTitleEn" ColumnName="EducationQualificationTitleEn" />
+                <ScalarProperty Name="JobDegreeTitleAr" ColumnName="JobDegreeTitleAr" />
+                <ScalarProperty Name="JobDegreeTitleEn" ColumnName="JobDegreeTitleEn" />
+                <ScalarProperty Name="JobClassificationAr" ColumnName="JobClassificationAr" />
+                <ScalarProperty Name="JobClassificationEn" ColumnName="JobClassificationEn" />
+                <ScalarProperty Name="JobLevelAr" ColumnName="JobLevelAr" />
+                <ScalarProperty Name="Job_LevelEn" ColumnName="Job_LevelEn" />
+                <ScalarProperty Name="MaritalStatusAr" ColumnName="MaritalStatusAr" />
+                <ScalarProperty Name="MaritalStatusEn" ColumnName="MaritalStatusEn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,263 @@
+﻿
+@model BOL.ReportViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ ViewBag.Title = "ItemsOutOfLimitReport";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                @Html.Raw(Resources.DefaultResource.EmptyRoomsReport)
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="kt-subheader-search">
+    <h3 class="kt-subheader-search__title">
+        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+        @Html.Raw(Resources.DefaultResource.GlobalSearch)
+        <span class="kt-subheader-search__desc">
+            @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+        </span>
+    </h3>
+
+    @using (Html.BeginForm("PrintBarcode", "Reports", FormMethod.Post))
+    {
+@Html.AntiForgeryToken();
+<div class="kt-form">
+    <div class="kt-grid">
+        <div class="kt-grid__item">
+
+
+
+            <div class="form-group row  mb-md-5 mt-5  ">
+                @Html.Label("lblPrinterName", Resources.DefaultResource.PrinterName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                @Html.HiddenFor(m => m.PrinterName)
+                @Html.HiddenFor(m => m.OrderDate)
+                @Html.HiddenFor(m => m.OrderNo)
+                @Html.TextBoxFor(m => m.EditMode, new { @class = "form-control", name = "EditMode", id = "EditMode" })
+                <div class="col-4" style="">
+                    <div id="dropDownListdiv">
+                        @Html.DropDownListFor(m => m.PrinterId, Model.PrinterNames, new { @class = "form-control", style = "width:100%;", id = "PrinterId", name = "PrinterId" })
+                    </div>
+                </div>
+
+                @Html.Label("lblPaperNoId", Resources.DefaultResource.PaperNo, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem " })
+
+                <div class="col-4" style="">
+                    @*@Html.HiddenFor(m => m.ItemName)*@
+                    @*<input type="number" id="NofPapers" name="NofPapers" min="1" max="100" value="">*@
+                    @Html.TextBoxFor(m => m.NofPapers, new { @class = "form-control", type = "number", min = "1", step = "1" })
+                </div>
+
+            </div>
+            <div class="form-group row  mb-md-5 mt-5  ">
+                @Html.Label("lblItemName", Resources.DefaultResource.ItemName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem " })
+
+                <div class="col-4" style="">
+                    @*@Html.HiddenFor(m => m.ItemName)*@
+                    @Html.TextBoxFor(m => m.ItemName, new { @class = "form-control", @readonly = "true" })
+                </div>
+                @Html.Label("lblItemBarcode", Resources.DefaultResource.ItemBarcode, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem " })
+
+                <div class="col-4" style="">
+                    @*@Html.HiddenFor(m => m.ItemBarcode)*@
+                    @Html.TextBoxFor(m => m.ItemBarcode, new { @class = "form-control", @readonly = "true" })
+                </div>
+
+            </div>
+            <div class="form-group row  mb-md-5 mt-5  ">
+                @Html.Label("lblItemPrice", Resources.DefaultResource.ItemPrice, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                <div class="col-4" style="">
+                    @*@Html.HiddenFor(m => m.ItemPrice)*@
+                    @Html.TextBoxFor(m => m.ItemPrice, new { @class = "form-control", @readonly = "true" })
+                </div>
+
+
+            </div>
+            <div class="form-group row">
+                <div class="col-12 text-center">
+
+
+                    <button type="submit" class="btn btn-info btn-primary btn-icon-sm" value=@Resources.DefaultResource.Print name="CmdSave" id="CmdSave" formmethod="post" ValidationGroup="DML">
+
+                        <i class="fa fa-print"></i>
+                        <span class="kt-nav__link-text">
+                            @Html.Raw(Resources.DefaultResource.Print)
+                        </span>
+                    </button>
+                    <input type="submit" value="Print code" onclick="GetPrinter()" />
+                    @*<input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview />*@
+                    @*<input type="button" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview onclick="window.open('@Url.Action("ShowReport", "Report")')" />*@
+
+
+
+                </div>
+            </div>
+
+            <div class="form-row mt-5">
+                <div class="form-group col-12">
+                    @*<div id="ErrorDIV" runat="server"></div>*@
+                    @Html.Raw(TempData["Message"])
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>}
+
+    <div id="parent">
+
+        <img src="~/Images/Barcode.png" />
+    </div>
+</div>
+
+@*<script type="text/javascript" charset="utf-8" src="~/Scripts/Zebra/ebapi-modules.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/Zebra/ebapi.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/Zebra/eb.printer.js"></script>*@
+@*<script type="text/javascript" charset="utf-8" src="~/Scripts/Zebra/eb.printerzebra.js"></script>*@
+<script src="~/Scripts/Zebra/Broswer/BrowserPrint-3.0.216.min.js"></script>
+<script src="~/Scripts/Zebra/Broswer/BrowserPrint-Zebra-1.0.216.min.js"></script>
+@section scripts{
+    
+
+    <script>
+
+        var selected_device;
+        var device_list = [];
+        function GetPrinter() {
+           
+            //Discover any other devices available to the application
+            BrowserPrint.getLocalDevices(function (device_list) {
+                var html_select = document.getElementById("PrinterId");
+               
+                for (var i = 0; i < device_list.length; i++) {
+                    //Add device to list of devices and to html select element
+                    var device = device_list[i];
+                    alert(device);
+                    if (!selected_device || device.uid != selected_device.uid) {
+                        devices.push(device);
+                        var option = document.createElement("option");
+                        option.text = device.name;
+                        option.value = device.uid;
+                        html_select.add(option);
+                    }
+                }
+
+            }, function () { alert("Error getting local devices") }, "printer");
+
+        }
+        function setup() {
+            //Get the default device from the application as a first step. Discovery takes longer to complete.
+            BrowserPrint.getDefaultDevice("printer", function (device) {
+
+                //Add device to list of devices and to html select element
+                selected_device = device;
+                devices.push(device);
+                var html_select = document.getElementById("PrinterId");
+                var option = document.createElement("option");
+                option.text = device.name;
+                html_select.add(option);
+
+                //Discover any other devices available to the application
+                BrowserPrint.getLocalDevices(function (device_list) {
+                    for (var i = 0; i < device_list.length; i++) {
+                        //Add device to list of devices and to html select element
+                        var device = device_list[i];
+                        if (!selected_device || device.uid != selected_device.uid) {
+                            devices.push(device);
+                            var option = document.createElement("option");
+                            option.text = device.name;
+                            option.value = device.uid;
+                            html_select.add(option);
+                        }
+                    }
+
+                }, function () { alert("Error getting local devices") }, "printer");
+
+            }, function (error) {
+                alert(error);
+            })
+        }
+
+        function printZpl() {
+            // Create Base64 Object
+            var Base64 = { _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", encode: function (e) { var t = ""; var n, r, i, s, o, u, a; var f = 0; e = Base64._utf8_encode(e); while (f < e.length) { n = e.charCodeAt(f++); r = e.charCodeAt(f++); i = e.charCodeAt(f++); s = n >> 2; o = (n & 3) << 4 | r >> 4; u = (r & 15) << 2 | i >> 6; a = i & 63; if (isNaN(r)) { u = a = 64 } else if (isNaN(i)) { a = 64 } t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a) } return t }, decode: function (e) { var t = ""; var n, r, i; var s, o, u, a; var f = 0; e = e.replace(/[^A-Za-z0-9\+\/\=]/g, ""); while (f < e.length) { s = this._keyStr.indexOf(e.charAt(f++)); o = this._keyStr.indexOf(e.charAt(f++)); u = this._keyStr.indexOf(e.charAt(f++)); a = this._keyStr.indexOf(e.charAt(f++)); n = s << 2 | o >> 4; r = (o & 15) << 4 | u >> 2; i = (u & 3) << 6 | a; t = t + String.fromCharCode(n); if (u != 64) { t = t + String.fromCharCode(r) } if (a != 64) { t = t + String.fromCharCode(i) } } t = Base64._utf8_decode(t); return t }, _utf8_encode: function (e) { e = e.replace(/\r\n/g, "\n"); var t = ""; for (var n = 0; n < e.length; n++) { var r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r) } else if (r > 127 && r < 2048) { t += String.fromCharCode(r >> 6 | 192); t += String.fromCharCode(r & 63 | 128) } else { t += String.fromCharCode(r >> 12 | 224); t += String.fromCharCode(r >> 6 & 63 | 128); t += String.fromCharCode(r & 63 | 128) } } return t }, _utf8_decode: function (e) { var t = ""; var n = 0; var r = c1 = c2 = 0; while (n < e.length) { r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r); n++ } else if (r > 191 && r < 224) { c2 = e.charCodeAt(n + 1); t += String.fromCharCode((r & 31) << 6 | c2 & 63); n += 2 } else { c2 = e.charCodeAt(n + 1); c3 = e.charCodeAt(n + 2); t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63); n += 3 } } return t } }
+
+            // Define the string
+            var string = 'Hello World!';
+
+            // Encode the String
+            var encodedString = Base64.encode(string);
+            var printWindow = window.open();
+
+            printWindow.document.open('text/plain')
+            /*var q = $("#PrinterId").val();*/
+            /*  alert($("#EditMode").val($(this).text()));*/
+            var decodedString = Base64.decode(encodedString);
+            printWindow.document.write(encodedString);
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+        }
+        function printImage() {
+            var div = document.getElementById('parent');
+
+            // Create a window object.
+            var win = window.open('text/plain'); // Open the window. Its a popup window.
+            win.document.write(div.outerHTML);     // Write contents in the new window.
+            win.document.close();
+            win.print();       // Finally, print the contents.
+        }
+
+
+
+
+
+
+        $("#PrinterId").on("change", function () {
+            var q = $("#PrinterId").val();
+            $("#PrinterName").val($(this).text());
+            console.log("val = " + q);
+        });
+                                        //$('select').selectpicker('val', operation_day.split(",")); //split them and set value
+                                        //$('select').selectpicker('refresh') //refresh ..selectpicker
+
+
+
+
+
+
+
+    </script>
+}
+
+

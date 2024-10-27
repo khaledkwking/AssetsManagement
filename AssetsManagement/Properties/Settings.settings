@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AssetsManagement.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IPAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">172.25.62.60</Value>
+    </Setting>
+    <Setting Name="TCP" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Serial" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="potNumber" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ReaderPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">St0rE_37</Value>
+    </Setting>
+    <Setting Name="ReaderUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">alien</Value>
+    </Setting>
+    <Setting Name="PortUD" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3737</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

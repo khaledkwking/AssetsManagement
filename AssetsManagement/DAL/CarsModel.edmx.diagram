@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a834132fe6f4b98a881f51656d1a043" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.accounting" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.BlockService" Width="1.5" PointX="7.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Car" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.CarStatu" Width="1.5" PointX="6.375" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Cde_QidTypes" Width="1.5" PointX="9.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Contract" Width="1.5" PointX="0.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.CostCenter" Width="1.5" PointX="9.375" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Debit" Width="1.5" PointX="9.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.emp" Width="1.5" PointX="11.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.FIGURE" Width="1.5" PointX="13.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.FIGURES2" Width="1.5" PointX="11.375" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.FUNCTION" Width="1.5" PointX="9.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Lawsuit" Width="1.5" PointX="13.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Maintance" Width="1.5" PointX="2.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Model" Width="1.5" PointX="8.625" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Month" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Office" Width="1.5" PointX="13.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.PaymentCode" Width="1.5" PointX="15.125" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.printed" Width="1.5" PointX="15.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.qid" Width="1.5" PointX="5.25" PointY="6" IsExpanded="false" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.qidsDetail" Width="1.5" PointX="7.375" PointY="3.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Recite" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.RentPeriod" Width="1.5" PointX="15.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Reservation" Width="1.5" PointX="11.625" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Service" Width="1.5" PointX="9.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.setup" Width="1.5" PointX="11.875" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.USER_FUNCTION" Width="1.5" PointX="13.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.violation" Width="1.5" PointX="9.625" PointY="13.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.SetupCode" Width="1.5" PointX="10.125" PointY="10.875" IsExpanded="false" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_Contracts_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_Maintance_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_violations_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_qids_Contracts" ManuallyRouted="false" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_qids_Recite" ManuallyRouted="false" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_qidsDetails_qids" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.FingerImage" Width="1.5" PointX="11.5" PointY="0.5" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_Cars_CarStatus" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_Cars_Models" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Payment" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.cust" Width="1.5" PointX="11.625" PointY="15.25" />
+        <EntityTypeShape EntityType="CARACCOUNTLASTModel.Nat" Width="1.5" PointX="14.875" PointY="18" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_Contracts_cust" />
+        <AssociationConnector Association="CARACCOUNTLASTModel.FK_cust_Nats1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

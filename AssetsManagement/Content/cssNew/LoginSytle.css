@@ -1,0 +1,37 @@
+﻿/*Arabic Styles*/
+
+
+@import url("../../assets/app/custom/login/login-v6.default.css");
+
+@import url("../../assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css");
+
+@import url("../../assets/vendors/general/tether/dist/css/tether.css");
+
+@import url("../../assets/vendors/general/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.css");
+
+
+@import url("../../assets/vendors/general/ion-rangeslider/css/ion.rangeSlider.css");
+@import url("../../assets/vendors/general/nouislider/distribute/nouislider.css");
+@import url("../../assets/vendors/general/owl.carousel/dist/assets/owl.carousel.css");
+@import url("../../assets/vendors/general/owl.carousel/dist/assets/owl.theme.default.css");
+@import url("../../assets/vendors/general/dropzone/dist/dropzone.css");
+@import url("../../assets/vendors/general/summernote/dist/summernote.css");
+
+@import url("../../assets/vendors/general/animate.css/animate.css");
+@import url("../../assets/vendors/general/toastr/build/toastr.css");
+@import url("../../assets/vendors/general/morris.js/morris.css");
+@import url("../../assets/vendors/general/sweetalert2/dist/sweetalert2.css");
+@import url("../../assets/vendors/general/socicon/css/socicon.css");
+@import url("../../assets/vendors/custom/vendors/line-awesome/css/line-awesome.css");
+@import url("../../assets/vendors/custom/vendors/flaticon/flaticon.css");
+@import url("../../assets/vendors/custom/vendors/flaticon2/flaticon.css");
+@import url("../../assets/vendors/custom/vendors/fontawesome5/css/all.min.css");
+
+@import url("../../assets/demo/default/base/style.bundle.css");
+
+@import url("../../assets/demo/default/skins/header/base/light.css");
+@import url("../../assets/demo/default/skins/header/menu/light.css");
+@import url("../../assets/demo/default/skins/brand/dark.css");
+@import url("../../assets/demo/default/skins/aside/dark.css");
+
+

@@ -1,0 +1,297 @@
+﻿
+@model BOL.ReportViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ ViewBag.Title = "ItemsStockCardReport";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                @Html.Raw(Resources.DefaultResource.ItemsStockCard)
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="kt-subheader-search">
+    <h3 class="kt-subheader-search__title">
+        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+        @Html.Raw(Resources.DefaultResource.GlobalSearch)
+        <span class="kt-subheader-search__desc">
+            @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+        </span>
+    </h3>
+    @*@using (Html.BeginForm("CarList", "Cars", FormMethod.Get))
+        {
+            <p>
+                Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                <input type="submit" value="Find" />
+            </p>
+        }*@
+    @using (Html.BeginForm("ItemsStockCardReport", "ReportsItemsStock", FormMethod.Post, new { target = "_blank"}))
+    {
+@Html.AntiForgeryToken();
+<br />
+                <br />
+                                <div class="kt-form">
+                                    <div class="kt-grid">
+                                        <div class="kt-grid__item">
+                                            <div class="form-group row text-center mb-md-5 mt-5  ">
+                                                <div class="col-2">
+                                                </div>
+                                                <div class="col-2">
+                                                    @Html.RadioButtonFor(m => m.searchType, "1", new { @class = "HeadMenuItem", onclick = " document.myform.submit();" })
+                                                    @Html.Label("Personal", Resources.DefaultResource.PersonalAsset, new { @class = "kt-subheader-search__desc HeadMenuItem text-start" })
+                                                </div>
+                                                <div class="col-2">
+
+                                                    @Html.RadioButtonFor(m => m.searchType, "2", new { @class = "HeadMenuItem ", onclick = " document.myform.submit();" })
+                                                    @Html.Label("Organization", Resources.DefaultResource.OfficialAssets, new { @class = "kt-subheader-search__desc HeadMenuItem text-start" })
+
+                                                </div>
+
+                                                <div class="col-2">
+
+                                                    @Html.RadioButtonFor(m => m.searchType, "3", new { @class = "HeadMenuItem ", onclick = " document.myform.submit();" })
+                                                    @Html.Label("Organization", Resources.DefaultResource.DisplayAll, new { @class = "kt-subheader-search__desc HeadMenuItem text-start" })
+
+                                                </div>
+                                            </div>
+
+                                            <div id="dropDownListdiv">
+                                                <div class="form-group row">
+
+                                                    @Html.Label("lblFromDeptId", Resources.DefaultResource.DeptTitle, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                                                    <div class="col-4" style="">
+
+                                                        @Html.DropDownListFor(m => m.DeptId, Model.Departments, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "DeptId", name = "DeptId" })
+
+                                                    </div>
+
+                                                    @Html.Label("lblFromEmpId", Resources.DefaultResource.EmpName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                                                    <div class="col-4" style="">
+                                                        @Html.DropDownListFor(m => m.EmpId, Model.Employees, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "EmpId", name = "EmpId" })
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group row  mb-md-5 mt-5  ">
+
+                                                    @Html.Label("lblMainItemsId", Resources.DefaultResource.FloorDesc, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                                                    <div class="col-4" style="">
+                                                        @Html.DropDownListFor(m => m.FloorId, Model.Floors, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "FloorId", name = "FloorId" })
+                                                    </div>
+
+                                                    @Html.Label("lblStoreId", Resources.DefaultResource.RoomName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                                                    <div class="col-4" style="">
+
+                                                        @Html.DropDownListFor(m => m.RoomId, Model.Rooms, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "RoomId", name = "RoomId" })
+
+                                                    </div>
+                                                </div>
+
+                                                @*<div class="form-group row mb-md-5 mt-5">
+
+                                                    @Html.Label("lblVendorId", Resources.DefaultResource.VendorName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                                                    <div class="col-4" style="">
+
+                                                        @Html.DropDownListFor(m => m.VendorId, Model.vWVendors, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "VendorId", name = "VendorId" })
+
+                                                    </div>
+
+                                                    @Html.Label("lblContractId", Resources.DefaultResource.ContractName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                                                    <div class="col-4" style="">
+                                                        @Html.DropDownListFor(m => m.ContractId, Model.VwContracts, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "ContractId", name = "ContractId" })
+                                                    </div>
+
+                                                </div>*@
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-6 text-center">
+
+
+
+
+                                                    <button type="submit" class="btn btn-info btn-primary btn-icon-sm" value=@Resources.DefaultResource.Preview name="CmdSave" id="CmdSave" formmethod="post" ValidationGroup="DML">
+
+                                                        <i class="fa fa-print"></i>
+                                                        <span class="kt-nav__link-text">
+                                                            @Html.Raw(Resources.DefaultResource.Preview)
+                                                        </span>
+                                                    </button>
+                                                    @*<input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview />*@
+                                                    @*<input type="button" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview onclick="window.open('@Url.Action("ShowReport", "Report")')" />*@
+
+
+
+                                                </div>
+                                                <div class="col-6 text-center">
+
+
+                                                <button type="submit" class="btn btn-info btn-primary btn-icon-sm" value='PrintCard' name="CmdPrint" id="CmdPrint" formmethod="post" ValidationGroup="DML">
+
+                                                        <i class="fa fa-print"></i>
+                                                        <span class="kt-nav__link-text">
+                                                            @Html.Raw(Resources.DefaultResource.PrintAssetCard)
+                                                        </span>
+                                                    </button>
+                                                    @*<input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview />*@
+                                                    @*<input type="button" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview onclick="window.open('@Url.Action("ShowReport", "Report")')" />*@
+
+
+
+                                                </div>
+                                            </div>
+
+                                            </div>
+
+                                        </div>
+                                </div>
+                                }
+</div>
+
+@*<div class="kt-portlet kt-portlet--mobile">
+    <div class="kt-portlet__head kt-portlet__head--lg">
+        <div class="kt-portlet__head-label">
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon2-checking"></i>
+            </span>
+            <h3 class="kt-portlet__head-title">
+                @Html.Raw(Resources.DefaultResource.OutOrderItemReport)
+
+            </h3>
+        </div>
+       
+    </div>
+  
+        
+    <div class="kt-portlet__body">
+
+        <div class="table-responsive">
+
+
+     
+
+            @if (Model != null)
+            {
+ 
+           }
+        </div>
+    </div>
+   
+</div>*@
+
+@*<div id="showmodal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document" style="max-width :80%; min-height :400px">
+
+
+    </div>
+</div>*@
+@section scripts{
+    <script>
+
+         $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+                    /* document.getElementById("DisplayMode").value = 1;*/
+                    /* alert(id);*/
+                       $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "DeptId":
+
+                                     PopulateDropDown("#EmpId", data.Employees);
+                                         break;
+                                 case "FloorId":
+
+                                     PopulateDropDownRooms("#RoomId", data.Rooms);
+                                     break;
+                                 case "VendorId":
+
+                                     PopulateDropDownRooms("#ContractId", data.VwContracts);
+                                     break;
+                              }
+                     });
+                 });
+             });
+
+
+        function PopulateDropDown(dropDownId, list) {
+            $(dropDownId).empty();
+            $(dropDownId).append("<option>@Resources.DefaultResource.ListChoose</option>")
+            $.each(list, function (index, row) {
+                if (index == 0) {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>");
+                } else {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                }
+            });
+        }
+        function PopulateDropDownRooms(dropDownId, list) {
+            $(dropDownId).empty();
+            $(dropDownId).append("<option>@Resources.DefaultResource.ListChoose</option>")
+            $.each(list, function (index, row) {
+                if (index == 0) {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>");
+                } else {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                }
+            });
+        }
+        
+
+
+        $(function () {
+
+            $("#EmpId").select2();
+            $("#StoreId").select2();
+            $("#DeptId").select2();
+
+            $("#RoomId").select2();
+            $("#FloorId").select2();
+
+            //$("#VendorId").select2();
+            //$("#ContractId").select2();
+
+        });
+
+
+
+
+
+
+
+
+    </script>
+}
+
+

@@ -1,0 +1,200 @@
+﻿
+@model BOL.EmpRoomsViewModel
+
+@{
+    ViewBag.Title = @Html.Raw(Resources.DefaultResource.EmployeeInRoom);
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("SaveRoomEmps", "RoomEmployees", FormMethod.Post, htmlAttributes: new { Id = "myform" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    <div id="EditModal" class="modal-content">
+        <div class="modal-header">
+
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon2-checking"></i>
+            </span>
+            <h3 class="modal-title" id="exampleModalLabel">
+                @Html.Raw(Resources.DefaultResource.EmployeeInRoom)
+            </h3>
+            <button type="button" class="close" data-dismiss="modal" onclick="CheckChecked();" aria-label="Close">
+                <span class="fa fa-close"></span>
+            </button>
+
+        </div>
+        <div class="modal-body">
+            <div class="kt-portlet kt-portlet--mobile">
+
+                <div class="kt-portlet__body">
+
+                    <div id="ErrorDiv" runat="server"></div>
+                    <div class="bodyContainer">
+                        <div class="kt-portlet">
+                            <!--begin::Form-->
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+                                    <div class="row">
+                                        <div class="col-sm-6 pull-right">
+                                            <nav class="navbar buttonsNavBar">
+                                                <div class="container-fluid">
+                                                    <ul class="nav nav-pills">
+
+                                                        @*<text>&nbsp;</text>*@
+                                                        <li id="Li2" class="pull-right">
+
+                                                            @*<input id="CmdSave" type="button" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" onclick="location.href='@Url.Action("EditUnitModal", "Items",new {Model})'" />*@
+
+                                                            <input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/RoomEmployees/SaveRoomEmps" formmethod="post" ValidationGroup="DML" />
+
+                                                            @*<input id="CmdClose" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Insert)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Items/UnitAdd/@Model.Unit_Id"/>*@
+
+                                                        </li>
+                                                        <text>&nbsp;</text>
+                                                        <li id="Li1" class="active pull-right">
+                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" formaction="/Items/cancel/@Model.Unit_Id" />*@
+                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" />*@
+                                                            <button type="button" id="CmdClose" onclick="CheckChecked();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+                                                        </li>
+                                                        <text>&nbsp;</text>
+
+                                                    </ul>
+
+                                                </div>
+                                            </nav>
+                                        </div>
+
+
+                                        <div class="col-sm-6 pull-right">
+                                            @*@using (Html.BeginForm("CarDel", "Cars", FormMethod.Post))
+                                                {*@
+                                            @if (ViewBag.DeleteCar != null)
+                                            {
+                                                @Html.Raw(Resources.DefaultResource.DelMessage)
+                                                <input id="CmdConfirm" type="submit" value="تاكيد الحذف" class="btn-success" title="تاكيد" data-toggle="تاكيد" formaction="CarDel" formmethod="post" />
+                                            }
+                                            @*}*@
+                                            @if (TempData["Message"] != null)
+                                            {
+                                                <div id="DivMsg" class="ErrorMsglbl" runat="server">
+
+                                                    @Html.Raw(Resources.DefaultResource.SaveMessage)
+
+                                                </div>
+                                            }
+                                            @Html.HiddenFor(m => m.SelectedRoomEmp.RoomId)
+                                            @Html.HiddenFor(m => m.SelectedRoomEmp.Id)
+                                        </div>
+                                    </div>
+                                    <div id="dropDownListdiv">
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 pull-right">
+                                                <div>
+                                                    @Html.HiddenFor(m => m.DisplayMode, new { @class = "form-control hidden", id = "DisplayMode", name = "DisplayMode" })
+                                                    @Html.Label("", Resources.DefaultResource.DeptTitle, new { @class = "HeadMenuItem" })
+
+                                                    @Html.DropDownListFor(m => m.SelectedRoomEmp.DeptId, (IEnumerable<SelectListItem>)Model.Departments@*, Resources.DefaultResource.ListChoose*@, new { @class = "form-control", id = "DeptId", name = "DeptId" })
+
+                                                    @Html.ValidationMessageFor(m => m.SelectedRoomEmp.DeptId, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-6 pull-right">
+                                                <div>
+
+                                                    @Html.Label("", Resources.DefaultResource.EmpName, new { @class = "HeadMenuItem", Name = "lblEmpId" })
+
+                                                    @Html.DropDownListFor(m => m.SelectedRoomEmp.EmpId, Model.Employees, Resources.DefaultResource.ListChoose, new { @class = "form-control", id = "EmpId", name = "EmpId" })
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 pull-right">
+                                                <div>
+
+                                                    @Html.Label("", Resources.DefaultResource.QuotaTitle, new { @class = "HeadMenuItem" })
+
+                                                   
+                                                    @Html.TextBoxFor(m => m.SelectedRoomEmp.QuotaId , new { @class = "form-control"})
+                                                    @*@Html.ValidationMessageFor(m => m.SelectedRoomEmp.DeptId, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })*@
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            function CheckChecked() {
+                $('#showmodal').modal('hide');
+
+            }
+
+            var form = $("#myform")
+                .removeData("validator")
+                .removeData("unobtrusiveValidation");
+
+           /* $.validator.unobtrusive.parse(form);*/
+
+               $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+                     document.getElementById("DisplayMode").value = 1;
+                    /* alert(id);*/
+                       $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "DeptId":
+
+                                     PopulateDropDown("#EmpId", data.Employees);
+
+
+                                         break;
+
+
+                              }
+                     });
+                 });
+             });
+
+             function PopulateDropDown(dropDownId, list) {
+                 $(dropDownId).empty();
+                 $(dropDownId).append("<option>@Resources.DefaultResource.ListChoose</option>")
+                 $.each(list, function (index, row) {
+                     if (index == 0) {
+                         /* $(dropDownId).append("<option value='" + row.Value + "' selected='selected'>" + row.Text + "</option>");*/
+                         $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>");
+                     } else {
+                         $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                     }
+                 });
+             }
+
+        </script>
+
+    </div>
+
+
+}

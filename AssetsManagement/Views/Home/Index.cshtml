@@ -1,0 +1,635 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Bootstrap core CSS -->
+@*<link href="~/assets/demo/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />*@
+
+
+
+
+@*<div class="kt-portlet kt-portlet--mobile">*@
+    @*<div class="kt-portlet__head kt-portlet__head--lg">
+        <div class="kt-portlet__head-label">
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon2-line-chart"></i>
+            </span>
+            <h3 class="kt-portlet__head-title">
+                @Html.Raw(Resources.DefaultResource.MainTitle)
+
+            </h3>
+        </div>
+
+    </div>*@
+<div class="album py-5">
+    @*<div class="container">*@
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ml-2 mr-2">
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Building", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.Bulidings)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href="/Buildings/Index/" id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.Organization)">
+                    <image href="~/img/B1.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تسجيل بيانات المبانى و الادوار و تسجيل الغرف </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("Index", "Buildings")'">@Html.Raw(Resources.DefaultResource.Bulidings)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Departements", "Accessing"))
+            {
+        <div class="card shadow-sm">
+
+            <svg style="margin-top: 10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.Organization)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+
+                <a href="#" id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.Organization)">
+                    <image href="~/img/Org.jpg" height="80" width="100%" />
+                </a>
+
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض بيانات الادارات  و المراقبة و الاقسام </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("Departements", "HR")'">@Html.Raw(Resources.DefaultResource.Organization)</button>
+
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>            }
+        </div>
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Employees", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.EmployeesData)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href="#" id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.EmployeesData)">
+                    <image href="~/img/employees.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+
+            <div class="card-body">
+                <p class="card-text">استعراض بيانات الموظفين و عهد الموظفين</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("Employees", "HR")'">@Html.Raw(Resources.DefaultResource.EmployeesData)</button>
+
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+            }
+                    </div>
+
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("ItemsData", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.ItemsData)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("CatMainList", "Items")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.ItemsData)">
+                    <image href="~/img/Items.jpg" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض و تسجيل بيانات الاصناف  </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("CatMainList", "Items")'">@Html.Raw(Resources.DefaultResource.ItemsData)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Units", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.ItemsUnits)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("Index", "Items")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.ItemsUnits)">
+                    <image href="~/img/units.jpg" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تسجيل بيانات وحدات قياس الاصناف</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("Index", "Items")'">
+                            @Html.Raw(Resources.DefaultResource.ItemsUnits)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Assets Transfer", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.AssetsTransfer)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href="@Url.Action("AssetItemsList", "Inventory")" id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.AssetsTransfer)">
+                    <image href="~/img/Room.jpg" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تحويل العهد من موظف الى اخر او ادارة او غرفة</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("AssetItemsList", "Inventory")'">@Html.Raw(Resources.DefaultResource.AssetsTransfer)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        @*</div>*@
+       
+    </div>
+    <br />
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ml-2 mr-2">
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("ItemsSearchStockList", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.InventoryStock)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("RoomsList", "Buildings", new { StoreFlag = "1" })' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.InventoryStock)">
+                    <image href="~/img/inventory.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض بيانات الاصناف الموجودة بالمخازن</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("RoomsList", "Buildings", new { StoreFlag = "1" })'">@Html.Raw(Resources.DefaultResource.InventoryStock)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("InOrders", "Adding"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.AddInOrder)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("AddEditInOrder", "Inorders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.AddInOrder)">
+                    <image href="~/img/AddInorder.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تسجيل سند توريد جديد</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("AddEditInOrder", "Inorders")'">@Html.Raw(Resources.DefaultResource.AddInOrder)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("InOrders", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.SupplyVouchers)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("InOrderList", "InOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.SupplyVouchers)">
+                    <image href="~/img/Inorders.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض بيانات سندات توريد الاصناف </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("InOrderList", "InOrders")'">@Html.Raw(Resources.DefaultResource.SupplyVouchers)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("OutOrders", "Adding"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.AddOutOrder)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href="/Orders/AddEditOutOrder/" id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.AddOutOrder)">
+                    <image href="~/img/AddOutOrder.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تسجيل سند صرف جديد </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("AddEditOutOrder", "Orders")'">@Html.Raw(Resources.DefaultResource.AddOutOrder)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("OutOrders", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.ExchangeVouchers)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("OutOrderList", "Orders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.ExchangeVouchers)">
+                    <image href="~/img/OutOrders.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض بيانات سندات صرف الاصناف   </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("OutOrderList", "Orders")'">@Html.Raw(Resources.DefaultResource.ExchangeVouchers)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("OutOrderItemReport", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.Reports)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href="/Buildings/Index/" id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.Reports)">
+                    <image href="~/img/AssetsReturn.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض تقارير النظام</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("Index", "Home")'">@Html.Raw(Resources.DefaultResource.Reports)</button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        @*</div>*@
+    </div>
+    <br />
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ml-2 mr-2">
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Destroy Orders", "Adding"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.AddDestroyOrders)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("AddEditDestroyOrder", "DestroyOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.AddDestroyOrders)">
+                    <image href="~/img/AddDestroyOrders.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تسجيل سند اهلاك توالف</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("AddEditDestroyOrder", "DestroyOrders")'">
+                            @Html.Raw(Resources.DefaultResource.AddDestroyOrders)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("Destroy Orders", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.DestroyOrders)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("DestroyOrdersList", "DestroyOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.DestroyOrders)">
+                    <image href="~/img/DestroyOrders.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">استعراض بيانات سندات اهلاك التوالف</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("DestroyOrdersList", "DestroyOrders")'">
+                            @Html.Raw(Resources.DefaultResource.DestroyOrders)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("HandOver Orders", "Adding"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.AddHandOverOrders)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("AddEditHandoverOrder", "HandoverOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.AddHandOverOrders)">
+                    <image href="~/img/123.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">تسجيل سند تسليم عهده</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("AddEditHandoverOrder", "HandoverOrders")'">
+                            @Html.Raw(Resources.DefaultResource.AddHandOverOrders)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("HandOver Orders", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.HandOverOrders)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("HandoverOrderList", "HandoverOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.HandOverOrders)">
+                    <image href="~/img/456.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">عرض و البحث عن سندات تسليم العهد</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("HandoverOrderList", "HandoverOrders")'">
+                            @Html.Raw(Resources.DefaultResource.HandOverOrders)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("RequestOutOrders", "Adding"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.RequestOrderAdd)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("AddEditRequestOutOrder", "RequestOutOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.Report_General)">
+                    <image href="~/img/789.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">أضافة طلب صرف جديد</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("AddEditRequestOutOrder", "RequestOutOrders")'">
+                            @Html.Raw(Resources.DefaultResource.RequestOrderAdd)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+        <div class="col">
+            @if (ViewContext.Controller.HasPermission("RequestOutOrders", "Accessing"))
+            {
+        <div class="card shadow-sm">
+            <svg style="margin-top:10px" class="bd-placeholder-img card-img-top" width="100%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="" preserveAspectRatio="xMidYMid slice" focusable="false">
+
+                <title>@Html.Raw(Resources.DefaultResource.RequestOrders)</title>
+
+                @*<rect width="100%" height="100%" fill="#55595c" />*@
+                @*<text x="50%" y="50%" fill="#eceeef" dy=".3em">@Html.Raw(Resources.DefaultResource.Organization)</text>*@
+                @*<img src="~/img/umbrella.png" alt=""  />*@
+                <a href='@Url.Action("RequestOutOrderList", "RequestOutOrders")' id="Imag1" aria-haspopup="true" aria-expanded="true" data-original-title="@Html.Raw(Resources.DefaultResource.Report_Notifactions)">
+                    <image href="~/img/100.png" height="80" width="100%" />
+                </a>
+            </svg>
+
+            <div class="card-body">
+                <p class="card-text">@Html.Raw(Resources.DefaultResource.RequestOrders)</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group colWidth">
+                        <button type="button" class="btn btn-primary my-2" onclick="location.href='@Url.Action("RequestOutOrderList", "RequestOutOrders")'">
+                            @Html.Raw(Resources.DefaultResource.RequestOrders)
+
+                        </button>
+                        @*<a href="#" class="btn btn-primary my-2">الدعوة الرئيسية للعمل</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            }
+                    </div>
+    </div>
+</div>
+    @*<div class="kt-portlet__body">*@
+
+    @*<div id="Success" runat="server"></div>*@
+
+    @{ if (Session["SiteLanguage"].ToString() == "ArabicTheme")
+                    {
+        <script src="assets/vendors/custom/datatables/datatables.bundle.Ar.js" type="text/javascript"></script> <!--begin::Page Scripts(used by this page) -->
+        <script src="assets/app/custom/general/crud/datatables/basic/headers2Ar.js" type="text/javascript"></script> }
+                    else
+                    {
+        <script src="assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+                        <script src="assets/app/custom/general/crud/datatables/basic/headers2.js" type="text/javascript"></script> } }
+
+
+    @*</div>*@
+    @*</div>*@

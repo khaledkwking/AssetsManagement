@@ -1,0 +1,331 @@
+﻿
+@model BOL.EmployeesViewModel 
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                @Html.Raw(Resources.DefaultResource.EmployeesData)
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="kt-subheader-search">
+    <h3 class="kt-subheader-search__title">
+        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+        @Html.Raw(Resources.DefaultResource.GlobalSearch)
+        <span class="kt-subheader-search__desc">
+            @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+        </span>
+    </h3>
+    @*@using (Html.BeginForm("CarList", "Cars", FormMethod.Get))
+        {
+            <p>
+                Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+                <input type="submit" value="Find" />
+            </p>
+        }*@
+    @using (Html.BeginForm("Employees", "HR", FormMethod.Get))
+    {
+        <div class="kt-form">
+            <div class="kt-grid">
+                <div class="kt-grid__item">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <div class="kt-input-icon kt-input-icon--pill kt-input-icon--right">
+                                @*<asp:TextBox ID="SearchTextBox" runat="server" CssClass="form-control "></asp:TextBox>*@
+
+                                @Html.TextBox("Search_Data", ViewBag.Acative as string, new { @class = "form-control" })
+                                <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-search"></i></span></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-4">
+                            <div class="kt-grid__item kt-grid__item--middle">
+                                <div class="kt-margin-top-20 kt--visible-tablet-and-mobile"></div>
+
+                                @*<asp:LinkButton ID="SearchLinkButton" runat="server" Text="<%$ Resources:DefaultResource, Search%>"
+                CssClass="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" />*@
+                                <input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Search />
+
+                                <input type="reset" class="btn btn-upper btn-bold btn-font-sm btn-default" value=@Resources.DefaultResource.Clear />
+                                @*<asp:LinkButton ID="ClearLinkButton" runat="server" Text="<%$ Resources:DefaultResource, Clear%>"
+                CssClass="btn btn-upper btn-bold btn-font-sm btn-default" OnClick="ClearLinkButton_Click" />*@
+
+                            </div>
+                        </div>
+
+                        <div class="col-1">
+                            <span class="kt-subheader-search__desc">
+                                <label>
+                                    @Html.Raw(Resources.DefaultResource.DisplayLeaveEmployees)
+                                    @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+                                </label>
+                            </span>
+                        </div>
+                        <div class="col-1">
+
+                            <span class="kt-switch kt-switch--outline kt-switch--icon kt-switch--success">
+                                <label>
+
+                                    @*onclick = "this.form.submit()"*@
+                                    
+                                    @{ Boolean Act = false;
+                                        if (ViewBag.Acative != null)
+                                        {
+                                            Act = Boolean.Parse(ViewBag.Acative.ToString());
+                                        }
+                                        else
+                                        {
+
+                                        } }
+
+                                    @Html.CheckBox("AcativeFlag", @Act, new { onclick = "this.form.submit()" })
+
+
+                                    @*<input type="checkbox" id="AcativeFlag" Value="@ViewBag.AcativeFlag" />*@
+                                    @*(object)ViewBag.yourValue*@
+                                    <span>
+
+                                    </span>
+
+                                </label>
+                            </span>
+
+                            @*@Html.TextBox("AcativeFlag", ViewBag.Acative as string, new { @class = "form-control" })*@
+                        </div>
+                    </div>
+                    </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+<div class="kt-portlet kt-portlet--mobile">
+    <div class="kt-portlet__head kt-portlet__head--lg">
+        <div class="kt-portlet__head-label">
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon2-checking"></i>
+            </span>
+            <h3 class="kt-portlet__head-title">
+                @Html.Raw(Resources.DefaultResource.EmployeesData)
+
+            </h3>
+        </div>
+        @*<div class="kt-portlet__head-toolbar">
+                <div class="kt-portlet__head-wrapper">
+                    <div class="kt-portlet__head-actions">
+                        <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="Addbtn">
+
+                            <i class="la la-plus"></i>
+                            <span class="kt-nav__link-text">
+                                @Html.Raw(Resources.DefaultResource.NewRecord)
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>*@
+    </div>
+    @*@if (User.Identity.IsAuthenticated)
+    {*@
+        <div class="kt-portlet__body">
+
+            <div class="table-responsive">
+
+
+
+                @if (Model != null)
+                {
+                    <table id="showtable" class="table table-striped table-bordered table-hover table-checkable">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>
+                                    
+                                    @Html.ActionLink(Resources.DefaultResource.ID, "Employees", new { Sorting_Order = "ID", Filter_Value = ViewBag.FilterValue })
+                                </th>
+
+                                <th>
+                                    
+                                    @Html.ActionLink(Resources.DefaultResource.TitleAr, "Employees", new { Sorting_Order = "TitleAr", Filter_Value = ViewBag.FilterValue })
+                                </th>
+                                <th>
+                                    @Html.ActionLink(Resources.DefaultResource.Title, "Employees", new { Sorting_Order = "Title", Filter_Value = ViewBag.FilterValue })
+                                   
+                                </th>
+
+                                <th>
+                                    @Html.ActionLink(Resources.DefaultResource.Email, "Employees", new { Sorting_Order = "Email", Filter_Value = ViewBag.FilterValue })
+                                </th>
+
+                                <th>
+                                    @Html.ActionLink(Resources.DefaultResource.DeptTitle, "Employees", new { Sorting_Order = "DeptTitle", Filter_Value = ViewBag.FilterValue })
+                                </th>
+                                <th>
+                                    @Html.ActionLink(Resources.DefaultResource.JobTitle, "Employees", new { Sorting_Order = "JobTitle", Filter_Value = ViewBag.FilterValue })
+                                </th>
+
+                                <th>
+                                    @Html.ActionLink(Resources.DefaultResource.FingerNo, "Employees", new { Sorting_Order = "FingerNo", Filter_Value = ViewBag.FilterValue })
+                                </th>
+
+                                <th>
+                                    @Html.ActionLink(Resources.DefaultResource.CivilId, "Employees", new { Sorting_Order = "CivilId", Filter_Value = ViewBag.FilterValue })
+                                </th>
+
+                                <th width="10%">
+                                        @Html.Raw(Resources.DefaultResource.Actions)
+                                </th>
+
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.Employees)
+                        {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FULL_NAME_AR)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FULL_NAME_En)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeptTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fingerprint_Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Civil_Id)
+                        </td>
+                        <td width="10%" class="text-center block-options">
+                            <form method="post">
+
+                                @*<button id="Floorsbtn" type="button" data-toggle="kt-tooltip" title="@Html.Raw(Resources.DefaultResource.Employees)" class="btn btn-sm btn-icon btn-outline-primary btn-icon-md"
+                                        value=@Resources.DefaultResource.Employees onclick="location.href='@Url.Action("Employees", "HR", new { Id = @item.Id })'">
+                                    <i class="la la-building"></i>
+                                </button>*@
+
+                                <div class="btn btn-sm btn-pill btn-icon btn-outline-primary btn-icon-md">
+                                    <a href="#" id="A1" runat="server" class="btn btn-sm btn-pill btn-icon btn-outline-primary btn-icon-md"
+                                       data-bs-toggle="dropdown" aria-expanded="false" data-original-title="@Html.Raw(Resources.DefaultResource.Employees)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    @*<div class="dropdown-menu dropdown-menu-right">*@
+                                    <div class="@GlobalsCls.LangMenuDir(Session["SiteLanguage"].ToString())">
+                                        <ul class="kt-nav">
+                                            <li class="kt-nav__item">
+                                                <a href='@Url.Action("ItemsStockList", "Inventory", new { EmpId = @item.Id})' class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon flaticon-event-calendar-symbol"></i>
+                                                    <span class="kt-nav__link-text">
+                                                        @Html.Raw(Resources.DefaultResource.DisplayAssets)
+
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href='@Url.Action("AssetItemsList", "Inventory", new { EmpId = @item.Id })' class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                                    <span class="kt-nav__link-text">
+                                                        @Html.Raw(Resources.DefaultResource.AssetsTransfer)
+                                                        @*<asp:Literal runat="server" Text="@Html.Raw(Resources.DefaultResource.Extension)" />*@
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-nav__item">
+                                                <a href='@Url.Action("AddEditOutOrder", "Orders", new { EmpId = @item.Id })' class="kt-nav__link">
+                                                    <i class="kt-nav__link-icon flaticon-users"></i>
+                                                    <span class="kt-nav__link-text">
+                                                        @Html.Raw(Resources.DefaultResource.AddOutOrder)
+                                                    </span>
+                                                </a>
+                                            </li>
+
+                                            @*<li class="kt-nav__item">
+                    <a href='@Url.Action("Employees", "HR", new { Id = @item.Id })' class="kt-nav__link">
+                        <i class="kt-nav__link-icon flaticon-coins"></i>
+                        <span class="kt-nav__link-text">
+                            @Html.Raw(Resources.DefaultResource.AddOutOrder)
+                        </span>
+                    </a>
+                </li>*@
+
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </form>
+                </td>
+                    </tr>
+
+                        }
+
+                    </table>
+
+                    <div class="paginationCust pagedList">
+
+                        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+                        @Html.PagedListPager((PagedList.IPagedList)Model.Employees, Page_No => Url.Action("Employees", new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue, AcativeFlag = ViewBag.Acative })
+              , PagedListRenderOptions.ClassicPlusFirstAndLast)
+
+
+
+                    </div>
+                }
+            </div>
+        </div>
+    @*}*@
+</div>
+
+
+

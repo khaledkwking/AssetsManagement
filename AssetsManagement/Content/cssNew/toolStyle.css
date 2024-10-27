@@ -1,0 +1,347 @@
+﻿/*
+    APNPX Studio
+    Precious content managment system for Challenge-s web application for managing special needs schools
+    Created by Mahmoud El-Moghazy
+    mahmoud.abdallah@outlook.com
+    www.apnpx.com
+*/
+@import url("WebFontStyle.css");
+/*Buttons Bar*/
+.mainBarButtons {
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    margin: 3px;
+    background-position: center;
+    border: none;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    cursor: default;
+}
+
+    .mainBarButtons:hover {
+        background-color: transparent;
+        -moz-transition: 0.1s ease;
+        -o-transition: 0.1s ease;
+        -webkit-transition: 0.1s ease;
+        transition: 0.1s ease;
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        background-repeat: no-repeat;
+        margin-left: 3px;
+        margin-right: 3px;
+        background-position: center;
+    }
+
+    .mainBarButtons:focus {
+        background-color: transparent;
+        -moz-transition: 0.1s ease;
+        -o-transition: 0.1s ease;
+        -webkit-transition: 0.1s ease;
+        transition: 0.1s ease;
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        background-repeat: no-repeat;
+        margin-left: 0.2%;
+        margin-right: 0.2%;
+        background-position: center;
+    }
+
+    .mainBarButtons:disabled {
+        background-color: transparent;
+        color: white;
+    }
+
+
+.addUser {
+    background-image: url(../Images/ButtonsBG/addUser.png);
+}
+
+.addBtn {
+    background-image: url(../Images/ButtonsBG/add.png);
+}
+
+.editBtn {
+    background-image: url(../Images/ButtonsBG/edit.png);
+}
+
+.saveBtn {
+    background-image: url(../Images/ButtonsBG/Save.png);
+}
+
+.deletBtn {
+    background-image: url(../Images/ButtonsBG/delet.png);
+}
+
+.printBtn {
+    background-image: url(../Images/ButtonsBG/printer.png);
+}
+
+/*profile circle image*/
+.CirclePhoto {
+    height: 105px;
+    width: 105px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.4);
+    margin-right: 40px;
+}
+
+/*tabs*/
+#formTabs .tab-content {
+    color: #67727a;
+    background-color: #cff589;
+    padding: 10px 10px;
+}
+
+#formTabs .nav-pills > li > a {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    /*background-color: #ffd800;*/
+    color: #67727a;
+    margin-left: 2px;
+    float: right;
+}
+
+#formTabs .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: #67727a;
+    background-color: #cff589;
+}
+
+#formTabs .tab-pane {
+    background-color: #f6f6f6 !important;
+    padding: 10px 10px 10px 10px;
+    color: #67727a;
+}
+
+#formTabs .sub-tab {
+    background-color: #cff589 !important;
+    padding: 10px 10px 10px 10px;
+    color: #67727a;
+}
+
+/*all forms TextBox*/
+.FormTextBox {
+    margin-top: 5px;
+    vertical-align: middle;
+    font-size: 1.3em;
+    text-align: right;
+    width: 100%;
+    height: 35px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #808080;
+    background-color: white;
+    color: black;
+}
+
+.FormMultiLineTextBox {
+    resize: none;
+    height: 103px;
+}
+
+/*all forms dropdown list*/
+.FormDropDownList {
+    margin-top: 5px;
+    vertical-align: middle;
+    font-size: 1.3em;
+    text-align: right;
+    width: 100%;
+    height: 35px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #808080;
+    color: black;
+}
+
+/*Pages Grid View*/
+.PagesGridViewStyle {
+    background-color: #fff;
+    width: 100%;
+    min-width: 100%;
+}
+
+.PagesGridViewHeader {
+    color: #406ff3;
+    height: 25px;
+    font-family: 'Cairo-Regular';
+    font-size: 13px;
+    text-align: center !important;
+}
+
+.PagesGridViewRows {
+    background-color: transparent;
+    font-size: 13px;
+    font-family: 'Cairo-Regular';
+    color: black;
+    height: 30px !important;
+    text-align: right;
+    border-bottom: 1px solid #406ff3;
+}
+
+    .PagesGridViewRows:hover {
+        background-color: #406ff3;
+        color: black;
+    }
+
+.PagesGridViewStyle a /** FOR THE PAGING ICONS  **/ {
+    background-color: Transparent;
+    color: black;
+    font-size: 16px !important;
+    border: 0px !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .PagesGridViewStyle a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
+        color: #fff;
+        background-color: Transparent;
+    }
+
+.PagesGridViewStyle span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/ {
+    background-color: #fff;
+    color: #000;
+    padding: 5px 5px 5px 5px;
+}
+
+.pager {
+    background-color: #406ff3;
+    font-family: 'Cairo-Regular';
+    color: White;
+    height: 30px;
+    width: 30px !important;
+    text-align: center;
+}
+
+.PagesGridViewStyle td {
+    padding: 5px;
+}
+
+.PagesGridViewStyle th {
+    padding: 5px;
+    text-align: center !important;
+}
+
+/*push menu gridview*/
+/*gridview*/
+.GridViewStyle {
+    width: 100%;
+    min-width: 100%;
+}
+
+.header {
+    font-family: Arial;
+    color: #406ff3;
+    height: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.rows {
+    background-color: transparent;
+    font-family: Arial;
+    font-size: 16px;
+    color: #fff;
+    height: 55px !important;
+    text-align: right;
+    border-bottom: 1px solid #b6ff00;
+}
+
+    .rows:hover {
+        background-color: #b6ff00;
+        color: black;
+    }
+
+.GridViewStyle a /** FOR THE PAGING ICONS  **/ {
+    background-color: Transparent;
+    color: #fff;
+    font-size: 16px !important;
+    border: 0px !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .GridViewStyle a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
+        color: black;
+        background-color: Transparent;
+    }
+
+.GridViewStyle span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/ {
+    background-color: #fff;
+    color: #000;
+    padding: 5px 5px 5px 5px;
+}
+
+.PagesGridViewPager {
+    background-color: #406ff3;
+    font-family: Arial;
+    color: White;
+    height: 30px;
+    width: 30px !important;
+    text-align: center;
+}
+
+.GridViewStyle td {
+    padding: 5px;
+}
+
+.GridViewStyle th {
+    padding: 5px;
+}
+
+/*check box*/
+.checkbox .btn, .checkbox-inline .btn {
+    width: 230px;
+    height: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    min-width: 200px;
+    vertical-align: central;
+}
+
+.checkbox label, .checkbox-inline label {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.checkbox input[type="checkbox"] {
+    float: right !important;
+    width: 20px;
+    height: 20px;
+}
+
+/*Radio button*/
+.radioBtn {
+    width: 120px;
+    height: 40px;
+    min-width: 120px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: central;
+}
+
+    .radioBtn label {
+        display: inline-block;
+        padding-right: 10px;
+    }
+
+    .radioBtn input[type="radio"] {
+        float: right !important;
+        width: 20px;
+        height: 20px;
+    }

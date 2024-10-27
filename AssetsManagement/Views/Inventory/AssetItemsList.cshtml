@@ -1,0 +1,644 @@
+﻿@*@using  MultipleModelInOneView;*@
+
+@model BOL.ItemsStockViewModel
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ //ViewBag.Title = @Html.Raw(Resources.DefaultResource.Rooms);
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+
+
+            @*Url.Action("ItemsStockList", new { Page_No, EmpId = @ViewBag.EmpId,  Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })*@
+            @if (@ViewBag.EmpId != null)
+            {
+<span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href='@Url.Action("Employees", "HR", new { EmpId = @ViewBag.EmpId })' class="kt-subheader__breadcrumbs-link">
+                    @Html.Raw(ViewBag.EmpName as string)
+                </a>            }
+
+            @if (@ViewBag.DeptId != null)
+            {
+<span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href='@Url.Action("Departements", "HR", new { DeptId = @ViewBag.DeptId })' class="kt-subheader__breadcrumbs-link">
+                    @Html.Raw(ViewBag.DeptName as string)
+                </a>            }
+            @if (@ViewBag.RoomId != null)
+            {
+<span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href='@Url.Action("RoomsList", "Buildings", new { RoomId = @ViewBag.RoomId,StoreFlag=@ViewBag.StoreFlag,FloorId=@ViewBag.FloorId,BuildingId=ViewBag.BuildingId })' class="kt-subheader__breadcrumbs-link">
+                    @Html.Raw(ViewBag.RoomName as string)
+                </a>            }
+
+
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("AssetItemsList", "Inventory", FormMethod.Post, htmlAttributes: new { id = "myform", name = "myform" }))
+{
+@Html.AntiForgeryToken();
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    @* First source items *@
+    <div class="row">
+
+        <div class="col-6">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-checking"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            @Html.Raw(Resources.DefaultResource.SourceItemStock)
+
+                        </h3>
+
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                @*<button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="Addbtn" onclick="location.href='@Url.Action("AddEditItemStock", "Inventory")'">
+                                        <i class="la la-plus"></i>
+                                        <span class="kt-nav__link-text">
+                                            @Html.Raw(Resources.DefaultResource.NewRecord)
+                                        </span>
+                                    </button>*@
+                                <input id="CmdSave" value="@Html.Raw(Resources.DefaultResource.TransferAsset)" name="CmdSave" type="submit" onclick="OnSubmit()" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.TransferAsset)" data-toggle="@Html.Raw(Resources.DefaultResource.TransferAsset)" formaction="/Inventory/AssetItemsList" formmethod="post" ValidationGroup="DML" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="kt-portlet__body">
+                    @Html.HiddenFor(m => m.DisplayMode, new { @class = "form-control hidden", id = "DisplayMode", name = "DisplayMode" })
+                    @Html.HiddenFor(m => m.ToDisplayMode, new { @class = "form-control hidden", id = "ToDisplayMode", name = "ToDisplayMode" })
+                    @Html.HiddenFor(m => m.PostFlag, new { @class = "hidden", id = "PostFlag", name = "PostFlag" })
+
+
+
+                    <div class="table-responsive" style="height:800px">
+                        <div id="dropDownListdiv">
+                            <div class="form-group row text-center">
+                                @Html.Label("", Resources.DefaultResource.SearchBy, htmlAttributes: new { @class = "control-label col-md-4 HeadMenuItem" })
+
+                                <div class="col-md-3">
+                                    @Html.RadioButtonFor(m => m.searchType, "1", new { @class = "HeadMenuItem" })
+                                    @Html.Label("Male", Resources.DefaultResource.EmpName, new { @class = "HeadMenuItem" })
+                                </div>
+                                <div class="col-md-3">
+
+                                    @Html.RadioButtonFor(m => m.searchType, "2", new { @class = "HeadMenuItem " })
+                                    @Html.Label("Female", Resources.DefaultResource.RoomName, new { @class = "HeadMenuItem  text-start" })
+
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+
+
+
+                                @Html.Label("lblFromEmpId", Resources.DefaultResource.EmpName, new { @class = "col-md-2 col-form-label HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.FromEmpId, Model.FromEmployees, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "FromEmpId", name = "FromEmpId" })
+                                </div>
+
+                                @Html.Label("lblFromDeptId", Resources.DefaultResource.DeptTitle, new { @class = "col-md-2 col-form-label HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.FromDeptId, Model.FromDepartments, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "FromDeptId", name = "FromDeptId" })
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                @Html.Label("FromRoomId", Resources.DefaultResource.RoomName, new { @class = "col-md-2 col-form-label HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.FromRoomId, Model.FromRooms, Resources.DefaultResource.ListChoose, new { @class = "form-control select-chosen" })
+                                </div>
+
+                                @Html.Label("lblActionType", Resources.DefaultResource.ActionType, new { @class = "col-md-2 col-form-label Red-Font-Color HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.ActionType, new SelectList(new[]
+                                                  {
+                                            new { ID="1", Name=Resources.DefaultResource.Move_Employee_To_Empty_Room },
+                                            new { ID="2", Name=Resources.DefaultResource.Switching_Staff_Offices },
+                                            new { ID="3", Name=Resources.DefaultResource.Transfer_employees_Assets},
+                                            new { ID="4", Name=Resources.DefaultResource.Transfer_Items_Between_Rooms},
+                                            }, "ID", "Name", 1), htmlAttributes: new { @class = "form-control Blue-Font-Color HeadMenuItem" })
+                                    @*@Html.DropDownListFor(m => m.FromDeptId, Model.FromDepartments, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "FromDeptId", name = "FromDeptId" })*@
+                                </div>
+                            </div>
+                        </div>
+                        @*new SelectList(new List<SelectListItem>
+                            {
+                            new SelectListItem { Selected = true, Text = Resources.DefaultResource.Move_Employee_To_Empty_Room, Value = "-1"},
+                            new SelectListItem { Selected = false, Text = Resources.DefaultResource.Switching_Staff_Offices, Value = "2"},
+                            new SelectListItem { Selected = false, Text = Resources.DefaultResource.Transfer_employees_Assets, Value = "3"},
+                            }, "Value", "Text")*@
+
+
+                        <div id="DivMsg" class="ErrorMsglbl" runat="server">
+                            @if (TempData["Message"] != null)
+                            {
+            <div class="alert alert-success alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                </button>
+                @Html.Raw(Resources.DefaultResource.SaveMessage)
+            </div>}
+                            @if (TempData["warningMessage"] != null)
+                            {
+            <div class="alert alert-warning alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                </button>
+
+                @TempData["warningMessage"]
+
+            </div>}
+
+
+                        </div>
+                        @if (Model != null)
+                        {
+        <table id="myFromTable" class="table table-striped table-bordered table-hover table-checkable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                        @Html.Raw(Resources.DefaultResource.ID)
+                    </th>
+
+
+                    <th>
+                        @Html.Raw(Resources.DefaultResource.TitleAr)
+                        @*@Html.Raw(Resources.DefaultResource.CarModel)*@
+                    </th>
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.RFID)
+                    </th>
+
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.ItemBarcode)
+                    </th>
+
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.Quantity)
+                    </th>
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.ItemStatus)
+                    </th>
+
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.RoomName)
+                    </th>
+                    <th width="10%" class="text-center">
+                        @*@Html.Raw(Resources.DefaultResource.Actions)*@
+                        <input type="checkbox" onclick="FromcheckAll()" id="myFromCheckAll" title=@Html.Raw(Resources.DefaultResource.Actions) />
+                    </th>
+
+
+                </tr>
+            </thead>
+
+
+            @*@foreach (var item in Model.ItemsStock)*@
+            @for (int i = 0; i < Model.ItemsStock.Count; i++)
+            {
+
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].StockId, new { id = "FromStockId", name = "FromStockId" })
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].Item_tbl.Item_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].Item_RFID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].Item_BarCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].ItemQty)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].Status.AName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ItemsStock[i].Room_tbl.Room_Name)
+    </td>
+    <td width="10%" class="text-center">
+
+        @*@Html.CheckBoxFor(modelItem => Model.ItemsStockCheckList[i].IsSelected)
+            @Html.HiddenFor(modelItem => Model.ItemsStockCheckList[i].Name, new { id = Model.ItemsStockCheckList[i].Name, name = Model.ItemsStockCheckList[i].Name })*@
+        @*<input id="@Model.ItemsStockCheckList[i].Name" type="checkbox" name="@Model.ItemsStockCheckList[i].Name" value="@Model.ItemsStock[i].Item_Id" checked="@Model.ItemsStockCheckList[i].IsSelected" />*@
+        @*@Html.CheckBoxFor(m => item.ItemSelected, new { id = "ItemSelected", name = "ItemSelected" })*@
+        @*<button id="Floorsbtn" type="button" data-toggle="kt-tooltip" title=" @Html.Raw(Resources.DefaultResource.Edite)" class="btn btn-sm btn-icon btn-outline-primary btn-icon-md"
+                    value=@Resources.DefaultResource.Edite onclick="location.href='@Url.Action("AddEditItemStock", "Inventory", new { Id = @item.StockId,RoomId=ViewBag.RoomId })'">
+                <i class="fa fa-edit"></i>
+            </button>*@
+        @Html.CheckBoxFor(modelItem => Model.ItemsStockCheckList[i].IsSelected)
+
+        @Html.HiddenFor(modelItem => Model.ItemsStockCheckList[i].Name, new { @Value = Model.ItemsStockCheckList[i].Name })
+        @Html.HiddenFor(modelItem => Model.ItemsStockCheckList[i].Id, new { @Value = Model.ItemsStockCheckList[i].Id })
+        @*@Html.LabelFor(modelItem => Model.ItemsStockCheckList[i].IsSelected, Model.ItemsStockCheckList[i].Name)*@
+
+
+    </td>
+</tr>}
+
+
+        </table> @*<div class="paginationCust pagedList">*@ @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@ @*@Html.PagedListPager((PagedList.IPagedList)Model.ItemsStock, Page_No => Url.Action("ItemsStockList", new { Page_No, EmpId = @ViewBag.EmpId, DeptId = @ViewBag.DeptId, RoomId = @ViewBag.RoomId, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })
+                                , PagedListRenderOptions.ClassicPlusFirstAndLast)*@ @*</div>*@}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* End of First Source items *@
+        @* second target items *@
+
+
+        <div class="col-6">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-checking"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            @Html.Raw(Resources.DefaultResource.TargetItemStock)
+
+                        </h3>
+
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="kt-portlet__body">
+
+                    <div class="table-responsive" style="height:800px">
+                        <div id="dropDownListdivTo">
+                            <div class="form-group row text-center">
+                                @Html.Label("", Resources.DefaultResource.SearchBy, htmlAttributes: new { @class = "control-label col-md-4 HeadMenuItem" })
+
+                                <div class="col-md-3">
+                                    @Html.RadioButtonFor(m => m.searchTypeTo, "1", new { @class = "HeadMenuItem" })
+                                    @Html.Label("Empsearch", Resources.DefaultResource.EmpName, new { @class = "HeadMenuItem" })
+                                </div>
+                                <div class="col-md-3">
+
+                                    @Html.RadioButtonFor(m => m.searchTypeTo, "2", new { @class = "HeadMenuItem " })
+                                    @Html.Label("Roomsearch", Resources.DefaultResource.RoomName, new { @class = "HeadMenuItem  text-start" })
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+
+                                @Html.Label("lblToEmpId", Resources.DefaultResource.EmpName, new { @class = "col-md-2 col-form-label HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.ToEmpId, Model.ToEmployees, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "ToEmpId", name = "ToEmpId" })
+                                </div>
+
+                                @Html.Label("lblToDeptId", Resources.DefaultResource.DeptTitle, new { @class = "col-md-2 col-form-label HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.ToDeptId, Model.ToDepartments, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "ToDeptId", name = "ToDeptId" })
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-group row">
+                                @Html.Label("lblToRoomId", Resources.DefaultResource.RoomName, new { @class = "col-md-2 col-form-label HeadMenuItem" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.ToRoomId, Model.ToRooms, Resources.DefaultResource.ListChoose, new { @class = "form-control select-chosen" })
+                                </div>
+                            </div>
+                        </div>
+                       
+                        @if (Model != null)
+                        {
+
+                    <table id="myTable" class="table table-striped table-bordered table-hover table-checkable">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>
+                                    @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                                    @Html.Raw(Resources.DefaultResource.ID)
+                                </th>
+
+
+                                <th>
+                                    @Html.Raw(Resources.DefaultResource.TitleAr)
+                                    @*@Html.Raw(Resources.DefaultResource.CarModel)*@
+                                </th>
+                                <th>
+
+                                    @Html.Raw(Resources.DefaultResource.RFID)
+                                </th>
+
+                                <th>
+
+                                    @Html.Raw(Resources.DefaultResource.ItemBarcode)
+                                </th>
+
+                                <th>
+
+                                    @Html.Raw(Resources.DefaultResource.Quantity)
+                                </th>
+                                <th>
+
+                                    @Html.Raw(Resources.DefaultResource.ItemStatus)
+                                </th>
+
+                                <th>
+
+                                    @Html.Raw(Resources.DefaultResource.RoomName)
+                                </th>
+                                <th width="10%">
+                                   
+                                    <input type="checkbox" onclick="checkAll()" id="myCheckAll" title=@Html.Raw(Resources.DefaultResource.Actions) />
+                                </th>
+                            </tr>
+                        </thead> @*@foreach (var item in Model.ToItemsStock)
+        {*@
+                        @for (int i = 0; i < Model.ToItemsStock.Count; i++)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].StockId, new { id = "ToStockId", name = "ToStockId" })
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].Item_tbl.Item_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].Item_RFID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].Item_BarCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].ItemQty)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].Status.AName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.ToItemsStock[i].Room_tbl.Room_Name)
+                        </td>
+                        <td width="10%" class="text-center">
+                            @Html.CheckBoxFor(modelItem => Model.ToItemsStockCheckList[i].IsSelected)
+                            @Html.HiddenFor(modelItem => Model.ToItemsStockCheckList[i].Name, new { @Value = Model.ToItemsStockCheckList[i].Name })
+                            @Html.HiddenFor(modelItem => Model.ToItemsStockCheckList[i].Id, new { @Value = Model.ToItemsStockCheckList[i].Id })
+                        </td>
+                    </tr>
+}
+
+                    </table> @*<div class="paginationCust pagedList">*@ @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@ @*@Html.PagedListPager((PagedList.IPagedList)Model.ItemsStock, Page_No => Url.Action("ItemsStockList", new { Page_No, EmpId = @ViewBag.EmpId, DeptId = @ViewBag.DeptId, RoomId = @ViewBag.RoomId, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })
+                        , PagedListRenderOptions.ClassicPlusFirstAndLast)*@ @*</div>*@}
+                    </div>
+</div>
+</div>
+</div>
+</div>
+@* End of second target items *@
+
+</div>
+}
+
+@section scripts{
+    <script type="text/javascript">
+
+        //$('#FromEmpId').select2({
+        //    theme: 'bootstrap-5'
+        //});
+        /*  $("#FromDeptId").select2();*/
+
+            $("#FromEmpId").val(@Model.FromEmpId).trigger('change');
+              @*alert(@Model.FromDeptId);*@
+
+            $("#FromDeptId").val(@Model.FromDeptId).trigger('change');
+
+             $("#FromRoomId").val(@Model.FromRoomId).trigger('change');
+
+
+            $("#ToEmpId").val(@Model.ToEmpId).trigger('change');
+              @*alert(@Model.FromDeptId);*@
+
+            $("#ToDeptId").val(@Model.ToDeptId).trigger('change');
+
+            $("#ToRoomId").val(@Model.ToRoomId).trigger('change');
+
+            $("#ActionType").val(@Model.ActionType).trigger('change');
+
+        // Begin :: function when change select From Part
+               $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+
+                     if (id != 'ActionType') {
+                         //if (id == "FromRoomId")
+                         //{
+                         //    document.getElementById("searchType").value = 2;
+                         //}
+                       /*  alert(id);*/
+                         document.getElementById("DisplayMode").value = id;
+                        /* alert(document.getElementById(id).value);*/
+                         const form = document.getElementById('myform');
+                         form.action = "LoadData";
+                         form.name = "submit";
+                         //form.value = "Save";
+                         form.submit();
+
+                        /* document.myform.submit();*/
+
+                         //SetTempData();
+                         //function SetTempData() {
+                         //    $.ajax({
+                         //        type: "POST",
+                         //        url: '/Inventory/SetTempData',     //your action
+                         //        data: $('#myform').serialize(),   //your form name.it takes all the values of model
+                         //        dataType: 'json',
+                         //        success: function (result) {
+                         //            console.log(result);
+                         //        }
+                         //    });
+                         //   }
+
+                        /* document.myform.submit();*/
+                     }
+
+                     //var SearchType = $("input[type='radio'][name='searchType']:checked").val();;
+                     //var e1 = document.getElementById("FromEmpId");
+                     //var FromEmpId = e1.value;
+                     //var FromRoomId = document.getElementById("FromEmpId").value;
+                     //var FromDeptId = document.getElementById("FromDeptId").value ;
+                   /*  setDropDrownList(string type, int value, int SearchType)*/
+
+                     @*$.post("@Url.Action("GetDataList")", { FromEmpId: FromEmpId, FromRoomId: FromRoomId, FromDeptId: FromDeptId, SearchType: SearchType },
+                         function (data) {
+                             alert(FromEmpId);
+                             switch (id) {
+                                 case "FromEmpId":
+                                  /*   alert(id);*/
+                                     PopulateDropDown("#EmpId", data.FromEmployees);
+                                         break;
+
+                              }
+                         });*@
+
+
+                 });
+               });
+
+            $('input[type=radio][name=searchType]').change(function () {
+                document.myform.submit();
+                //if (this.value == '1') {
+                //    alert("Allot Thai Gayo Bhai");
+                //    document.myform.submit();
+                //}
+                //else if (this.value == '2') {
+                //    alert("Transfer Thai Gayo");
+                //    document.myform.submit();
+                //}
+            });
+        // End :: function when change select From Part
+
+        // Begin :: function when change select To Part
+        $(function () {
+
+            $("#dropDownListdivTo").on("change", "select", function () {
+                var value = $(this).val();
+                var id = $(this).attr("id");
+               /* alert(id);*/
+                document.getElementById("ToDisplayMode").value = id;
+
+                document.myform.submit();
+                 });
+        });
+
+        $('input[type=radio][name=searchTypeTo]').change(function () {
+            document.myform.submit();
+
+        });
+        // End :: function when change select From Part
+
+        //function SelectedIndexChanged() {
+        //    //Form post
+        //    alert("hello");
+        //    document.myform.submit();
+        //}
+
+        function OnSubmit()
+        {
+            var FromDeptId = document.getElementById("FromDeptId").value;
+            var ToDeptId = document.getElementById("ToDeptId").value;
+            //alert(FromDeptId);
+            //alert(ToDeptId);
+            document.getElementById("PostFlag").value = 1;
+            if (FromDeptId != ToDeptId)
+            {
+                let confirmAction = confirm("@Resources.DefaultResource.DepatmentDiffTitle");
+                if (confirmAction) {
+                    //alert("Action successfully executed");
+                    document.getElementById("PostFlag").value = 1;
+                }
+                else
+                {
+                    document.getElementById("PostFlag").value = 0;
+                    //alert("Action canceled");
+                }
+
+            }
+
+
+        }
+
+        
+    $('#myCheckAll').click(function () {
+        var chk = $(this).is(':checked');
+        var cnt = $('input[type=checkbox]', "#myTable").length;
+        $('input[type=checkbox]', "#myTable").each(function () {
+            if (chk) {
+                $(this).attr('checked','checked');
+            }
+            else {
+                $(this).removeAttr('checked');
+            }
+        });
+    });
+
+        $('#myFromCheckAll').click(function () {
+            var chk = $(this).is(':checked');
+            var cnt = $('input[type=checkbox]', "#myFromTable").length;
+            $('input[type=checkbox]', "#myFromTable").each(function () {
+                if (chk) {
+                    $(this).attr('checked', 'checked');
+                }
+                else {
+                    $(this).removeAttr('checked');
+                }
+            });
+        });
+ 
+    </script>
+    @*Display message to user*@
+    @if (TempData["ErroMessage"] != null)
+    {
+<script type="text/javascript">
+
+                alert('@TempData["ErroMessage"]');
+
+</script>    }
+}
+
+

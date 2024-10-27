@@ -1,0 +1,101 @@
+BODY {
+	FONT-SIZE: 70%; BACKGROUND: url(../images/bg5.jpg) #ef9292 repeat-x; COLOR: #fff; FONT-FAMILY: tahoma; TEXT-ALIGN: left
+}
+A {
+	COLOR: #cf2929; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #cf2929; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #cf2929; TEXT-DECORATION: none
+}
+#head {
+	BACKGROUND: #fa5050; MARGIN: 0px auto; WIDTH: 900px; TEXT-ALIGN: center
+}
+#msnbanner {
+	BACKGROUND: url(../images/Header-bgRed.gif) repeat-x 50% top; MARGIN: 0px auto; WIDTH: 976px; HEIGHT: 81px
+}
+#nav {
+	DISPLAY: block; BACKGROUND: url(../images/msnheader4-08Red.gif) repeat-x 50% top; MARGIN: 0px auto; WIDTH: 976px; HEIGHT: 96px
+}
+#headbar {
+	BORDER-RIGHT: #eaebed 1px solid; BORDER-TOP: #eaebed 1px solid; BACKGROUND: #000; BORDER-LEFT: #eaebed 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #eaebed 1px solid; HEIGHT: 18px
+}
+.clr {
+	CLEAR: both
+}
+.MSnClipTabs LI .linkhover {
+	BORDER-RIGHT: #ff8787 1px solid; BORDER-TOP: #ff8787 1px solid; BORDER-LEFT: #ff8787 1px solid; BORDER-BOTTOM: #ff8787 1px solid
+}
+.MSnClipTabs LI A {
+	BACKGROUND-COLOR: #fce5e5
+}
+.clipcontent {
+	BORDER-RIGHT: #ff8787 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ff8787 1px solid; PADDING-LEFT: 0px; MARGIN-BOTTOM: 15px; PADDING-BOTTOM: 15px; BORDER-LEFT: #ff8787 1px solid; WIDTH: 100%; PADDING-TOP: 0px; BORDER-BOTTOM: #ff8787 1px solid
+}
+.heading {
+	BACKGROUND: #f3f3f3; MARGIN-BOTTOM: 10px; BORDER-BOTTOM: #cecece 1px solid; HEIGHT: 24px
+}
+.clipcontent IMG {
+	FLOAT: left; MARGIN: -11px 10px
+}
+.tabs .tabContent {
+	BORDER-RIGHT: #ff8787 1px solid; BORDER-TOP: #ff8787 1px solid; BORDER-LEFT: #ff8787 1px solid; BORDER-BOTTOM: #ff8787 1px solid
+}
+.contentslide {
+	BORDER-RIGHT: #ff8787 1px solid; BORDER-TOP: #ff8787 1px solid; BORDER-LEFT: #ff8787 1px solid; BORDER-BOTTOM: #ff8787 1px solid
+}
+.ClipContent {
+	BORDER-RIGHT: #ff8787 1px solid; BORDER-LEFT: #ff8787 1px solid; BORDER-BOTTOM: #ff8787 1px solid
+}
+.ClipContent .Heading {
+	BACKGROUND: url(../images/Headingbg4Red.Gif) center top
+}
+.pagination {
+	BORDER-RIGHT: #ff8787 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ff8787 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #ff8787 1px solid; WIDTH: 346px; PADDING-TOP: 3px; BORDER-BOTTOM: #ff8787 1px solid; HEIGHT: 18px; BACKGROUND-COLOR: #fce5e5; TEXT-ALIGN: right
+}
+#logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(../images/MSNArabiaLogoRed.gif) no-repeat 23% 64%; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 47px; WIDTH: 176px; PADDING-TOP: 6px; HEIGHT: 62px
+}
+.hotmail A {
+	MARGIN-TOP: 15px; DISPLAY: block; WIDTH: 39px; HEIGHT: 30px
+}
+.messanger A {
+	MARGIN-TOP: 15px; DISPLAY: block; WIDTH: 39px; HEIGHT: 30px
+}
+.spaces A {
+	MARGIN-TOP: 15px; DISPLAY: block; WIDTH: 39px; HEIGHT: 30px
+}
+.hotmail A {
+	BACKGROUND: url(../images/hotmail.gif) no-repeat
+}
+.messanger A {
+	BACKGROUND: url(../images/messenger.gif) no-repeat
+}
+.spaces A {
+	BACKGROUND: url(../images/spaces.gif) no-repeat
+}
+.link {
+	DISPLAY: block; BACKGROUND: url(../images/link.gif) no-repeat; WIDTH: 79px; HEIGHT: 53px
+}
+#wl {
+	BACKGROUND: url(../images/wllogo.gif) no-repeat 450px 67px; HEIGHT: 82px
+}
+#big3 A {
+	COLOR: #fff
+}
+#big3 {
+	PADDING-LEFT: 8px; BACKGROUND: url(../images/Big-bgRed.gif) no-repeat center bottom; FLOAT: left; MARGIN-LEFT: 0px; WIDTH: 250px; PADDING-TOP: 9px
+}
+#TxtAd {
+	DISPLAY: block; BACKGROUND: url(../images/homeheaderRed.gif) repeat-x 50% bottom; MARGIN: -1px auto 0px; WIDTH: 976px; HEIGHT: 17px
+}
+#footer {
+	CLEAR: both; BACKGROUND: url(../images/Fotter-bgRed.gif) center bottom; FLOAT: none; HEIGHT: 151px
+}
+H6 {
+	COLOR: #b69696
+}
+.clipcontentDataList {
+	BORDER-RIGHT: #ff8787 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ff8787 1px solid; PADDING-LEFT: 0px; MARGIN-BOTTOM: 15px; PADDING-BOTTOM: 15px; BORDER-LEFT: #ff8787 1px solid; WIDTH: 100%; PADDING-TOP: 0px; BORDER-BOTTOM: #ff8787 1px solid

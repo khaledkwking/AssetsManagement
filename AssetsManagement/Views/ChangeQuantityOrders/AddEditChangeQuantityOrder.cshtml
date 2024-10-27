@@ -1,0 +1,700 @@
+﻿@*@using  MultipleModelInOneView;*@
+
+
+@model BOL.ChangeQuantityOrdersViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ //ViewBag.Title = @Html.Raw(Resources.DefaultResource.Rooms);
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+
+            @*@if (@ViewBag.EmpId != null)
+                            {
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                                <a href='@Url.Action("Employees", "HR", new { EmpId = @ViewBag.EmpId })' class="kt-subheader__breadcrumbs-link">
+                                    @Html.Raw(ViewBag.EmpName as string)
+                                </a>
+                                }*@
+
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("AddEditChangeQuantityOrder", "ChangeQuantityOrders", FormMethod.Post, htmlAttributes: new { id = "myform", name = "myform" }))
+{
+@Html.AntiForgeryToken();
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    @* First source items *@
+    <div class="row">
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-checking"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            @Html.Raw(Resources.DefaultResource.ChangeQuantityOrdersTitle)
+
+                        </h3>
+
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="Addbtn"
+                                        onclick="location.href='@Url.Action("AddEditChangeQuantityOrder", "ChangeQuantityOrders",new {Id=""})'">
+
+                                    <i class="la la-plus"></i>
+                                    <span class="kt-nav__link-text">
+                                        @Html.Raw(Resources.DefaultResource.ClearItems)
+                                    </span>
+                                </button>
+                                &nbsp;
+                                <button name="CmdSave" type="submit" id="CmdSave" value="CmdSave" class="btn btn-success" formmethod="post" ValidationGroup="DML">
+                                    <i class="fa-floppy-disk"></i>
+                                    <span class="kt-nav__link-text">
+                                        @Html.Raw(Resources.DefaultResource.Save)
+                                    </span>
+                                </button>
+                                @*<input id="CmdSave" value="@Html.Raw(Resources.DefaultResource.Save )" name="CmdSave" type="submit" onclick="OnSubmit()" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.TransferAsset)" data-toggle="@Html.Raw(Resources.DefaultResource.TransferAsset)" formaction="/Inventory/AssetItemsList" formmethod="post" ValidationGroup="DML" />*@
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="kt-portlet__body">
+                    @Html.HiddenFor(m => m.DisplayMode, new { @class = "form-control hidden", id = "DisplayMode", name = "DisplayMode" })
+
+                    @Html.HiddenFor(m => m.PostFlag, new { @class = "hidden", id = "PostFlag", name = "PostFlag" })
+
+                    @*<form method="post" id="ChangeEvent">*@
+                    @*@Html.RadioButton("A1", "1", ViewData["IsSelected"] == "1", new { onclick = "document.getElementById('ChangeEvent').submit();" })*@
+                    @*</form>*@
+                   <br />
+                    <br />
+    
+                    <div class="table-responsive" style="height:800px">
+                        @*start of part of drowdawn lists*@
+                        <div id="dropDownListdiv">
+
+                            <div class="form-group row ">
+
+                                @Html.Label("lblChangeOrderId", Resources.DefaultResource.VoucherNum, new { @class = "col-lg-2 col-form-label HeadMenuItem ", Name = "lblChangeQuantityOrder" })
+                                <div class="col-lg-4">
+                                    @Html.TextBoxFor(m => m.SelectedItem.ChangeOrderId, new { @class = "form-control", @readonly = "true" })
+                                </div>
+
+                                @Html.Label("lblStoreId_From", Resources.DefaultResource.FromInventory, new { @class = "col -lg-2 col-form-label HeadMenuItem", Name = "lblChangeOrderDate" })
+
+
+                                <div class="col-lg-4" style="@(Model.EditMode == "Edit" ? "pointer-events:none" : "")">
+                                    @Html.HiddenFor(m => m.FromStoreId )
+                                    @Html.HiddenFor(m => m.SelectedItem.PictureName)
+                                    @*<select name="SelectedItem.StoreId" data-val="true" id="SelectedItem.StoreId" class="select-chosen" required >
+                                                <option value="">
+                                                    @Resources.DefaultResource.ListChoose
+                                                </option>
+
+                                                @{ foreach (var item in Model.FromStores)
+                                                    {
+
+                                        <option value=@item.Value @(Model.FromStoreId.ToString() == item.Value ? "selected" : "")>
+
+                                            @item.Text
+                                        </option> } }
+                                            </select>*@
+
+                                    @*@Html.DropDownListFor(m => m.SelectedItem.StoreId, Model.FromStores, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", name = "SelectedItem.StoreId" })*@
+
+                                    @Html.DropDownListFor(m => m.SelectedItem.StoreId_From, Model.FromStores, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", @required = "required", style = "width:100%;", name = "SelectedItem.StoreId_From" })
+                                    @*@Html.DropDownListFor(m => m.SelectedItem.StoreId_From, Model.FromStores, new { @class = "form-control", name = "SelectedItem.StoreId" })*@
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.StoreId_From, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+
+
+
+                                </div>
+
+                                @*@Html.Label("lblSupplierId", Resources.DefaultResource.FromSupplier, new { @class = "col-lg-2 col-form-label HeadMenuItem" })*@
+
+
+                            </div>
+
+                            <div class="form-group row ">
+
+                                @*@Html.ValidationMessageFor(m => m.SelectedItem.StoreId_From, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })*@
+
+                                @Html.Label("lblChangeOrderDate", Resources.DefaultResource.VoucherDate, new { @class = "col-lg-2 col-form-label HeadMenuItem", Name = "lblChangeOrderDate" })
+                                <div class="col-lg-4">
+
+                                    @{ string ExpiredDate = "";
+                                        if (Model.SelectedItem.ChangeOrderDate == null)
+                                        {
+                                            //ExpiredDate =;
+                                        }
+                                        else
+                                        {
+                                            ExpiredDate = Model.SelectedItem.ChangeOrderDate.Value.ToString("dd/MM/yyyy");
+                                        } }
+                                    <input type="text" data-val="true" data-val-required="The Reason field is required." id="SelectedItem_ChangeOrderDate" name="SelectedItem.ChangeOrderDate" value="@ExpiredDate" class="form-control date-picker" AutoComplete="Off" data-date-format="dd/mm/yyyy" required />
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.ChangeOrderDate, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+                                </div>
+
+                                @*@Html.Label("lblToStoreId_From", Resources.DefaultResource.ToInventory, new { @class = "col-lg-2 col-form-label HeadMenuItem" })
+                                    <div class="col-lg-4">
+                                        @Html.DropDownListFor(m => m.SelectedItem.StoreId_From_To, Model.ToStores, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "StoreId_From_To", name = "StoreId_To" })
+                                        @Html.ValidationMessageFor(m => m.SelectedItem.StoreId_To, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+                                    </div>*@
+
+
+
+
+                            </div>
+
+
+
+
+                            
+
+
+
+                            <div class="form-group row">
+
+                                @Html.Label("DestoryNotes", Resources.DefaultResource.Notes, new { @class = "col-2 col-form-label HeadMenuItem ", Name = "lblOutOrder" })
+                                <div class="col-10">
+                                    @Html.TextAreaFor(m => m.SelectedItem.Remarks, 3, 55, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SelectedItem.Remarks, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*End of dropdown lists*@
+
+                            <div id="DivMsg" class="ErrorMsglbl" runat="server">
+                                @*check message error or warning*@
+                                @if (TempData["Message"] != null)
+                                {
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    </button>
+                    @Html.Raw(Resources.DefaultResource.SaveMessage)
+                </div>}
+                                @if (TempData["warningMessage"] != null)
+                                {
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    </button>
+
+                    @TempData["warningMessage"]
+
+                </div>}
+
+                            </div>
+                            @if (Model != null)
+                            {
+            <table id="showtable" class="table table-striped table-bordered table-hover table-checkable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                            @Html.Raw(Resources.DefaultResource.No)
+                        </th>
+
+
+                        <th>
+                            @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                            @Html.Raw(Resources.DefaultResource.ID)
+                        </th>
+
+
+                        <th>
+                            @Html.Raw(Resources.DefaultResource.TitleAr)
+                            @*@Html.Raw(Resources.DefaultResource.CarModel)*@
+                        </th>
+                        <th>
+
+                            @Html.Raw(Resources.DefaultResource.RFID)
+                        </th>
+                        <th>
+
+                            @Html.Raw(Resources.DefaultResource.Barcode)
+                        </th>
+
+                        <th>
+
+                            @Html.Raw(Resources.DefaultResource.RequiredQty)
+                        </th>
+
+                        <th>
+
+                            @Html.Raw(Resources.DefaultResource.CurrentChangeQuantity)
+                        </th>
+                        <th>
+
+                            @Html.Raw(Resources.DefaultResource.CurrentChangeItemQuantity)
+                        </th>
+                        <th>
+
+                            @Html.Raw(Resources.DefaultResource.Quantity)
+                        </th>
+
+                        <th width="10%">
+                            @Html.Raw(Resources.DefaultResource.Actions)
+                        </th>
+
+
+                    </tr>
+                </thead>
+
+                @*@foreach (var item in Model.ChangeQuantityOrdersDetails)*@
+                @{ int sno = 0; }
+                @for (int i = 0; i < Model.ChangeQuantityOrdersDetails.Count; i++)
+                {@*@for (int i = 0; i < Model.SelectedItem.ChangeQuantityOrdersDetials.Count; i++)*@
+
+            <tr style="color:@(Model.ChangeQuantityOrdersDetails[i].StockId == 0 ? "red" : "")">
+                @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].ChangeOrderDetId)
+                @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].StockId)
+                @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].StoreId)
+                @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].StockDetId)
+                <td>
+                    @{ sno++; }
+                    @sno
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].ItemId)
+                    @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].ItemId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].tbl_ItemsStock.Item_tbl.Item_Name)
+                </td>
+                <td style="word-break: break-all;">
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Item_RFID)
+                    @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Item_RFID)
+                </td>
+                <td style="word-break: break-all;">
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Item_BarCode)
+                    @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Item_BarCode)
+                </td>
+                @*<td>
+         @Html.DisplayFor(modelItem => item.Item_RFID)
+        </td>*@
+                <td>
+                    @*@Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Qty)*@
+                    @*@Html.TextBoxFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Qty, new { @class = "form-control", @disabled = (Model.ChangeQuantityOrdersDetails[i].Item_tbl.CountableFlag ? "false" : "true") })*@
+                    @*@disabled*@
+
+                    @(Model.ChangeQuantityOrdersDetails[i].tbl_ItemsStock.Item_tbl.CountableFlag ?
+                                                @Html.TextBoxFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Qty, new { @class = "form-control" })
+                                                : @Html.TextBoxFor(modelItem => Model.ChangeQuantityOrdersDetails[i].Qty, new { @class = "form-control" ,@disabled = "disabled" })
+                                                )
+                    @*<input name="Field"  value="@Model.ChangeQuantityOrdersDetails[i].Qty" tabindex="0"  @(Model.ChangeQuantityOrdersDetails[i].Item_tbl.CountableFlag ? "disabled=\"disabled\"" : "")>*@
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].InStoreQty)
+                    @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].InStoreQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].InStoreItemQty)
+                    @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].InStoreItemQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.ChangeQuantityOrdersDetails[i].tbl_ItemsStock.ItemQty)
+                    @Html.HiddenFor(modelItem => Model.ChangeQuantityOrdersDetails[i].tbl_ItemsStock.ItemQty)
+                </td>
+                <td width="10%">
+                    <button id="CmdDel" name="CmdDel" type="submit" value="CmdDel" data-toggle="kt-tooltip" title=" @Html.Raw(Resources.DefaultResource.Delete)" class="btn btn-outline-danger btn-sm btn-icon"
+                            formaction="/ChangeQuantityOrders/AddEditChangeQuantityOrder/@i" formmethod="post" onclick="return confirm('@Html.Raw(Resources.DefaultResource.DelMessage)');">
+                        <i class="la la-close"></i>
+                    </button>
+                </td>
+            </tr>}
+            </table> @*<div class="paginationCust pagedList">
+
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager((PagedList.IPagedList)Model.SelectedItem.ChangeQuantityOrdersDetials, Page_No => Url.Action("AddEditChangeQuantityOrder", new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })
+                             , PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </div>*@}
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* End of First Source items *@
+        @* second target items *@
+
+
+        <div class="col-xl-6">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-checking"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            @Html.Raw(Resources.DefaultResource.ReaderData)
+
+                        </h3>
+
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+
+                                <button name="CmdScan" type="submit" value="Scan" class="btn btn-success btn-primary btn-icon-sm" id="Scanbtn" formmethod="post" ValidationGroup="DML">
+                                    @*onclick="location.href='@Url.Action("AddEditItemStock", "Inventory")'"*@
+                                    <i class="la la-crosshairs"></i>
+                                    <span class="kt-nav__link-text">
+                                        @Html.Raw(Resources.DefaultResource.ScanReader)
+                                    </span>
+                                </button>
+
+                                <button name="CmdAdd" type="submit" value="AddItem" class="btn btn-info btn-primary btn-icon-sm" id="Addbtn" formmethod="post" ValidationGroup="DML">
+                                    @*onclick="location.href='@Url.Action("AddEditItemStock", "Inventory")'"*@
+                                    <i class="la la-crosshairs"></i>
+                                    <span class="kt-nav__link-text">
+                                        @Html.Raw(Resources.DefaultResource.AddItemTitle)
+                                    </span>
+                                </button>
+                                @*<input id="CmdSave" value="@Html.Raw(Resources.DefaultResource.Save )" name="CmdSave" type="submit" onclick="OnSubmit()" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.TransferAsset)" data-toggle="@Html.Raw(Resources.DefaultResource.TransferAsset)" formaction="/Inventory/AssetItemsList" formmethod="post" ValidationGroup="DML" />*@
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="kt-portlet__body">
+
+                    <div id="DivMsg" class="ErrorMsglbl" runat="server">
+                        @*check message error or warning*@
+                        @if (TempData["ScannerMessage"] != null)
+                        {
+        <div class="alert alert-warning alert-dismissable" role="alert">
+            @TempData["ScannerMessage"]
+        </div>}
+                    </div>
+
+                    <div id="ChooseListdiv">
+                        <div class="form-group row text-center">
+                            @Html.Label("", Resources.DefaultResource.ReaderBarcodeTitle, htmlAttributes: new { @class = "control-label col-lg-4 HeadMenuItem" })
+
+                            <div class="col-lg-3">
+                                @Html.RadioButtonFor(m => m.ReaderType, "1", new { @class = "HeadMenuItem" })
+                                @Html.Label("lblScanner", Resources.DefaultResource.ReaderTitle, new { @class = "HeadMenuItem text-start" })
+                            </div>
+                            <div class="col-lg-3">
+
+                                @Html.RadioButtonFor(m => m.ReaderType, "2", new { @class = "HeadMenuItem " })
+                                @Html.Label("lblBarCode", Resources.DefaultResource.BarCodeTitle, new { @class = "HeadMenuItem  text-start" })
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="Barcodediv" style="display:@(Model.ReaderType == 2 ? "normal" : "none") ">
+                        <div class="form-group row ">
+
+                            @Html.Label("ChangeQuantityOrder", Resources.DefaultResource.Barcode, new { @class = "col-lg-2 form-label HeadMenuItem ", Name = "lblChangeQuantityOrder" })
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.Barcode, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @*<div class="table-responsive" style="height:800px; display:@(Model.ReaderType == 1 ? "normal" : "none")" id="Scannerdiv">*@
+                    <div class="table-responsive" style="height:800px;" id="Scannerdiv">
+                        @if (Model != null)
+                        {
+        <table id="showtable" class="table table-striped table-bordered table-hover table-checkable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @*@Html.Raw(Resources.DefaultResource.CarNo)*@
+                        @Html.Raw(Resources.DefaultResource.ID)
+                    </th>
+
+
+                    <th>
+                        @Html.Raw(Resources.DefaultResource.TitleAr)
+                        @*@Html.Raw(Resources.DefaultResource.CarModel)*@
+                    </th>
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.RFID)
+                    </th>
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.SerialOrBarcode)
+                    </th>
+
+
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.CountableTitle)
+                    </th>
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.Quantity)
+                    </th>
+
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.RoomOrStore)
+                    </th>
+                    <th>
+
+                        @Html.Raw(Resources.DefaultResource.ItemStatus)
+                    </th>
+                    <th width="7%">
+                        @Html.Raw(Resources.DefaultResource.Actions)
+                    </th>
+
+
+                </tr>
+            </thead>
+
+
+            @*@foreach (var item in Model.ItemsStock)*@
+            @if (Model.ScanItems != null)
+            {
+                for (int i = 0; i < Model.ScanItems.Count; i++)
+                {
+<tr style="color:@(Model.ScanItems[i].StockId == 0 ? "red" : "")">
+    @Html.HiddenFor(modelItem => Model.ScanItems[i].Room_Id)
+    @*@Html.HiddenFor(modelItem => Model.ScanItems[i].StockId)*@
+
+
+    <td>
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].StockId)
+        @Html.HiddenFor(modelItem => Model.ScanItems[i].StockId)
+
+        @*@Html.TextBoxFor(x => Model.ScanItems[i].StockId, new { @class = "form-control", @readonly = "readonly", @name = i })*@
+        @*<input type="text" name="@Model.ScanItems[i].StockId" id="@Model.ScanItems[i].StockId" value="@Model.ScanItems[i].StockId" />*@
+    </td>
+
+    <td style="display:@(Model.ScanItems[i].Item_Id > 0 ? "normal" : "none")">
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Item_tbl.Item_Name)
+        @Html.HiddenFor(modelItem => Model.ScanItems[i].Item_Id)
+    </td>
+    <td style="display:@(Model.ScanItems[i].Item_Id == 0 ? "normal" : "none")">
+        @Html.DropDownListFor(modelItem => Model.ItemsScanCheckList[i].ItemId, Model.Items, Resources.DefaultResource.ListChoose, new { @class = "select-chosen" })
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Item_RFID)
+        @Html.HiddenFor(modelItem => Model.ScanItems[i].Item_RFID)
+        @*@Html.EditorFor(modelItem => Model.ScanItems[i].Item_RFID)*@
+    </td>
+
+
+    <td style="display:@(Model.ScanItems[i].Item_Id > 0 && Model.ReaderType ==1 ? "normal" : "none")">
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Item_Serial)
+
+    </td>
+    <td style="display:@(Model.ScanItems[i].Item_Id > 0 && Model.ReaderType ==2 ? "normal" : "none")">
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Item_BarCode)
+
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Item_tbl.CountableFlag)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].ItemQty)
+        @Html.HiddenFor(modelItem => Model.ScanItems[i].ItemQty)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Room_tbl.Room_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.ScanItems[i].Status.AName)
+    </td>
+    <td width="7%">
+        @Html.CheckBoxFor(modelItem => Model.ItemsScanCheckList[i].IsSelected)
+        @Html.HiddenFor(modelItem => Model.ItemsScanCheckList[i].Name)
+        @Html.HiddenFor(modelItem => Model.ItemsScanCheckList[i].Id)
+
+    </td>
+</tr>}
+                    }
+
+        </table> @*<div class="paginationCust pagedList">
+
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager((PagedList.IPagedList)Model.ScanItems, Page_No => Url.Action("AddEditChangeQuantityOrder", new { Page_No,  Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue })
+                    , PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>*@}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* End of second target items *@
+
+    </div>
+</div>}
+@*for Valiadtion*@
+
+@*<script defer src="~/Scripts/jquery.min.js"></script>*@
+@*<script defer src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>*@
+@*<link href="~/assets/vendors/general/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <script defer src="~/assets/vendors/general/select2/dist/js/select2.min.js"></script>*@
+<script defer src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+@section scripts
+    {
+    <script type="text/javascript">
+
+
+
+            @*$("#FromStoreId").val(@Model.FromStoreId).trigger('change');*@
+                  @*alert(@Model.FromDeptId);*@
+
+            @*$("#SupplierId").val(@Model.SupplierId).trigger('change');*@
+
+            @*$("#ToStoreId").val(@Model.ToStoreId).trigger('change');*@
+
+            //alert(document.getElementsByName("OrganizedFlag").value);
+            // Begin :: function when change select From Part
+                   $(function () {
+
+                     $("#dropDownListdiv").on("change", "select", function () {
+
+                         var value = $(this).val();
+                         var id = $(this).attr("id");
+
+                         if (id != 'ActionType')
+                         {
+                             document.getElementById("DisplayMode").value = id;
+                             const form = document.getElementById('myform');
+                            /* form.action = "LoadData";*/
+                             form.name = "submit";
+                             form.value = "submit";
+                             form.submit();
+
+                         }
+
+                       /*  setDropDrownList(string type, int value, int SearchType)*/
+
+                     });
+                   });
+
+            $('input[type=radio][name=ReaderType]').change(function () {
+
+                    if (this.value == '1') {
+                        //$("#Barcodediv").hide();
+                        //$("#Scannerdiv").Show();
+                        /*$('#Barcodediv').css('display', 'none');*/
+                        document.getElementById("PostFlag").value = 5;
+                    }
+                    //else if (this.value == '2') {
+
+                    //    document.myform.submit();
+                    //}
+                document.myform.submit();
+            });
+
+
+        //$('#myform').validate({
+        //    ignore: []
+        //});
+        document.getElementById("Barcode").onkeydown = function (e)
+        {
+
+                const form = document.getElementById('myform');
+
+                if (e.key === "Enter") {
+                    form.name = "CmdBarcode";
+                    form.value = "CmdBarcode";
+                    document.getElementById("PostFlag").value = 3;
+                    form.submit();
+
+                }
+
+            }
+
+
+        //var form = $("#myform")
+        //    .removeData("validator")
+        //    .removeData("unobtrusiveValidation");
+
+        //$.validator.unobtrusive.parse(form);
+
+
+        //$(document).ready(function () {
+
+
+
+
+            // INITIALIZE plugin
+
+        /*  $(document).ready(function () {*/
+       /* $('#myform').validate(); // <- INITIALIZE plugin*/
+    /*  $('#myform').validate({  });*/
+
+
+
+       /* $("select").attr('data-rule-chosen-required', true);*/
+/*        $("select").attr('data-validation-engine', 'validate[required]');*/
+        //$("select").attr('style', 'display:normal');
+
+        //alert("rtertr");
+
+
+
+        $(function () {
+            $("#SelectedItem_StoreId_From").select2();
+        });
+       /* $(".select-chosen").chosen({ rtl: true }); */
+
+    </script>
+    @*Display message to user*@
+    @if (TempData["ErroMessage"] != null)
+    {
+<script type="text/javascript">
+
+
+                          alert('@TempData["ErroMessage"]');
+
+</script>
+}
+}
+
+

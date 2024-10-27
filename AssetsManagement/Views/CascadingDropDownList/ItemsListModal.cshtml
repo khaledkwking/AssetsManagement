@@ -1,0 +1,278 @@
+﻿@model  BOL.ItemsStructureViewModel
+
+
+@{
+    ViewBag.Title = @Html.Raw(Resources.DefaultResource.ItemsData);
+   
+}
+
+
+@using (Html.BeginForm("ItemsListModal", "CascadingDropDownList", FormMethod.Post, htmlAttributes: new { Id = "myform" }))
+{
+    @Html.AntiForgeryToken();
+
+<div id="EditModal" class="modal-content">
+    <div class="modal-header">
+        <span class="kt-portlet__head-icon">
+            <i class="kt-font-brand flaticon2-checking"></i>
+        </span>
+        <h3 class="modal-title" id="exampleModalLabel">
+            @Html.Raw(Resources.DefaultResource.ItemsData)
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" onclick="CheckChecked();" aria-label="Close">
+            <span class="fa fa-close"></span>
+        </button>
+
+    </div>
+    <div class="modal-body">
+        <div class="kt-portlet kt-portlet--mobile">
+
+            <div class="kt-portlet__body">
+
+
+                <div class="bodyContainer">
+                    <div class="kt-portlet">
+                        <!--begin::Form-->
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-portlet__body">
+
+                                <div class="row">
+                                    <div class="col-sm-6 pull-right">
+                                        <nav class="navbar buttonsNavBar">
+                                            <div class="container-fluid">
+                                                <ul class="nav nav-pills">
+
+                                                    <li id="Li2" class="pull-right">
+
+                                                        @*<input id="CmdSave" type="button" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" onclick="location.href='@Url.Action("EditUnitModal", "Items",new {Model})'" />*@
+
+                                                        @*<input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.Ok)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Ok)" data-toggle="@Html.Raw(Resources.DefaultResource.Ok)" formaction="/Inventory/ComfirmSelectItem" formmethod="post" ValidationGroup="DML" />*@
+                                                        <button type="button" class="btn btn-success" id="CmdSave" onclick="ConfirmSelectItem();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Ok)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Ok)</button>
+                                                    </li>
+                                                    <text>&nbsp;</text>
+                                                    <li id="Li1" class="active pull-right">
+                                                        @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" formaction="/Items/cancel/@Model.Unit_Id" />*@
+                                                        @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" />*@
+                                                        <button type="button" id="CmdClose" onclick="CheckChecked();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+                                                    </li>
+
+
+                                                </ul>
+
+                                            </div>
+                                        </nav>
+                                    </div>
+
+
+                                </div>
+
+                                <div id="dropDownListdiv">
+
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 pull-right">
+                                            <div>
+                                                @Html.Label("Building_Code", Resources.DefaultResource.ItemsTitle, new { @class = "HeadMenuItem" })
+
+                                                @*@Html.DropDownListFor(m => m.Item_Id, Model.Item_tbl, Resources.DefaultResource.ListChoose, new { @class = "form-control", id = "ddlItems" })*@
+                                                @Html.DropDownListFor(m => m.Item_Id, Model.Item_tbl, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "ddlItems", style = "width:100%;", name = "ddlItems" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 pull-right">
+                                            <div>
+                                                @Html.Label("SubCat", Resources.DefaultResource.MainItemsCat, new { @class = "HeadMenuItem" })
+
+                                                @Html.TextBoxFor(m => m.CatMain_Name, new { @class = "form-control text-danger font-weight-bold", disabled = "disabled", id = "CatMain_Name", name= "CatMain_Name" })
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 pull-right">
+                                            <div>
+                                                @Html.Label("SubCat", Resources.DefaultResource.ItemsCategory, new { @class = "HeadMenuItem" })
+
+
+                                                @Html.TextBoxFor(m => m.Cat_Name, new { @class = "form-control text-danger font-weight-bold", disabled = "disabled", id = "Cat_Name", name = "Cat_Name" })
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12 pull-right">
+                                            <div>
+                                                @Html.Label("SubCat", Resources.DefaultResource.ItemsSubCategory, new { @class = "HeadMenuItem" })
+
+                                                @Html.TextBoxFor(m => m.CatSub_Name, new { @class = "form-control text-danger font-weight-bold", disabled = "disabled", id = "CatSub_Name", name = "CatSub_Name" })
+
+                                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/assets/vendors/general/jquery")
+    @Scripts.Render("~/assets/vendors/general/jquery-validation")
+
+    @*for Valiadtion*@
+    <script src="@Url.Content("Which is the missing section?assets/vendors/general/popper.js/dist/umd/popper.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap/dist/js/bootstrap.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/vendors/general/js-cookie/src/js.cookie.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/vendors/general/moment/min/moment.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/tooltip.js/dist/umd/tooltip.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/sticky-js/dist/sticky.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/wnumb/wNumb.js")" type="text/javascript"></script> <!--end:: Global Mandatory Vendors --> <!--begin:: Global Optional Vendors -->
+    @*<script src="@Url.Content("~/assets/vendors/general/jquery-validation/dist/jquery.validate.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/assets/vendors/general/jquery-validation/dist/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/vendors/general/jquery-validation/dist/additional-methods.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/custom/componentsvendors/jquery-validation/init.js")" type="text/javascript"></script>
+
+
+
+    <script src="@Url.Content("~/assets/vendors/general/jquery-form/dist/jquery.form.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/block-ui/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/custom/componentsvendors/bootstrap-datepicker/init.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-datetime-picker/js/bootstrap-datetimepicker.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-timepicker/js/bootstrap-timepicker.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/custom/componentsvendors/bootstrap-timepicker/init.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-daterangepicker/daterangepicker.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-maxlength/src/bootstrap-maxlength.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/assets/vendors/custom/vendorsbootstrap-multiselectsplitter/bootstrap-multiselectsplitter.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-select/dist/js/bootstrap-select.js")" type="text/javascript"></script> <!--start::Disable with me to use another one -->
+
+    <script src="@Url.Content("~/assets/vendors/general/bootstrap-notify/bootstrap-notify.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/custom/componentsvendors/bootstrap-notify/init.js")" type="text/javascript"></script> <!--begin::Global Theme Bundle(used by all pages) --> @*<script src="@Url.Content("~/assets/demo/demo6/base/scripts.bundle.js")" type="text/javascript"></script>*@ <!--end::Global Theme Bundle --> <!--begin::Page Scripts(used by this page) --> @*<script src="@Url.Content("~/assets/app/custom/general/dashboard.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/assets/app/custom/general/crud/forms/widgets/bootstrap-datepicker.js")" type="text/javascript"></script> <!--start::Disable with me to use another one --> @*<script src="@Url.Content("~/assets/app/custom/general/crud/forms/widgets/select2.js")" type="text/javascript"></script>
+
+        <script src="@Url.Content("~/assets/vendors/general/select2/dist/js/select2.full.js")" type="text/javascript"></script>
+    *@ <!--end::Page Scripts --> <!--begin::Global App Bundle(used by all pages) -->
+    @*<script src="@Url.Content("~/assets/app/bundle/app.bundle.js")" type="text/javascript"></script>
+    *@ <!--begin::for select dropdown choosen  -->
+    <script src="@Url.Content("~/assets/vendors/general/select-chosen/plugins.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/vendors/general/select-chosen/app.js")" type="text/javascript"></script>
+
+    <script defer src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+            $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+
+                       $.post("@Url.Action("SetItemCats")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "CatMain_Id":
+
+                                     //PopulateDropDown("#Cat_Id", data.Category_tbl);
+                                     //PopulateDropDown("#CatSub_Id", data.CatSub_tbl);
+                                     //PopulateDropDown("#ddlItems", data.Item_tbl);
+
+                                         break;
+                                 case "Cat_Id":
+                                     //PopulateDropDown("#CatSub_Id", data.CatSub_tbl);
+                                     //PopulateDropDown("#ddlItems", data.Item_tbl);
+                                     break;
+                                 case "CatSub_Id":
+
+                                     PopulateDropDown("#ddlItems", data.Item_tbl);
+                                     break;
+                                 case "ddlItems":
+                                     //PopulateDropDown("#ddlItems", data.Item_tbl);
+                                   /*  alert(data.CatMain_Name);*/
+                                    
+                                     var VCatMainName = document.getElementById("CatMain_Name");
+                                     var VCatName = document.getElementById("Cat_Name");
+                                     var VCatSubName = document.getElementById("CatSub_Name");
+
+                                     VCatMainName.value = data.CatMain_Name;
+                                     VCatName.value = data.Cat_Name;
+                                     VCatSubName.value = data.CatSub_Name;
+                                     break;
+
+                              }
+                     });
+                 });
+             });
+             function PopulateDropDown(dropDownId, list) {
+                 $(dropDownId).empty();
+                 $(dropDownId).append("<option>Please select</option>")
+                 $.each(list, function (index, row) {
+                     if (index == 0) {
+                         $(dropDownId).append("<option value='" + row.Value + "' selected='selected'>" + row.Text + "</option>");
+                     } else {
+                         $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                     }
+                 });
+             }
+
+
+            function CheckChecked() {
+
+                $('#showmodal').modal('hide');
+
+
+            }
+            function ConfirmSelectItem() {
+                var ddlItems = document.getElementById("ddlItems");
+                var ItemId = ddlItems.value;
+                var ItemName = ddlItems.options[ddlItems.selectedIndex].text;
+
+                var Item_Id = document.getElementById("SelectedItemId").value;
+
+                //alert(Item_Id);
+                //alert(ItemName);
+                document.getElementById("SelectedItemId").value = ItemId;
+                document.getElementById("SelectedItemName").value = ItemName;
+
+                $('#showmodal').modal('hide');
+
+
+            }
+
+            var form = $("#myform")
+                .removeData("validator")
+                .removeData("unobtrusiveValidation");
+
+            $.validator.unobtrusive.parse(form);
+
+
+
+    </script>
+
+
+
+</div>
+
+
+}

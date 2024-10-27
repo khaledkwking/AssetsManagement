@@ -1,0 +1,171 @@
+UNKNOWN {
+	TEXT-ALIGN: center
+}
+#bd {
+	CLEAR: both; DISPLAY: block; ZOOM: 1
+}
+#hd {
+	CLEAR: both; DISPLAY: block; ZOOM: 1
+}
+#ft {
+	CLEAR: both; DISPLAY: block; ZOOM: 1
+}
+#bd:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+#hd:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+#ft:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+#main:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.w:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.divClip:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.g1:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.g2:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.g2a:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.g2b:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+.g3:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+#doc0 {
+	MARGIN: auto; WIDTH: 56.25em
+}
+#doc1 {
+	MARGIN: auto; WIDTH: 73.19em
+}
+#doc0 .t1 .c1 {
+	FLOAT: right; WIDTH: 32.25em
+}
+#doc0 .t1 .c2 {
+	FLOAT: left; WIDTH: 24em
+}
+#doc1 .t1 .c1 {
+	FLOAT: right; WIDTH: 50.25em
+}
+#doc1 .t1 .c2 {
+	FLOAT: left; WIDTH: 22em
+}
+#doc0 .t2 .c1 {
+	FLOAT: right; WIDTH: 24em
+}
+#doc0 .t2 .c2 {
+	FLOAT: left; WIDTH: 32.25em
+}
+#doc1 .t2 .c1 {
+	FLOAT: right; WIDTH: 24em
+}
+#doc1 .t2 .c2 {
+	FLOAT: left; WIDTH: 47.25em
+}
+#doc0 .t3 .c1 {
+	FLOAT: right; WIDTH: 44.25em
+}
+#doc0 .t3 .c2 {
+	FLOAT: left; WIDTH: 12em
+}
+#doc1 .t3 .c1 {
+	FLOAT: right; WIDTH: 59.25em
+}
+#doc1 .t3 .c2 {
+	FLOAT: left; WIDTH: 12em
+}
+#doc0 .t4 .c1 {
+	FLOAT: right; WIDTH: 12em
+}
+#doc0 .t4 .c2 {
+	FLOAT: left; WIDTH: 44.25em
+}
+#doc1 .t4 .c1 {
+	FLOAT: right; WIDTH: 12em
+}
+#doc1 .t4 .c2 {
+	FLOAT: left; WIDTH: 59.25em
+}
+#doc0 .t5 .c1 {
+	FLOAT: right; WIDTH: 50%
+}
+#doc0 .t5 .c2 {
+	FLOAT: left; WIDTH: 50%
+}
+#doc1 .t5 .c1 {
+	FLOAT: right; WIDTH: 50%
+}
+#doc1 .t5 .c2 {
+	FLOAT: left; WIDTH: 50%
+}
+#doc0 .t6 .c1 {
+	FLOAT: right; WIDTH: 46.5em
+}
+#doc0 .t6 .c2 {
+	FLOAT: left; WIDTH: 9.75em
+}
+#doc1 .t6 .c1 {
+	FLOAT: right; WIDTH: 61.5em
+}
+#doc1 .t6 .c2 {
+	FLOAT: left; WIDTH: 9.75em
+}
+#doc0 .t7 .c2 {
+	FLOAT: right; WIDTH: 46.5em
+}
+#doc0 .t7 .c1 {
+	FLOAT: left; WIDTH: 9.75em
+}
+#doc1 .t7 .c2 {
+	FLOAT: right; WIDTH: 61.5em
+}
+#doc1 .t7 .c1 {
+	FLOAT: left; WIDTH: 9.75em
+}
+.w {
+	MARGIN: auto 0.75em
+}
+.g1 {
+	CLEAR: both; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.g2 {
+	CLEAR: both; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.g3 {
+	CLEAR: both; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.g1 .b {
+	WIDTH: 100%
+}
+.g2 .b {
+	FLOAT: right; WIDTH: 49.9%
+}
+.g2a .b1 {
+	FLOAT: right; WIDTH: 62%
+}
+.g2a .b2 {
+	FLOAT: left; WIDTH: 37.8%
+}
+.g2b .b1 {
+	FLOAT: right; WIDTH: 37.8%
+}
+.g2b .b2 {
+	FLOAT: left; WIDTH: 62%
+}
+.g3 .b {
+	FLOAT: right; WIDTH: 33.2%
+}
+.m1 {
+	FLOAT: right; WIDTH: 300px
+}

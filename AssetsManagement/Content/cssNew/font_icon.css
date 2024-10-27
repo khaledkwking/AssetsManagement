@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?gtojur');
+  src:  url('../fonts/icomoon.eot?gtojur#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?gtojur') format('truetype'),
+    url('../fonts/icomoon.woff?gtojur') format('woff'),
+    url('../fonts/icomoon.svg?gtojur#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-substract:before {
+  content: "\e900";
+}
+.icon-add:before {
+  content: "\e901";
+}
+.icon-tag1:before {
+  content: "\e902";
+
+}
+.icon-arrow:before {
+  content: "\e903";
+
+}
+.icon-back:before {
+  content: "\e904";
+
+}
+.icon-close-envelope:before {
+  content: "\e905";
+}
+.icon-dollar-symbol:before {
+  content: "\e906";
+
+}
+.icon-facebookFooter:before {
+  content: "\e907";
+
+}
+.icon-instagramFooter:before {
+  content: "\e908";
+
+}
+.icon-locate:before {
+  content: "\e909";
+
+}
+.icon-manager:before {
+  content: "\e90a";
+}
+.icon-money:before {
+  content: "\e90b";
+
+}
+.icon-next:before {
+  content: "\e90c";
+
+}
+.icon-pdf:before {
+  content: "\e90d";
+
+}
+.icon-phone2:before {
+  content: "\e90e";
+}
+.icon-rewind-time:before {
+  content: "\e90f";
+
+}
+.icon-snapchat:before {
+  content: "\e910";
+
+}
+.icon-speech-bubbles:before {
+  content: "\e911";
+}
+.icon-titleAfterBG:before {
+  content: "\e912";
+
+}
+.icon-titleArrow:before {
+  content: "\e913";
+
+}
+.icon-titleBeforeBG:before {
+  content: "\e914";
+
+}
+.icon-twitterFooter:before {
+  content: "\e915";
+
+}
+.icon-youtubeFooter:before {
+  content: "\e916";
+
+}

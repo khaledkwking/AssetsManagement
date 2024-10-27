@@ -1,0 +1,1614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActiveUsers" xml:space="preserve">
+    <value>Active Users</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="AdvanceSearch" xml:space="preserve">
+    <value>Advance Search</value>
+  </data>
+  <data name="Alerts" xml:space="preserve">
+    <value>Alerts</value>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
+  <data name="ChooseOption" xml:space="preserve">
+    <value>Choose an option</value>
+  </data>
+  <data name="CSV" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Excel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExternalUsers" xml:space="preserve">
+    <value>External Users</value>
+  </data>
+  <data name="ExtrnalUsers" xml:space="preserve">
+    <value>Extrnal Users</value>
+  </data>
+  <data name="HeaderTitle" xml:space="preserve">
+    <value>Assets System</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Inboxandtasks" xml:space="preserve">
+    <value>Inbox and tasks</value>
+  </data>
+  <data name="MyNotifications" xml:space="preserve">
+    <value>My Notifications</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="MyTasks" xml:space="preserve">
+    <value>My Tasks</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NEWGE" xml:space="preserve">
+    <value>New Government Entity</value>
+  </data>
+  <data name="NewProject" xml:space="preserve">
+    <value>New Project</value>
+  </data>
+  <data name="PDF" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="Site_title" xml:space="preserve">
+    <value>Mathaly | GYM</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TasksPending" xml:space="preserve">
+    <value>tasks pending</value>
+  </data>
+  <data name="UserNotifications" xml:space="preserve">
+    <value>User Notifications</value>
+  </data>
+  <data name="UserReports" xml:space="preserve">
+    <value>User Reports</value>
+  </data>
+  <data name="UsersRoles" xml:space="preserve">
+    <value>Users &amp; Roles</value>
+  </data>
+  <data name="YOUAREHERE" xml:space="preserve">
+    <value>YOU ARE HERE</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="AdvisoryOffice" xml:space="preserve">
+    <value>Advisory Office - Supervision of Implementation</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="ExportOptions" xml:space="preserve">
+    <value>Export Options</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Sceduled" xml:space="preserve">
+    <value>Sceduled</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="IPAddress" xml:space="preserve">
+    <value>IP Address</value>
+  </data>
+  <data name="PDFfiles" xml:space="preserve">
+    <value>PDF files</value>
+  </data>
+  <data name="PicturesFiles" xml:space="preserve">
+    <value>Pictures Files</value>
+  </data>
+  <data name="WordFiles" xml:space="preserve">
+    <value>Word Files</value>
+  </data>
+  <data name="NewContract" xml:space="preserve">
+    <value>New Contract</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Edite" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="AllowDisplay" xml:space="preserve">
+    <value>Allow Display</value>
+  </data>
+  <data name="Creator" xml:space="preserve">
+    <value>Creator</value>
+  </data>
+  <data name="NewRecord" xml:space="preserve">
+    <value>New Record</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title - Eng</value>
+  </data>
+  <data name="TitleAr" xml:space="preserve">
+    <value>Title - Ar</value>
+  </data>
+  <data name="Updater" xml:space="preserve">
+    <value>Updater</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="signin" xml:space="preserve">
+    <value>signin</value>
+  </data>
+  <data name="signinMesages" xml:space="preserve">
+    <value>Login to System</value>
+  </data>
+  <data name="ExpectedCompletion" xml:space="preserve">
+    <value>Expected Completion Date</value>
+  </data>
+  <data name="PictureName" xml:space="preserve">
+    <value>Main Image</value>
+  </data>
+  <data name="SelectItemPlease" xml:space="preserve">
+    <value>Please select option.....</value>
+  </data>
+  <data name="UpdateRecord" xml:space="preserve">
+    <value>Update Record</value>
+  </data>
+  <data name="ViewImage" xml:space="preserve">
+    <value>View Image</value>
+  </data>
+  <data name="DataDate" xml:space="preserve">
+    <value>Report Date</value>
+  </data>
+  <data name="ExpectedCompletionDate" xml:space="preserve">
+    <value>Expected Completion Date</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="KWD" xml:space="preserve">
+    <value>KD</value>
+  </data>
+  <data name="NewPayment" xml:space="preserve">
+    <value>New Payment</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ExtensionAfteAchivDate" xml:space="preserve">
+    <value>Extension After Achievements</value>
+  </data>
+  <data name="ExtensionDays" xml:space="preserve">
+    <value>Extension Days</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="daysDay" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="ImportData" xml:space="preserve">
+    <value>Import Data</value>
+  </data>
+  <data name="ImportingTool" xml:space="preserve">
+    <value>Importing Tool</value>
+  </data>
+  <data name="Import_Data" xml:space="preserve">
+    <value>Import Data</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Choose File...</value>
+  </data>
+  <data name="ExcelOnlyMessage" xml:space="preserve">
+    <value>Please select a valid Excel File file.</value>
+  </data>
+  <data name="FileRequired" xml:space="preserve">
+    <value>Please select file</value>
+  </data>
+  <data name="Difference" xml:space="preserve">
+    <value>Difference</value>
+  </data>
+  <data name="NoOfContracts" xml:space="preserve">
+    <value>No Of Contracts</value>
+  </data>
+  <data name="UpdatedOn" xml:space="preserve">
+    <value>Updated On</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="UnSelect" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ViewDashboard" xml:space="preserve">
+    <value>View Dashboard</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="ImageCaption" xml:space="preserve">
+    <value>Image Caption English</value>
+  </data>
+  <data name="ImageCaptionAr" xml:space="preserve">
+    <value>Image Caption Arabic</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>Image File</value>
+  </data>
+  <data name="NoImages" xml:space="preserve">
+    <value>No images for this Item.</value>
+  </data>
+  <data name="ExpextedEndDate" xml:space="preserve">
+    <value>Expexted End Date</value>
+  </data>
+  <data name="NewContractFilesTypes" xml:space="preserve">
+    <value>New Contract Files Section</value>
+  </data>
+  <data name="SectionTitle" xml:space="preserve">
+    <value>Section Title English</value>
+  </data>
+  <data name="SectionTitleAr" xml:space="preserve">
+    <value>Section Title Arabic</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File Title English</value>
+  </data>
+  <data name="FileNameAr" xml:space="preserve">
+    <value>File Title Arabic</value>
+  </data>
+  <data name="NewContractFiles" xml:space="preserve">
+    <value>New Contract File</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Select File</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Required Field</value>
+  </data>
+  <data name="CivilId" xml:space="preserve">
+    <value>Civil ID</value>
+  </data>
+  <data name="UserID" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UsersList" xml:space="preserve">
+    <value>Users List</value>
+  </data>
+  <data name="Adding" xml:space="preserve">
+    <value>Adding</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Deleting</value>
+  </data>
+  <data name="Importing" xml:space="preserve">
+    <value>Importing</value>
+  </data>
+  <data name="Privilege" xml:space="preserve">
+    <value>Privilege</value>
+  </data>
+  <data name="Privileges" xml:space="preserve">
+    <value>Privileges</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="PrivilegesAssignment" xml:space="preserve">
+    <value>Privileges Assignment</value>
+  </data>
+  <data name="PageDescription" xml:space="preserve">
+    <value>Page Description</value>
+  </data>
+  <data name="PageID" xml:space="preserve">
+    <value>Page ID</value>
+  </data>
+  <data name="PageLink" xml:space="preserve">
+    <value>Page Link</value>
+  </data>
+  <data name="PageName" xml:space="preserve">
+    <value>Page Name</value>
+  </data>
+  <data name="SystemPagesAssignment" xml:space="preserve">
+    <value>System Pages Assignment</value>
+  </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>Invalid User !</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>You don't have permission to access this site.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="InvalidUserNameOrpassword" xml:space="preserve">
+    <value>Invalid user name or password!</value>
+  </data>
+  <data name="MyFile" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MyFile_ChangePassword" xml:space="preserve">
+    <value>تغير كلمة المرور</value>
+  </data>
+  <data name="MyFile_Signout" xml:space="preserve">
+    <value>SignOut</value>
+  </data>
+  <data name="MainTitle" xml:space="preserve">
+    <value>Assets Managment</value>
+  </data>
+  <data name="SaveMessage" xml:space="preserve">
+    <value>تم الحفظ بنجاح</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EditTitle" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>Searching in System</value>
+  </data>
+  <data name="GlobalSearchNote" xml:space="preserve">
+    <value>Find the desired results</value>
+  </data>
+  <data name="HourKmeterValue" xml:space="preserve">
+    <value>اقصى عدد كيلو . متر الساعة</value>
+  </data>
+  <data name="ListChoose" xml:space="preserve">
+    <value>اختار من القائمة... </value>
+  </data>
+  <data name="DelMessage" xml:space="preserve">
+    <value>هلى تريد الحذف فعلا</value>
+  </data>
+  <data name="RequiredMessage" xml:space="preserve">
+    <value>هذا البيان يجب ادخاله</value>
+  </data>
+  <data name="MessagePassword" xml:space="preserve">
+    <value>يجب ادخال كلمة المرور</value>
+  </data>
+  <data name="MessageUserName" xml:space="preserve">
+    <value>يجب ادخال اسم المستخدم</value>
+  </data>
+  <data name="CodeTitle" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="AreaDesc" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="BlockDesc" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="CustCivilIdDesc" xml:space="preserve">
+    <value>Civil Id</value>
+  </data>
+  <data name="CustlicEndDateDesc" xml:space="preserve">
+    <value>Licence Expired</value>
+  </data>
+  <data name="CustLicNoDesc" xml:space="preserve">
+    <value>Licence No</value>
+  </data>
+  <data name="CustListDesc" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="CustNameDesc" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="CustNatDesc" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="CustTelDesc" xml:space="preserve">
+    <value>Telphone</value>
+  </data>
+  <data name="FloorDesc" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="HouseDesc" xml:space="preserve">
+    <value>Buliding No.</value>
+  </data>
+  <data name="PaymentTypeDesc" xml:space="preserve">
+    <value>Payement type</value>
+  </data>
+  <data name="PaymentTypes" xml:space="preserve">
+    <value>Payment Types</value>
+  </data>
+  <data name="StreetDesc" xml:space="preserve">
+    <value>Strret No.</value>
+  </data>
+  <data name="WorkAddress" xml:space="preserve">
+    <value>Working Address</value>
+  </data>
+  <data name="Site_Fottertitle" xml:space="preserve">
+    <value>Assets Management</value>
+  </data>
+  <data name="Site_GetSupport" xml:space="preserve">
+    <value>Get Support</value>
+  </data>
+  <data name="Assets" xml:space="preserve">
+    <value>Assets</value>
+  </data>
+  <data name="AssetsTransfer" xml:space="preserve">
+    <value>Assets Transfer</value>
+  </data>
+  <data name="BasicData" xml:space="preserve">
+    <value>Basic Data</value>
+  </data>
+  <data name="Bulidings" xml:space="preserve">
+    <value>Buliding</value>
+  </data>
+  <data name="DepartmentReport" xml:space="preserve">
+    <value>Departments Report</value>
+  </data>
+  <data name="DetailsInventory" xml:space="preserve">
+    <value>Details Inventory</value>
+  </data>
+  <data name="EmployeeDesignation" xml:space="preserve">
+    <value>Employee Designation</value>
+  </data>
+  <data name="Employees" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="EmployeesData" xml:space="preserve">
+    <value>Employees Data</value>
+  </data>
+  <data name="EmployeesReport" xml:space="preserve">
+    <value>Employees Report</value>
+  </data>
+  <data name="ItemReport" xml:space="preserve">
+    <value>Items Report</value>
+  </data>
+  <data name="ItemsSubCategory" xml:space="preserve">
+    <value>Items Sub-Category</value>
+  </data>
+  <data name="ItemsData" xml:space="preserve">
+    <value>Items Data</value>
+  </data>
+  <data name="ItemsUnits" xml:space="preserve">
+    <value>Items Units</value>
+  </data>
+  <data name="OfficialAssets" xml:space="preserve">
+    <value>Official Assets</value>
+  </data>
+  <data name="OfficialAssetsCard" xml:space="preserve">
+    <value>Official Assets Card</value>
+  </data>
+  <data name="OfficialAssetsReport" xml:space="preserve">
+    <value>Official Assets Report</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OtherReports" xml:space="preserve">
+    <value>Other Reports</value>
+  </data>
+  <data name="PersonalAssetsCard" xml:space="preserve">
+    <value>Personal Assets Card</value>
+  </data>
+  <data name="PersonalAssetsReport" xml:space="preserve">
+    <value>Personal Assets Report</value>
+  </data>
+  <data name="PersonelAssets" xml:space="preserve">
+    <value>Personel Assets</value>
+  </data>
+  <data name="RoomAssetsReport" xml:space="preserve">
+    <value>Room Assets Report</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Floors" xml:space="preserve">
+    <value>Floors</value>
+  </data>
+  <data name="RoomsTitle" xml:space="preserve">
+    <value>Rooms Data</value>
+  </data>
+  <data name="RFID" xml:space="preserve">
+    <value>RFID</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Delete Confirmation</value>
+  </data>
+  <data name="ItemsCategory" xml:space="preserve">
+    <value>Items Category</value>
+  </data>
+  <data name="MainItemsCat" xml:space="preserve">
+    <value>Main- Category</value>
+  </data>
+  <data name="CountableTitle" xml:space="preserve">
+    <value>Allow Countable</value>
+  </data>
+  <data name="ItemBarcode" xml:space="preserve">
+    <value>Barcode</value>
+  </data>
+  <data name="ItemDesc" xml:space="preserve">
+    <value>Item Description</value>
+  </data>
+  <data name="ItemPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="ItemQtyLimit" xml:space="preserve">
+    <value>Qty Limit</value>
+  </data>
+  <data name="ItemStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="OrganizedTitle" xml:space="preserve">
+    <value>Allow Orginazed</value>
+  </data>
+  <data name="Exchange" xml:space="preserve">
+    <value>Items Exchange</value>
+  </data>
+  <data name="ExchangeVouchers" xml:space="preserve">
+    <value>Exchange Vouchers</value>
+  </data>
+  <data name="Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="InventoryData" xml:space="preserve">
+    <value>Inventory Data</value>
+  </data>
+  <data name="InventoryStock" xml:space="preserve">
+    <value>Inventory Stock</value>
+  </data>
+  <data name="ItemsLimits" xml:space="preserve">
+    <value>Items Limits</value>
+  </data>
+  <data name="Report_DestroyItems" xml:space="preserve">
+    <value>Destroy Items Report</value>
+  </data>
+  <data name="Report_General" xml:space="preserve">
+    <value>General Report</value>
+  </data>
+  <data name="Report_InOut" xml:space="preserve">
+    <value>Supply / Exchange Report</value>
+  </data>
+  <data name="Report_Notifactions" xml:space="preserve">
+    <value>Notfication</value>
+  </data>
+  <data name="Report_ReceivingAssets" xml:space="preserve">
+    <value>Receiving Assets Report</value>
+  </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
+  <data name="Supply" xml:space="preserve">
+    <value>Items Supply</value>
+  </data>
+  <data name="SupplyVouchers" xml:space="preserve">
+    <value>Supply Vouchers</value>
+  </data>
+  <data name="Departements" xml:space="preserve">
+    <value>Departments</value>
+  </data>
+  <data name="DepartementName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DeptTitle" xml:space="preserve">
+    <value>الادارة</value>
+  </data>
+  <data name="FingerNo" xml:space="preserve">
+    <value>Finger No</value>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="ManagerName" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="AddAsset" xml:space="preserve">
+    <value>Add Asset</value>
+  </data>
+  <data name="AddDestroyOrders" xml:space="preserve">
+    <value>Add Destroy Orders</value>
+  </data>
+  <data name="AddHandoverAsset" xml:space="preserve">
+    <value>Add Handover Asset</value>
+  </data>
+  <data name="AddInOrder" xml:space="preserve">
+    <value>Add In Order</value>
+  </data>
+  <data name="AddOutOrder" xml:space="preserve">
+    <value>Add Out Order</value>
+  </data>
+  <data name="AddWithdrawOrder" xml:space="preserve">
+    <value>Add Withdraw Order</value>
+  </data>
+  <data name="DestroyOrders" xml:space="preserve">
+    <value>Destroy Orders</value>
+  </data>
+  <data name="DisplayAssets" xml:space="preserve">
+    <value>Display Assets</value>
+  </data>
+  <data name="InOrders" xml:space="preserve">
+    <value>In Orders</value>
+  </data>
+  <data name="OutOrders" xml:space="preserve">
+    <value>Out Orders</value>
+  </data>
+  <data name="RoomName" xml:space="preserve">
+    <value>Room Name</value>
+  </data>
+  <data name="HandOverOrders" xml:space="preserve">
+    <value>Withdraw Orders</value>
+  </data>
+  <data name="StoreFlag" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Expired Date</value>
+  </data>
+  <data name="ItemId" xml:space="preserve">
+    <value>Item Id</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
+  <data name="ItemsStockData" xml:space="preserve">
+    <value>Items Stock</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Total Quantity</value>
+  </data>
+  <data name="SerialNo" xml:space="preserve">
+    <value>SerialNo</value>
+  </data>
+  <data name="SuppliersData" xml:space="preserve">
+    <value>Supplier Data</value>
+  </data>
+  <data name="ItemsTitle" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="EmployeeInRoom" xml:space="preserve">
+    <value>Employees in Room</value>
+  </data>
+  <data name="EmpName" xml:space="preserve">
+    <value>EmpName</value>
+  </data>
+  <data name="ItemQtyStockErrorMsg" xml:space="preserve">
+    <value>It cannot save Item Because Quntity Over Item Type</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="RoomNo" xml:space="preserve">
+    <value>RoomName</value>
+  </data>
+  <data name="SelectItem" xml:space="preserve">
+    <value>Select Item</value>
+  </data>
+  <data name="DeptQuotaTitle" xml:space="preserve">
+    <value>Department Quota</value>
+  </data>
+  <data name="QuataMessage" xml:space="preserve">
+    <value>Can not add more than department that defined in the room data</value>
+  </data>
+  <data name="SourceItemStock" xml:space="preserve">
+    <value>تحويل  الاصناف من</value>
+  </data>
+  <data name="TargetItemStock" xml:space="preserve">
+    <value>تحويل  الاصناف الى</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>SearchBy</value>
+  </data>
+  <data name="ActionType" xml:space="preserve">
+    <value>Action Type</value>
+  </data>
+  <data name="Move_Employee_To_Empty_Room" xml:space="preserve">
+    <value>Move EmployeeTo Empty Room</value>
+  </data>
+  <data name="SaveAction" xml:space="preserve">
+    <value>Excute Action</value>
+  </data>
+  <data name="Switching_Staff_Offices" xml:space="preserve">
+    <value>Switching Staff Offices</value>
+  </data>
+  <data name="Transfer_employees_Assets" xml:space="preserve">
+    <value>Transfer Employees Assets</value>
+  </data>
+  <data name="DepartmentErrorMessage" xml:space="preserve">
+    <value>Must enter the department</value>
+  </data>
+  <data name="DepatmentDiffTitle" xml:space="preserve">
+    <value>Switch departments are different Do you want to continue?</value>
+  </data>
+  <data name="EmptyDataMsg" xml:space="preserve">
+    <value>You must select correct Data</value>
+  </data>
+  <data name="EmptyEmployeeMsg" xml:space="preserve">
+    <value>You must select Employees Data first</value>
+  </data>
+  <data name="EmptyRoomMsg" xml:space="preserve">
+    <value>Room must be empty</value>
+  </data>
+  <data name="FromInventory" xml:space="preserve">
+    <value>From Inventory</value>
+  </data>
+  <data name="InventoryName" xml:space="preserve">
+    <value>Inventory Name</value>
+  </data>
+  <data name="NoSelectionMsg" xml:space="preserve">
+    <value>You must Select Items</value>
+  </data>
+  <data name="OrginzationalAsset" xml:space="preserve">
+    <value>Orginzational Asset</value>
+  </data>
+  <data name="OutOrderTitle" xml:space="preserve">
+    <value>OutOrder Data</value>
+  </data>
+  <data name="PersonalAsset" xml:space="preserve">
+    <value>Personal Asset</value>
+  </data>
+  <data name="ReaderData" xml:space="preserve">
+    <value>Reader Data</value>
+  </data>
+  <data name="ReadNofItems" xml:space="preserve">
+    <value>No of Reading Items</value>
+  </data>
+  <data name="ReadNoItemsFound" xml:space="preserve">
+    <value>No tags Found</value>
+  </data>
+  <data name="ReadOneItem" xml:space="preserve">
+    <value>1 tag found</value>
+  </data>
+  <data name="ScanReader" xml:space="preserve">
+    <value>Scan Reader</value>
+  </data>
+  <data name="SwitchSucessMsg" xml:space="preserve">
+    <value>Success Switching </value>
+  </data>
+  <data name="TransferAsset" xml:space="preserve">
+    <value>Transfer Asset</value>
+  </data>
+  <data name="VoucherDate" xml:space="preserve">
+    <value>Order Date</value>
+  </data>
+  <data name="VoucherNum" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="AddItemTitle" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
+  <data name="RequiredQty" xml:space="preserve">
+    <value>Required Qty</value>
+  </data>
+  <data name="CheckItemsInventoryMsg" xml:space="preserve">
+    <value>Some Item outside Inventory so it can add to list</value>
+  </data>
+  <data name="ChooseInventoryMsg" xml:space="preserve">
+    <value>You must Choose Inventory before you scan</value>
+  </data>
+  <data name="NewOutOrder" xml:space="preserve">
+    <value>New Out Order</value>
+  </data>
+  <data name="AddSupplyVoucher" xml:space="preserve">
+    <value>Add Supply Voucher</value>
+  </data>
+  <data name="Barcode" xml:space="preserve">
+    <value>Barcode</value>
+  </data>
+  <data name="BarCodeTitle" xml:space="preserve">
+    <value>BarCode Reader</value>
+  </data>
+  <data name="CheckItemHasStockMsg" xml:space="preserve">
+    <value>You choose items not define so you must select Item Name first</value>
+  </data>
+  <data name="DuplicateItemMsg" xml:space="preserve">
+    <value>This Item inserted before</value>
+  </data>
+  <data name="DuplicateUncountableItemInstock" xml:space="preserve">
+    <value>Item is found before in this Inventory and it is uncountable item so You can not add again</value>
+  </data>
+  <data name="FromSupplier" xml:space="preserve">
+    <value>From Supplier</value>
+  </data>
+  <data name="InSufficientQtyMsg" xml:space="preserve">
+    <value>InSufficient Quantity for Item No.</value>
+  </data>
+  <data name="InvalidItemBarCode" xml:space="preserve">
+    <value>Item is not found in selected Inventory</value>
+  </data>
+  <data name="InvoiceAmount" xml:space="preserve">
+    <value>Invoice Amount</value>
+  </data>
+  <data name="ItemNotFound" xml:space="preserve">
+    <value>Item not Found</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Payment Date</value>
+  </data>
+  <data name="PaymentNo" xml:space="preserve">
+    <value>Payment No</value>
+  </data>
+  <data name="PurchaseNo" xml:space="preserve">
+    <value>Purchase No</value>
+  </data>
+  <data name="ReaderBarcodeTitle" xml:space="preserve">
+    <value>Searching By</value>
+  </data>
+  <data name="ReaderTitle" xml:space="preserve">
+    <value>RFID Reader</value>
+  </data>
+  <data name="SelectedEmpAndDepartMsg" xml:space="preserve">
+    <value>You Should select Employee, Department and Room</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>Supplier Name</value>
+  </data>
+  <data name="SupplyVoucherData" xml:space="preserve">
+    <value>Supply Voucher Data</value>
+  </data>
+  <data name="ToInventory" xml:space="preserve">
+    <value>To Store</value>
+  </data>
+  <data name="UnSuccessConnect" xml:space="preserve">
+    <value>Failed to connect to the Sacnner reader</value>
+  </data>
+  <data name="RoomOrStore" xml:space="preserve">
+    <value>Store/Room</value>
+  </data>
+  <data name="SerialOrBarcode" xml:space="preserve">
+    <value>Serial/Barcode</value>
+  </data>
+  <data name="InCurStock" xml:space="preserve">
+    <value>In Stock Qty</value>
+  </data>
+  <data name="DestroyReason" xml:space="preserve">
+    <value>Destroy Reason</value>
+  </data>
+  <data name="DestoryOrderTitle" xml:space="preserve">
+    <value>Destory Data</value>
+  </data>
+  <data name="RequiredItemsMsg" xml:space="preserve">
+    <value>Must Add Requried items before save voucher</value>
+  </data>
+  <data name="AddHandOverOrders" xml:space="preserve">
+    <value>Add HandOver Order</value>
+  </data>
+  <data name="HandOverOrdersTitle" xml:space="preserve">
+    <value>Hand Over Orders Data</value>
+  </data>
+  <data name="AssetItemTilte" xml:space="preserve">
+    <value>Asset</value>
+  </data>
+  <data name="CurrentInQuantity" xml:space="preserve">
+    <value>Current Total In Qty</value>
+  </data>
+  <data name="IPAddressTitle" xml:space="preserve">
+    <value>Reader IP</value>
+  </data>
+  <data name="CheckItemsInsideInventoryMsg" xml:space="preserve">
+    <value>It is not making handover for item inside the select Inventory</value>
+  </data>
+  <data name="CurrentDestoryQuantity" xml:space="preserve">
+    <value>Current Destory Quantity</value>
+  </data>
+  <data name="HandOverReason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="AssetsInDepartmentMsg" xml:space="preserve">
+    <value>There are Items as Assets to this departement or Employee please handover these itmes first</value>
+  </data>
+  <data name="QtyLimitMsg" xml:space="preserve">
+    <value>There are Items Limit less than 1</value>
+  </data>
+  <data name="AddTransferOrder" xml:space="preserve">
+    <value>Add Transfer Order</value>
+  </data>
+  <data name="CheckTransferOrder" xml:space="preserve">
+    <value>Review and excute the Order</value>
+  </data>
+  <data name="ConfirmTransfer" xml:space="preserve">
+    <value>Confirm Transfer</value>
+  </data>
+  <data name="CurrentTransferQuantity" xml:space="preserve">
+    <value>Current Transfer Quantity</value>
+  </data>
+  <data name="OrderExectued" xml:space="preserve">
+    <value>Executed</value>
+  </data>
+  <data name="OrderNotExectued" xml:space="preserve">
+    <value>Not Executed</value>
+  </data>
+  <data name="OrderStatus" xml:space="preserve">
+    <value>Order Status</value>
+  </data>
+  <data name="TransferOrderDetails" xml:space="preserve">
+    <value>Order Details</value>
+  </data>
+  <data name="TransferOrdersTitle" xml:space="preserve">
+    <value>Display Transfer Orders</value>
+  </data>
+  <data name="DisplayAll" xml:space="preserve">
+    <value>Dispaly All</value>
+  </data>
+  <data name="AddChangeQuantityOrder" xml:space="preserve">
+    <value>Add Equalization Orders</value>
+  </data>
+  <data name="ChangeQuantityOrdersTitle" xml:space="preserve">
+    <value>Equalization Orders</value>
+  </data>
+  <data name="Site_FottertitleEng" xml:space="preserve">
+    <value>Assets  management System</value>
+  </data>
+  <data name="WelcomeMsg" xml:space="preserve">
+    <value>Welcome to you</value>
+  </data>
+  <data name="WelcomeMsgEng" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="ReturnOutOrderTitle" xml:space="preserve">
+    <value>سند مرتجع صرف</value>
+  </data>
+  <data name="OutOrderNo" xml:space="preserve">
+    <value>Out Order No.</value>
+  </data>
+  <data name="ReturnOutOrdersTitle" xml:space="preserve">
+    <value>Return OutOrders</value>
+  </data>
+  <data name="OutQty" xml:space="preserve">
+    <value>Out Quantity</value>
+  </data>
+  <data name="CurrentReturnQuantity" xml:space="preserve">
+    <value>Current Return Qty</value>
+  </data>
+  <data name="CheckDateRange" xml:space="preserve">
+    <value>Order date must earlier than enter date by 3 days and geater than 3 days </value>
+  </data>
+  <data name="ItemQtyOutLimitTitle" xml:space="preserve">
+    <value>Red Color means Qty out of Limit</value>
+  </data>
+  <data name="OrderHasReturnTitle" xml:space="preserve">
+    <value>Red Color means Order has Return order</value>
+  </data>
+  <data name="AttachmentFile" xml:space="preserve">
+    <value>Attachment File</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="ViewFile" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="InorderIslockMsg" xml:space="preserve">
+    <value>It is not allowed to update this order because items in this order already sold out</value>
+  </data>
+  <data name="DamgedItemsList" xml:space="preserve">
+    <value>Damaged Items</value>
+  </data>
+  <data name="ItemsSeearch" xml:space="preserve">
+    <value>Items Search</value>
+  </data>
+  <data name="DeleteOutOrderMsg" xml:space="preserve">
+    <value>You can not Detete out order because it has return Order</value>
+  </data>
+  <data name="DeleteInOrderMsg" xml:space="preserve">
+    <value>You can cot delete In order because some items will decrease below zero</value>
+  </data>
+  <data name="DeleteItemInOrderMsg" xml:space="preserve">
+    <value>You can Not delete Item because this item  will decrease below zero</value>
+  </data>
+  <data name="DeleteItemQtyMsg" xml:space="preserve">
+    <value>You can Not delete Item because this item  will decrease below zero</value>
+  </data>
+  <data name="DuplicatedUserMsg" xml:space="preserve">
+    <value>Duplicated User with same name</value>
+  </data>
+  <data name="InOrderNo" xml:space="preserve">
+    <value>In order No.</value>
+  </data>
+  <data name="InOrderTitle" xml:space="preserve">
+    <value>In Order Data</value>
+  </data>
+  <data name="InQty" xml:space="preserve">
+    <value>In Qty</value>
+  </data>
+  <data name="MustSelectEmployee" xml:space="preserve">
+    <value>You must select employeee before you save data</value>
+  </data>
+  <data name="ReturnInOrdersTitle" xml:space="preserve">
+    <value>Return In orders</value>
+  </data>
+  <data name="ReturnInOrderTitle" xml:space="preserve">
+    <value>Return In order</value>
+  </data>
+  <data name="InventoryAssigning" xml:space="preserve">
+    <value>Inventory Assigning</value>
+  </data>
+  <data name="Accessing" xml:space="preserve">
+    <value>Accessing</value>
+  </data>
+  <data name="ChangeEmpRoomMsg" xml:space="preserve">
+    <value>Not allow to change room related to department has an employee</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="DisplayLeaveEmployees" xml:space="preserve">
+    <value>Display Retirees</value>
+  </data>
+  <data name="QuotaTitle" xml:space="preserve">
+    <value>Quota No</value>
+  </data>
+  <data name="HandOverEmpDifferentMsg" xml:space="preserve">
+    <value>You must Select Same Employee Item</value>
+  </data>
+  <data name="HandOverEmpSelectMsg" xml:space="preserve">
+    <value>you must choose Employee first</value>
+  </data>
+  <data name="HandOverEmpAndRoomCheckMsg" xml:space="preserve">
+    <value>Choosen Items must be same employee and room</value>
+  </data>
+  <data name="HandOverUncompletedItemsMsg" xml:space="preserve">
+    <value>There are other asset items for this employee not scanned</value>
+  </data>
+  <data name="NotesOther" xml:space="preserve">
+    <value>Other Notes</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="InDetails" xml:space="preserve">
+    <value>In Details</value>
+  </data>
+  <data name="InTotal" xml:space="preserve">
+    <value>As a total</value>
+  </data>
+  <data name="OutOrderItemReport" xml:space="preserve">
+    <value>Out Orderrs Items Report</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Print Preview</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="Transfer_Items_Between_Rooms" xml:space="preserve">
+    <value>Transfer Items from room to room</value>
+  </data>
+  <data name="OutOrdersReport" xml:space="preserve">
+    <value>Out Orders Report</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="UploadSucessMsg" xml:space="preserve">
+    <value>Upload File Success</value>
+  </data>
+  <data name="ItemsStockLimitReport" xml:space="preserve">
+    <value>Items Less than Quantity Limit</value>
+  </data>
+  <data name="DestoryOrderItemReport" xml:space="preserve">
+    <value>Destory Order Items Report</value>
+  </data>
+  <data name="HandOverOrderItemReport" xml:space="preserve">
+    <value>HandOver Order Items Report</value>
+  </data>
+  <data name="InOrderItemReport" xml:space="preserve">
+    <value>In Order Items Report</value>
+  </data>
+  <data name="PrintEmptyOutOrder" xml:space="preserve">
+    <value>Print Empty out order</value>
+  </data>
+  <data name="ChangeQuantityOrderItemReport" xml:space="preserve">
+    <value>Change Quantity Items Report</value>
+  </data>
+  <data name="TransferOrderItemReport" xml:space="preserve">
+    <value>Transfer Items Report</value>
+  </data>
+  <data name="UserStorePremission" xml:space="preserve">
+    <value>Assign users permissions for Inventories</value>
+  </data>
+  <data name="BackTitle" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="PermissionNotValidMsg" xml:space="preserve">
+    <value>You can not access this permission</value>
+  </data>
+  <data name="UnauthorisedMsg" xml:space="preserve">
+    <value>Unauthorised Request</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>This is an error in the system during Saving</value>
+  </data>
+  <data name="ItemsStockCard" xml:space="preserve">
+    <value>Items Asset Card</value>
+  </data>
+  <data name="DisplayRFID" xml:space="preserve">
+    <value>Display RFID</value>
+  </data>
+  <data name="ItemsReport" xml:space="preserve">
+    <value>Items Report</value>
+  </data>
+  <data name="CurrentChangeQuantity" xml:space="preserve">
+    <value>Quantity after change</value>
+  </data>
+  <data name="OutQuantity" xml:space="preserve">
+    <value>Out Quantity</value>
+  </data>
+  <data name="EmptyRoomsReport" xml:space="preserve">
+    <value>Empty Rooms Report</value>
+  </data>
+  <data name="ItemLocation" xml:space="preserve">
+    <value>Item Location</value>
+  </data>
+  <data name="EmptyRoom" xml:space="preserve">
+    <value>Empty Room</value>
+  </data>
+  <data name="NotEmptyRoom" xml:space="preserve">
+    <value>Occupied</value>
+  </data>
+  <data name="RoomType" xml:space="preserve">
+    <value>Room Type</value>
+  </data>
+  <data name="OnlyNew" xml:space="preserve">
+    <value>New Only</value>
+  </data>
+  <data name="ExcelErrorMessage" xml:space="preserve">
+    <value>File must be Excel format with extension xls</value>
+  </data>
+  <data name="WariningMsgCountNumbers" xml:space="preserve">
+    <value>Number of Items not equal Scanned Items</value>
+  </data>
+  <data name="WariningMsgErrorImportItem" xml:space="preserve">
+    <value>Error in importing items from file</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ContractName" xml:space="preserve">
+    <value>Contract Name</value>
+  </data>
+  <data name="ContractNameEn" xml:space="preserve">
+    <value>Contract English Name</value>
+  </data>
+  <data name="ContractNo" xml:space="preserve">
+    <value>Contract No</value>
+  </data>
+  <data name="VendorContracts" xml:space="preserve">
+    <value>Vendor Contracts</value>
+  </data>
+  <data name="VendorName" xml:space="preserve">
+    <value>Vendor Name</value>
+  </data>
+  <data name="Vendors" xml:space="preserve">
+    <value>Vendors</value>
+  </data>
+  <data name="SearchItems" xml:space="preserve">
+    <value>Search Contract Items</value>
+  </data>
+  <data name="VendorId" xml:space="preserve">
+    <value>Vendor No</value>
+  </data>
+  <data name="AddNewItem" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
+  <data name="InStoreItemQty" xml:space="preserve">
+    <value>In Store Item Quantity</value>
+  </data>
+  <data name="BarCodeNewTitle" xml:space="preserve">
+    <value>Item New Barcode</value>
+  </data>
+  <data name="GenrateBarcodeFlag" xml:space="preserve">
+    <value>Generate Barcode Flag</value>
+  </data>
+  <data name="FromDept" xml:space="preserve">
+    <value>From Department</value>
+  </data>
+  <data name="FromEmp" xml:space="preserve">
+    <value>From Employee</value>
+  </data>
+  <data name="FromRoom" xml:space="preserve">
+    <value>From Room</value>
+  </data>
+  <data name="PurchaseDate" xml:space="preserve">
+    <value>Purchase Date</value>
+  </data>
+  <data name="StockDetailsTitle" xml:space="preserve">
+    <value>Items details</value>
+  </data>
+  <data name="ToDept" xml:space="preserve">
+    <value>To Department</value>
+  </data>
+  <data name="ToEmp" xml:space="preserve">
+    <value>To Employee</value>
+  </data>
+  <data name="ToRoom" xml:space="preserve">
+    <value>To Room</value>
+  </data>
+  <data name="TransferAssetsTitle" xml:space="preserve">
+    <value>Transfer Assets Orders</value>
+  </data>
+  <data name="TransferDate" xml:space="preserve">
+    <value>Transfer Date</value>
+  </data>
+  <data name="ItemDestoryQtyTitle" xml:space="preserve">
+    <value>Item Destory Qty</value>
+  </data>
+  <data name="ReturnStoreItemQty" xml:space="preserve">
+    <value>Return Item Qty</value>
+  </data>
+  <data name="CurrentItemQuantity" xml:space="preserve">
+    <value>Current Item Quantity</value>
+  </data>
+  <data name="CurrentTransferItemQuantity" xml:space="preserve">
+    <value>Current Transfer Item Qty</value>
+  </data>
+  <data name="InSufficientReturnQtyMsg" xml:space="preserve">
+    <value>InSufficient Return Qty </value>
+  </data>
+  <data name="DiffInventoryMsg" xml:space="preserve">
+    <value>Inventories must be different</value>
+  </data>
+  <data name="RequiredInventoryMsg" xml:space="preserve">
+    <value>You must select Inventory</value>
+  </data>
+  <data name="CurrentChangeItemQuantity" xml:space="preserve">
+    <value>Current Item Quantity</value>
+  </data>
+  <data name="ContractExpiredDate" xml:space="preserve">
+    <value>Contract Expired Date</value>
+  </data>
+  <data name="OrderHasContractitle" xml:space="preserve">
+    <value>red color means has Maintance contract </value>
+  </data>
+  <data name="PaperNo" xml:space="preserve">
+    <value>No of Paper</value>
+  </data>
+  <data name="PrinterName" xml:space="preserve">
+    <value>Printer Name</value>
+  </data>
+  <data name="DateMorThanToday" xml:space="preserve">
+    <value>Date must greater than today</value>
+  </data>
+  <data name="MsgToLogin" xml:space="preserve">
+    <value>Please Enter your account to log in</value>
+  </data>
+  <data name="PrintingError" xml:space="preserve">
+    <value>Error in printer setting</value>
+  </data>
+  <data name="ClearItems" xml:space="preserve">
+    <value>Clear record</value>
+  </data>
+  <data name="ExpiredDateInvalidMsg" xml:space="preserve">
+    <value>One of Items has expired date less than today</value>
+  </data>
+  <data name="StockReport" xml:space="preserve">
+    <value>Quanties Report</value>
+  </data>
+  <data name="AssetItemTitle" xml:space="preserve">
+    <value>Asset Item</value>
+  </data>
+  <data name="PrintBarCode" xml:space="preserve">
+    <value>Print BarCode</value>
+  </data>
+  <data name="PrintQRCode" xml:space="preserve">
+    <value>Print QRcode</value>
+  </data>
+  <data name="AddNewInOrder" xml:space="preserve">
+    <value>Add new In Order</value>
+  </data>
+  <data name="AddNewOutOrder" xml:space="preserve">
+    <value>Add new Out Order</value>
+  </data>
+  <data name="ItemAge" xml:space="preserve">
+    <value>العمر الانتاجي</value>
+  </data>
+  <data name="PrintAssetCard" xml:space="preserve">
+    <value>Print Asset Card</value>
+  </data>
+  <data name="ItemCategoryType" xml:space="preserve">
+    <value>Item Category</value>
+  </data>
+  <data name="ItemsMainCategory" xml:space="preserve">
+    <value>Main Cat Item</value>
+  </data>
+  <data name="UserMainCatsPremission" xml:space="preserve">
+    <value>Assign users permissions for Main Items</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>An error occurred in the system, you can return to the home page</value>
+  </data>
+  <data name="BackTpMain" xml:space="preserve">
+    <value>Back to home page</value>
+  </data>
+  <data name="CheckStockIdMsg" xml:space="preserve">
+    <value>there is item with same RFID</value>
+  </data>
+  <data name="UploadItemData" xml:space="preserve">
+    <value>Upload Item Data</value>
+  </data>
+  <data name="UploadItems" xml:space="preserve">
+    <value>Upload Items</value>
+  </data>
+  <data name="CheckItemIdMsg" xml:space="preserve">
+    <value>there is item Id not found in Items data</value>
+  </data>
+  <data name="PreviewDetails" xml:space="preserve">
+    <value>Preview Details</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="RequestOrderAdd" xml:space="preserve">
+    <value>Add Item Request</value>
+  </data>
+  <data name="RequestOrders" xml:space="preserve">
+    <value>Items Request Orders</value>
+  </data>
+  <data name="SelectItemAndQtyMsg" xml:space="preserve">
+    <value>Choose Item and Enter Quantity</value>
+  </data>
+  <data name="RequestStatus" xml:space="preserve">
+    <value>Request Status</value>
+  </data>
+  <data name="UserDepartementPremission" xml:space="preserve">
+    <value>User Departement Permission</value>
+  </data>
+  <data name="ManagerConfirm" xml:space="preserve">
+    <value>Manager Confirm</value>
+  </data>
+  <data name="StoreKeeperConfirm" xml:space="preserve">
+    <value>StoreKeeper Confirm</value>
+  </data>
+  <data name="SupervisorConfirm" xml:space="preserve">
+    <value>Supervisor Confirm</value>
+  </data>
+  <data name="ApprovedRequestMessage" xml:space="preserve">
+    <value>Request is Approved</value>
+  </data>
+  <data name="BarcodedifferenceMessage" xml:space="preserve">
+    <value>The barcodes must have different codes in the barcode</value>
+  </data>
+  <data name="ChooseAssetItemsMessage" xml:space="preserve">
+    <value>The quantity is insufficient in the warehouse or the specified items are not specified on the voucher. Please review the voucher</value>
+  </data>
+  <data name="ChooseBarcode" xml:space="preserve">
+    <value>Choose Barcode</value>
+  </data>
+  <data name="CurrentBarcode" xml:space="preserve">
+    <value>Current Barcode</value>
+  </data>
+  <data name="DefineAssetItemsMessage" xml:space="preserve">
+    <value>specify items are not specified on the voucher. Please review the voucher</value>
+  </data>
+  <data name="QtyinsufficientMessage" xml:space="preserve">
+    <value>The quantity is insufficient in the warehouse or</value>
+  </data>
+  <data name="FollowRequests" xml:space="preserve">
+    <value>Follow Requests</value>
+  </data>
+  <data name="RejectedRequestMessage" xml:space="preserve">
+    <value>Rejected Request success</value>
+  </data>
+  <data name="RejectTitle" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="HideZeroTitle" xml:space="preserve">
+    <value>Hide Zero</value>
+  </data>
+  <data name="NotAllowOut" xml:space="preserve">
+    <value> Not Allowed out</value>
+  </data>
+  <data name="LessQtyInStock" xml:space="preserve">
+    <value>الكمية الموجود بالمخزن غير كافية من الصنف</value>
+  </data>
+</root>

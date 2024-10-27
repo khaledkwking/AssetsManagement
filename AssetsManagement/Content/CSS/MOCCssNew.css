@@ -1,0 +1,220 @@
+﻿/*---------------------------------------------------------------------------------------
+Ministry of Commerce Kuwait Web page CSS
+Creted by: Mahmoud Abdallah
+Developers Studio
+www.dvstudio.us
+mahmoud.abdallah@outlook.com
+mahmoud@dvstudio.com
+may 2014
+orange: #ffc63b
+---------------------------------------------------------------------------------------*/
+
+@font-face {
+	font-family: MyFontName;;
+	src: url('/tahoma.ttf') format('truetype');
+}
+
+body
+{
+	margin: 0px 0px 0px 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	text-align: center;
+}
+
+.AnyText {
+    font-family: TAHOMA;
+    font-size: 13pt;
+    color: rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    vertical-align: top;
+    text-align: right;
+    text-justify: kashida;
+}
+
+
+.TextBox {
+    width: 200px;
+    height: 25px;
+    text-align: right;
+    vertical-align: middle;
+    font-family: TAHOMA;
+    font-size: 13pt;
+    color: black;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.AnyTitles {
+    padding-right:5px;
+     padding-left:5px;
+    vertical-align:middle;
+    font-family: TAHOMA;
+    font-size: 10pt;
+    color: black;
+}
+
+.Anylable {
+    width: 150px;
+    height: 30px;
+    text-align: right;
+    vertical-align: top;
+    font-family: TAHOMA;
+    font-size: 12pt;
+    color: white;
+}
+
+.MainBody {
+}
+
+.Header {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255,0.3);
+    vertical-align: bottom;
+}
+
+.MainTitle {
+    font-family: TAHOMA;
+    font-size: 18pt;
+    color: white;
+    text-align: right;
+}
+
+.DataTable {
+    width: 734px;
+     background-color: #f1f2f2;
+}
+
+.white {
+    background-color: rgba(255, 255, 255,0.7);
+    /*vertical-align: bottom;*/
+}
+
+.footer {
+    background-color: #21409a;
+    opacity: 0.9;
+    vertical-align: top;
+}
+
+.Items {
+    background-color: rgba(255, 255, 255,0.7);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.normal {
+   opacity:0.9;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.news{
+    background-image: url(../images/ministry-of-commerce-kuwait_16.png);
+    background-repeat:no-repeat;
+    height:600px;
+}
+.PhoneNumbersSection{
+    background-color:#D9E021;
+}
+.ContactFormSection{
+  background-color:#8CC63F;
+}
+/*
+.AnyBtn {
+    width: 70px;
+    height: 35px;
+    vertical-align: bottom;
+    background-color:transparent;
+    font-family: TAHOMA;
+    font-size: 13pt;
+    text-align: left;
+    color: white;
+    border-width:1px;
+    border-color:#21409a;
+    border-radius:10px;
+    padding: 3px 3px 3px 3px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+    .AnyBtn:hover {
+        background-color: #ffffff;
+        color: #21409a;
+    }
+
+    .AnyBtn:active {
+        background-color: #d4f869;
+        color: #21409a;
+    }
+*/
+.AnyBtn {
+    width: 100px;
+    height: 30px;
+    vertical-align: bottom;
+    background-color: #ff9933;
+    font-family: TAHOMA;
+    font-size: 13pt;
+    text-align: left;
+    color: white;
+    border: 0;
+    border-radius:5px;
+    padding: 3px 3px 3px 13px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-repeat: no-repeat;
+    background-position-x: 85%;
+    background-position-y: center;
+}
+
+.AnyBtn:hover {
+    background-color: #b9b3b3;
+    color: #21409a;
+}
+
+.AnyBtn:active {
+    background-color: #4cff00;
+    color: #21409a;
+}
+.SettingsLables {
+    font-family: Calibri;
+    font-size: 15px;
+    color: #002d62;
+    background-color: transparent;
+    width: 100px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    
+}
+.SettingsTextBox {
+    border-radius: 4px 4px;
+    border-width: thin;
+    border-style: solid;
+    border-color: #002d62;
+}
+
+
+.CSMMainButtons {
+    background-color: #b6ff00;
+    font-family: Calibri;
+    font-size: 14pt;
+    text-align: left;
+    color: #2c2b2b;
+    border: 0;
+    width: 200px;
+    height: 40px;
+    padding: 3px 3px 3px 50px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-repeat: no-repeat;
+    background-position-x: 5%;
+    background-position-y: center;
+    border-radius: 6px 6px;

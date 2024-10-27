@@ -1,0 +1,74 @@
+BODY {
+	FONT-SIZE: 75%; BACKGROUND: url(../images/Main-Bg-Blue.gif) #a5c3cf repeat-x; font-size :10; FONT-FAMILY:Verdana ; 
+}
+
+#main {
+	BACKGROUND: #fff; MARGIN: 0px auto; WIDTH: 900px; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.Adminbutton
+{
+	background-color:#dbdcde;
+	border:2px;
+	border-style:solid;
+	border-color: #507cd1;
+	font-family:Verdana;
+	font-size:14px;
+}
+
+.Admintextbox
+{
+	background-color:#F9F9F9;
+	border:2px;
+	border-style:solid;
+	border-color:#507cd1;
+	font-family:Verdana;
+	font-size:14px;
+	FONT-WEIGHT:normal;
+	
+}
+
+.Admincheckbox
+{
+	font-family:Verdana;
+	font-size:12px;
+}
+
+.Adminlable
+{
+	font-family: Verdana;
+	font-size: 15px;
+	font-weight: bold;
+}
+.adminheader
+{
+	background-image: url(../images/header.jpg);
+	background-repeat: repeat-x;
+}
+
+.adminmenu
+{
+	background-image: url(../images/admin_menu_bg.jpg);
+	background-repeat: repeat-y;
+}
+
+.adminmenulink
+{
+	background-image: url(../images/admin_menulink_bg.jpg);
+	background-repeat: repeat-y;
+}
+
+.admintopmenu
+{
+	background-image: url(../images/topTitle.jpg);
+	background-repeat: repeat-x;
+}
+
+.catbg
+{
+	background-color: #507cd1;
+}
+
+.loginback
+{
+	BACKGROUND: url(../images/Main-Bg-Blue.gif) #a5c3cf repeat-x;
+}

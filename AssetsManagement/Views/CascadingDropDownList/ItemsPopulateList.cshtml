@@ -1,0 +1,213 @@
+﻿@model  BOL.ItemsStructureViewModel
+
+
+@{
+    ViewBag.Title = @Html.Raw(Resources.DefaultResource.ItemsData);
+   
+}
+
+
+@using (Html.BeginForm("ItemsPopulateList", "CascadingDropDownList", FormMethod.Post, htmlAttributes: new { Id = "myform" }))
+{
+    @Html.AntiForgeryToken();
+
+    <div id="EditModal" class="modal-content">
+        <div class="modal-header">
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon2-checking"></i>
+            </span>
+            <h3 class="modal-title" id="exampleModalLabel">
+                @Html.Raw(Resources.DefaultResource.ItemsData)
+            </h3>
+            <button type="button" class="close" data-dismiss="modal" onclick="CheckChecked();" aria-label="Close">
+                <span class="fa fa-close"></span>
+            </button>
+
+        </div>
+        <div class="modal-body">
+            <div class="kt-portlet kt-portlet--mobile">
+
+                <div class="kt-portlet__body">
+
+
+                    <div class="bodyContainer">
+                        <div class="kt-portlet">
+                            <!--begin::Form-->
+                            <div class="kt-form kt-form--label-right">
+                                <div class="kt-portlet__body">
+
+                                    <div class="row">
+                                        <div class="col-sm-6 pull-right">
+                                            <nav class="navbar buttonsNavBar">
+                                                <div class="container-fluid">
+                                                    <ul class="nav nav-pills">
+
+                                                        <li id="Li2" class="pull-right">
+
+                                                            @*<input id="CmdSave" type="button" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" onclick="location.href='@Url.Action("EditUnitModal", "Items",new {Model})'" />*@
+
+                                                            @*<input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.Ok)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Ok)" data-toggle="@Html.Raw(Resources.DefaultResource.Ok)" formaction="/Inventory/ComfirmSelectItem" formmethod="post" ValidationGroup="DML" />*@
+                                                            <button type="button" class="btn btn-success"  id="CmdSave" onclick="ConfirmSelectItem();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Ok)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Ok)</button>
+                                                        </li>
+                                                        <text>&nbsp;</text>
+                                                        <li id="Li1" class="active pull-right">
+                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" formaction="/Items/cancel/@Model.Unit_Id" />*@
+                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" />*@
+                                                            <button type="button" id="CmdClose" onclick="CheckChecked();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+                                                        </li>
+
+
+                                                    </ul>
+
+                                                </div>
+                                            </nav>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div id="dropDownListdiv">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 pull-right">
+                                                <div>
+
+                                                    @Html.Label("Building_Code", Resources.DefaultResource.MainItemsCat, new { @class = "HeadMenuItem" })
+
+                                                    @Html.DropDownListFor(m => m.CatMain_Id, Model.CatMain_tbl, "Please select", new { @class = "form-control" })
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 pull-right">
+                                                <div>
+
+                                                    @Html.Label("Building_Code", Resources.DefaultResource.ItemsCategory, new { @class = "HeadMenuItem" })
+
+                                                    @Html.DropDownListFor(m => m.Cat_Id, Model.Category_tbl, Resources.DefaultResource.ListChoose, new { @class = "form-control" })
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 pull-right">
+                                                <div>
+                                                    @Html.Label("Building_Code", Resources.DefaultResource.ItemsSubCategory, new { @class = "HeadMenuItem" })
+
+                                                    @Html.DropDownListFor(m => m.CatSub_Id, Model.CatSub_tbl, Resources.DefaultResource.ListChoose, new { @class = "form-control" })
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 pull-right">
+                                                <div>
+                                                    @Html.Label("Building_Code", Resources.DefaultResource.ItemsTitle, new { @class = "HeadMenuItem" })
+
+                                                    @Html.DropDownListFor(m => m.Item_Id, Model.Item_tbl, Resources.DefaultResource.ListChoose, new { @class = "form-control", id = "ddlItems" })
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*<script src="../../assets/vendors/general/jquery/dist/jquery.js"></script>*@
+        <script type="text/javascript">
+            $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+
+                       $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "CatMain_Id":
+
+                                     PopulateDropDown("#Cat_Id", data.Category_tbl);
+                                     PopulateDropDown("#CatSub_Id", data.CatSub_tbl);
+                                     PopulateDropDown("#ddlItems", data.Item_tbl);
+
+                                         break;
+                                 case "Cat_Id":
+                                     PopulateDropDown("#CatSub_Id", data.CatSub_tbl);
+                                     PopulateDropDown("#ddlItems", data.Item_tbl);
+                                     break;
+                                 case "CatSub_Id":
+
+                                     PopulateDropDown("#ddlItems", data.Item_tbl);
+                                     break;
+
+                              }
+                     });
+                 });
+             });
+             function PopulateDropDown(dropDownId, list) {
+                 $(dropDownId).empty();
+                 $(dropDownId).append("<option>Please select</option>")
+                 $.each(list, function (index, row) {
+                     if (index == 0) {
+                         $(dropDownId).append("<option value='" + row.Value + "' selected='selected'>" + row.Text + "</option>");
+                     } else {
+                         $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                     }
+                 });
+             }
+
+         
+            function CheckChecked() {
+              
+                $('#showmodal').modal('hide');
+             
+
+            }
+            function ConfirmSelectItem() {
+                var ddlItems = document.getElementById("ddlItems");
+                var ItemId = ddlItems.value;
+                var ItemName = ddlItems.options[ddlItems.selectedIndex].text;
+
+                var Item_Id = document.getElementById("SelectedItemId").value;
+                
+                //alert(Item_Id);
+                //alert(ItemName);
+                document.getElementById("SelectedItemId").value = ItemId;
+                document.getElementById("SelectedItemName").value = ItemName;
+
+                $('#showmodal').modal('hide');
+
+
+            }
+            
+            var form = $("#myform")
+                .removeData("validator")
+                .removeData("unobtrusiveValidation");
+
+            $.validator.unobtrusive.parse(form);
+
+     
+
+        </script>
+
+
+
+    </div>
+
+
+}

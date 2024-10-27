@@ -1,0 +1,497 @@
+﻿
+@model BOL.ItemsStockViewModel
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ //ViewBag.Title = @Html.Raw(Resources.DefaultResource.Rooms);
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@using (Html.BeginForm("SaveItemStock", "Inventory", FormMethod.Post, htmlAttributes: new { Id = "AddEditform" }))
+{
+@Html.AntiForgeryToken();
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            @if (@ViewBag.RoomId != null)
+            {
+        <span class="kt-subheader__breadcrumbs-separator"></span>
+                            <a href='@Url.Action("ItemsStockList", "Inventory", new { RoomId = @ViewBag.RoomId })' class="kt-subheader__breadcrumbs-link">
+                                @Html.Raw(ViewBag.RoomName as string)
+                            </a>}
+            @if (@ViewBag.RFID != null)
+            {
+        <span class="kt-subheader__breadcrumbs-separator"></span>
+                            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                                @Html.Raw(ViewBag.RFID as string)
+                            </span>}
+
+
+            @if (@ViewBag.Flag != null)
+            {
+
+        <a href='@Url.Action("CategoryList", "Items", new { MainCatId = @ViewBag.MainCatId })' class="kt-subheader__breadcrumbs-link">
+            @Html.Raw(ViewBag.CatMain_Name as string)
+        </a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                <a href='@Url.Action("SubCatList", "Items", new { MainCatId = @ViewBag.MainCatId, CategoryId = @ViewBag.Cat_Id })' class="kt-subheader__breadcrumbs-link">
+                                                    @Html.Raw(ViewBag.Cat_Name as string)
+                                                </a>
+                                                                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                                                        <a href='@Url.Action("ItemsList", "Items", new { MainCatId = @ViewBag.MainCatId, CategoryId = @ViewBag.Cat_Id,SubCatId=@ViewBag.SubCatId })' class="kt-subheader__breadcrumbs-link">
+                                                                                            @Html.Raw(ViewBag.CatSub_Name as string)
+                                                                                        </a>
+                                                                                                            <span class="kt-subheader__breadcrumbs-separator"></span> @*<a href='@Url.Action("ItemsStockList", "Inventory", new { RoomId = @ViewBag.RoomId })' class="kt-subheader__breadcrumbs-link">*@
+                                                                                                                                <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+                                                                                                                                    @Html.Raw(ViewBag.Item_Name as string)
+                                                                                                                                </span> @*</a>*@}
+        </div>
+       
+       
+      
+        
+    </div>
+
+</div>
+
+
+                                <div class="kt-portlet kt-portlet--mobile" style="min-height :700px ">
+                                    <div class="kt-portlet__head kt-portlet__head--lg">
+                                        <div class="kt-portlet__head-label">
+                                            <span class="kt-portlet__head-icon">
+                                                <i class="kt-font-brand flaticon2-checking"></i>
+                                            </span>
+                                            <h3 class="kt-portlet__head-title">
+                                                @Html.Raw(Resources.DefaultResource.ItemsData)
+
+                                            </h3>
+
+                                        </div>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <div class="kt-portlet__head-wrapper">
+                                                <div class="kt-portlet__head-actions">
+                                                    @*<button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="Addbtn">
+
+                                                            <i class="la la-plus"></i>
+                                                            <span class="kt-nav__link-text">
+                                                                @Html.Raw(Resources.DefaultResource.NewRecord)
+                                                            </span>
+                                                        </button>*@
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="kt-portlet__body">
+
+                                        <div class="table-responsive">
+
+   
+                                                    <div class="bodyContainer">
+                                                        @if (TempData["Message"] != null)
+                                                        {
+                                        <div id="DivMsg" class="ErrorMsglbl">
+
+                                            <div class="alert alert-success alert-dismissable" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                </button>
+
+                                                @Html.Raw(Resources.DefaultResource.SaveMessage)
+                                            </div>
+
+                                        </div>ViewBag.ErrorMessage = null;
+                                    }
+                                                        @if (ViewBag.ErrorMessage != null)
+                                                        {
+                                        <div id="DivErrorMsg" class="ErrorMsglbl">
+
+                                            <div class="alert alert-danger alert-dismissable" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                </button>
+
+                                                @Html.Raw(Resources.DefaultResource.ItemQtyStockErrorMsg)
+                                            </div>
+
+                                        </div>TempData["Message"] = null;
+                                    }
+
+
+
+                                                        <div class="kt-portlet">
+                                                            <!--begin::Form-->
+                                                            <div class="kt-form kt-form--label-right">
+                                                                <div class="kt-portlet__body">
+                                                                    <div class="row">
+                                                                        <div class="col-6 pull-right">
+                                                                            <nav class="navbar buttonsNavBar">
+                                                                                <div class="container-fluid">
+                                                                                    <ul class="nav nav-pills">
+
+                                                                                        @*<text>&nbsp;</text>*@
+                                                                                        <li id="Li2" class="pull-right">
+
+                                                                                            @*<input id="CmdSave" type="button" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" onclick="location.href='@Url.Action("EditUnitModal", "Items",new {Model})'" />*@
+
+                                                                                            <input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Inventory/AddEditItemStock" formmethod="post" ValidationGroup="DML" />
+
+                                                                                            @*<input id="CmdClose" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Insert)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Items/UnitAdd/@Model.Unit_Id"/>*@
+
+                                                                                        </li>
+                                                                                        <text>&nbsp;</text>
+                                                                                        <li id="Li1" class="active pull-right">
+                                                                                            @Html.HiddenFor(m => m.PageNumber)
+                                                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" formaction="/Items/cancel/@Model.Unit_Id" />*@
+                                                                                            @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" />*@
+                                                                                            <button type="button" id="CmdClose" onclick="location.href='@Url.Action("ItemsStockList", "Inventory", new { RoomId = @ViewBag.RoomId,Page_No=ViewBag.PageNumber})'" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+
+                                                                                        </li>
+                                                                                        <text>&nbsp;</text>
+
+                                                                                    </ul>
+
+                                                                                </div>
+                                                                            </nav>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-4 pull-right">
+                                                                            <div>
+                                                                                @*@Html.TextBoxFor(m => m.Building_Id, new { @class = "form-control hidden", @readonly = "true", @value = ViewBag.BuildingId })*@
+                                                                                <!--@Html.HiddenFor(m => m.SelectedItem.StockId, new { @class = "form-control hidden", @readonly = "true", @value = ViewBag.SubCatId })-->
+                                                                                @*<asp:Label ID="Label4" runat="server" Text="أسم المشترك" CssClass="labelTxt"></asp:Label>*@
+
+                                                                                @Html.Label("StockId", Resources.DefaultResource.ID, new { @class = "HeadMenuItem" })
+
+                                                                                @Html.TextBoxFor(m => m.SelectedItem.StockId, new { @class = "form-control", @readonly = "true" })
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+                                                                            <div>
+                                                                                @Html.Label("Item_Id", Resources.DefaultResource.ItemId, new { @class = "HeadMenuItem", Name = "labItemId" })
+
+                                                                                @Html.TextBoxFor(m => m.SelectedItem.Item_Id, new { @class = "form-control", @readonly = "true", id = "SelectedItemId" })
+
+                                                                                @Html.ValidationMessageFor(m => m.SelectedItem.Item_Id, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+
+                                                                            <div>
+                                                                                @Html.Label("ItemName", Resources.DefaultResource.ItemName, new { @class = "HeadMenuItem", Name = "lblItemName" })
+
+                                                                                @Html.TextBoxFor(m => m.SelectedItem.Item_tbl.Item_Name, new { @class = "form-control", @readonly = "true", @Required = "true", id = "SelectedItemName" })
+
+                                                                                @if (ViewContext.Controller.HasPermission("Items", "Updating"))
+                                                                                {
+                                                                                    <button type="button" class="btn btn-success btn-icon-sm" id="Addbtn">
+                                                                                        <i class="la la-plus"></i>
+                                                                                        <span class="kt-nav__link-text">
+                                                                                            @Html.Raw(Resources.DefaultResource.SelectItem)
+                                                                                        </span>
+                                                                                    </button>
+                                                                                }
+                                                                                                @Html.ValidationMessageFor(m => m.SelectedItem.Item_tbl.Item_Name, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+
+                                                                                                                </div>
+                                                                            @*<div class="col-3">
+                                                                            
+                                                                             </div>*@
+                                                                          
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+
+
+                                                                        <div class="col-4 pull-right">
+                                                                            <div>
+                                                                                @Html.Label("Item_Serial", Resources.DefaultResource.SerialNo, new { @class = "HeadMenuItem", Name = "Item_Serial" })
+
+                                                                                @Html.TextBoxFor(m => m.SelectedItem.Item_Serial, new { @class = "form-control" })
+
+
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+                                                                            <div>
+
+                                                                                @Html.Label("Item_BarCode", Resources.DefaultResource.ItemBarcode, new { @class = "HeadMenuItem", Name = "Item_BarCode" })
+
+
+                                                                                @Html.TextBoxFor(m => m.SelectedItem.Item_BarCode, new { @class = "form-control" })
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+                                                                            <div>
+
+
+
+
+                                                                                @Html.Label("Item_RFID", Resources.DefaultResource.RFID, new { @class = "HeadMenuItem", Name = "Item_RFID" })
+
+                                                                                @Html.TextBoxFor(m => m.SelectedItem.Item_RFID, new { @class = "form-control" })
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-4 pull-right" style="">
+
+
+                                                                            @Html.Label("Item_StateId", Resources.DefaultResource.ItemStatus, new { @class = "HeadMenuItem", Name = "Item_StateId" })
+
+                                                                            @Html.DropDownListFor(m => m.SelectedItem.Item_StateId, Model.Status, Resources.DefaultResource.ListChoose, new { @class = "form-control" })
+
+
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+
+
+                                                                            @Html.Label("Item_Expire", Resources.DefaultResource.ExpiredDate, new { @class = "HeadMenuItem" })
+
+                                                                            @*@Html.TextBoxFor(m => m.SelectedItem.Item_Expire, "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autocomplete = "off" })*@
+
+                                                                            @{ string ExpiredDate = "";
+                                                                                if (Model.SelectedItem.Item_Expire == null)
+                                                                                {
+                                                                                    //ExpiredDate =;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    ExpiredDate = Model.SelectedItem.Item_Expire.Value.ToString("dd/MM/yyyy");
+                                                                                } }
+                                                                            @*@Html.TextBox("SelectedItem.Item_Expire", Model.SelectedItem.Item_Expire!= null? Model.SelectedItem.Item_Expire.Value.ToString("dd/MM/yyyy"):"", new { @class = "form-control date-picker", AutoComplete = "Off" })*@
+                                                                            <input type="text" name="SelectedItem.Item_Expire" value="@ExpiredDate" class="form-control date-picker" AutoComplete="Off" data-date-format="dd/mm/yyyy" />
+                                                                            @*@Html.TextBoxFor(m => m.SelectedItem.Item_Expire, "{0:dd/MM/yyyy}", new { @class = "form-control date-picker" })*@
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+
+                                                                            @Html.Label("ItemQty", Resources.DefaultResource.Quantity, new { @class = "HeadMenuItem", Name = "ItemQty" })
+
+                                                                            @Html.TextBoxFor(m => m.SelectedItem.ItemQty, new { @class = "form-control", disabled = "true" })
+
+                                                                            @*@Html.ValidationMessageFor(m => m.SelectedItem.ItemQty, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })*@
+
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-4 pull-right">
+
+                                                                            @Html.Label("ItemQty", Resources.DefaultResource.QuotaTitle, new { @class = "HeadMenuItem", Name = "ItemQty" })
+
+                                                                            @Html.TextBoxFor(m => m.SelectedItem.QuotaId, new { @class = "form-control" })
+                                                                        </div>
+
+                                                                        <div class="col-4 pull-right">
+                                                                            @Html.Label("lblItem_Stock_Limit", Resources.DefaultResource.ItemQtyLimit, new { @class = "HeadMenuItem", Name = "lblItem_Stock_Limit" })
+
+                                                                            @Html.TextBoxFor(m => m.SelectedItem.Item_Stock_Limit, new { @class = "form-control" })
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+                                                                            @Html.Label("lblItemLocation", Resources.DefaultResource.ItemLocation, new { @class = "HeadMenuItem", Name = "lblItem_Stock_Limit" })
+
+                                                                            @Html.TextBoxFor(m => m.SelectedItem.Location, new { @class = "form-control" })
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="form-group row">
+
+
+                                                                        <div class="col-4 pull-right">
+                                                                            @Html.Label("lblcostPrice", Resources.DefaultResource.ItemPrice, new { @class = "HeadMenuItem", Name = "lblContractName" })
+
+                                                                            @Html.TextBoxFor(m => m.SelectedItem.MainCostPrice, new { @class = "form-control" })
+                                                                        </div>
+                                                                        <div class="col-4 pull-right" style="display:@(Model.SelectedItem.Item_tbl.CountableFlag ? "none" : "normal") ">
+                                                                            @*<div class="col-4 pull-right">*@
+                                                                            @Html.Label("lblContractName", Resources.DefaultResource.ContractName, new { @class = "HeadMenuItem", Name = "lblContractName" })
+
+                                                                            @*@Html.TextBoxFor(m => m.SelectedItem.ContractId, new { @class = "form-control" })*@
+                                                                            @Html.DropDownListFor(m => m.SelectedItem.ContractId, Model.vwContracts, Resources.DefaultResource.ListChoose, new { @class = "select-chosen", id = "ContractId", name = "ContractId" })
+
+                                                                        </div>
+                                                                        <div class="col-4 pull-right">
+
+                                                                            @Html.CheckBoxFor(m => m.SelectedItem.AssetFlag, new { @class = "form-check-input" })
+                                                                            @Html.Label("lblAssetFlag", Resources.DefaultResource.AssetItemTitle, new { @class = "HeadMenuItem col-2", Name = "lblAssetFlag" })
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-12 pull-right">
+
+
+                                                                            @Html.Label("lblNotes", Resources.DefaultResource.Notes, new { @class = "HeadMenuItem", Name = "ItemNotes", })
+                                                                            @Html.TextAreaFor(m => m.SelectedItem.Notes, new { @class = "form-control", cols = "55", rows = "5" })
+
+
+
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                                <div id="showmodal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static">
+                                                    <div class="modal-dialog modal-lg" role="document" style="max-width :40%">
+
+
+                                                    </div>
+                                                </div>
+       <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+      @section scripts{
+          <script>
+
+
+            $("#Addbtn").click(function () {
+
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+
+                 $.ajax({
+                    url: "@Url.Action("ItemsListModal", "CascadingDropDownList")",
+                     data: { id: @Model.SelectedItem.Item_Id},
+                    success: function (data) {
+                        $('#showmodal').modal({ backdrop: 'static', keyboard: false });
+                        $("#showmodal .modal-dialog").html(data);
+                        $("#showmodal").modal("show");
+
+
+                    }
+                });
+            });
+
+              var form = $("#AddEditform")
+                  .removeData("validator")
+                  .removeData("unobtrusiveValidation");
+
+              $.validator.unobtrusive.parse(form);
+            //$(document).ready(function () {
+            //    $(".datepicker").datepicker({
+            //        dateFormat: "dd-mm-yy",
+            //        changemonth: true,
+            //        changeyear: true
+            //    });
+            //});
+
+        function CheckChecked() {
+            $('#showmodal').modal('hide');
+
+        }
+              $("#ContractId").select2();
+        //var form = $("#myform")
+        //    .removeData("validator")
+        //    .removeData("unobtrusiveValidation");
+
+        //$.validator.unobtrusive.parse(form);
+
+        // Checkbox disable textbox
+
+
+        @*$("#showtable").on("click", "#Editbtn", function ()
+        {
+             var id = $(this).closest("tr").find("td").eq(0).html();
+            $.ajax({
+                url: "@Url.Action("AddEditItem", "Items")",
+                data: { id: id, SubCatId:@ViewBag.SubCatId},
+                success: function (data) {
+                    $('#showmodal').modal({ backdrop: 'static', keyboard: false });
+                    $("#showmodal .modal-dialog").html(data);
+                    $("#showmodal").modal("show");
+                }
+
+            });
+        });*@
+
+
+
+
+
+        //$(document).ready(function ()
+        //{
+        //    $('a.delete').click(OnDeleteClick);
+        //});
+        //function OnDeleteClick(e)
+        //{
+        //    var employeeId = e.target.id;
+        //    var flag = confirm('You are about to delete Employee ID ' + employeeId + ' permanently.Are you sure you want to delete this record ? ');
+        //        if (flag) {
+        //        $.ajax({
+        //            url: '/Buildings/DeleteAJAX',
+        //            type: 'POST',
+        //            data: { employeeid: employeeId },
+        //            dataType: 'json',
+        //            success: function (result) { alert(result); $("#" + employeeId).parent().parent().remove(); },
+        //            error: function () { alert('Error!'); }
+        //        });
+
+        //    }
+        //    return false;
+
+        //}
+
+
+
+
+
+          </script>
+                                                                                }}
+
+

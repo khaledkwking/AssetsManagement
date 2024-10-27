@@ -1,0 +1,178 @@
+﻿
+@model DAL.Floor_tbl
+
+@{
+    ViewBag.Title = @Html.Raw(Resources.DefaultResource.Bulidings);
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("SaveFloor", "Buildings", FormMethod.Post, htmlAttributes: new { Id = "myform" }))
+{
+    @Html.AntiForgeryToken();
+
+
+<div id="EditModal" class="modal-content">
+    <div class="modal-header">
+
+        <span class="kt-portlet__head-icon">
+            <i class="kt-font-brand flaticon2-checking"></i>
+        </span>
+        <h3 class="modal-title" id="exampleModalLabel">
+            @Html.Raw(Resources.DefaultResource.Floors)
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" onclick="CheckChecked();" aria-label="Close">
+            <span class="fa fa-close">
+
+            </span>
+        </button>
+
+    </div>
+    <div class="modal-body">
+        <div class="kt-portlet kt-portlet--mobile">
+            @*<div class="kt-portlet__head kt-portlet__head--lg">
+
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-checking"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            @Html.Raw(Resources.DefaultResource.CarModelTitle)
+                        </h3>
+                    </div>
+
+                </div>*@
+            <div class="kt-portlet__body">
+
+                <div id="ErrorDiv" runat="server"></div>
+                <div class="bodyContainer">
+                    <div class="kt-portlet">
+                        <!--begin::Form-->
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-portlet__body">
+                                <div class="row">
+                                    <div class="col-sm-6 pull-right">
+                                        <nav class="navbar buttonsNavBar">
+                                            <div class="container-fluid">
+                                                <ul class="nav nav-pills">
+
+                                                    @*<text>&nbsp;</text>*@
+                                                    <li id="Li2" class="pull-right">
+
+                                                        @*<input id="CmdSave" type="button" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" onclick="location.href='@Url.Action("EditUnitModal", "Items",new {Model})'" />*@
+
+                                                        <input id="CmdSave" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-success" title="@Html.Raw(Resources.DefaultResource.Insert)" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Buildings/SaveFloor" formmethod="post" ValidationGroup="DML" />
+
+                                                        @*<input id="CmdClose" type="submit" value="@Html.Raw(Resources.DefaultResource.Insert)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Insert)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Insert)" formaction="/Items/UnitAdd/@Model.Unit_Id"/>*@
+
+                                                    </li>
+                                                    <text>&nbsp;</text>
+                                                    <li id="Li1" class="active pull-right">
+                                                        @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" formaction="/Items/cancel/@Model.Unit_Id" />*@
+                                                        @*<input id="CmdClose" type="button" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal" data-toggle="@Html.Raw(Resources.DefaultResource.Cancel)" />*@
+                                                        <button type="button" id="CmdClose" onclick="CheckChecked();" value="@Html.Raw(Resources.DefaultResource.Cancel)" class="btn btn-secondary" title="@Html.Raw(Resources.DefaultResource.Cancel)" data-dismiss="modal">@Html.Raw(Resources.DefaultResource.Cancel)</button>
+                                                    </li>
+                                                    <text>&nbsp;</text>
+
+                                                </ul>
+
+                                            </div>
+                                        </nav>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 pull-right">
+                                        <div>
+                                            @*@Html.TextBoxFor(m => m.Building_Id, new { @class = "form-control hidden", @readonly = "true", @value = ViewBag.BuildingId })*@
+                                            @Html.HiddenFor(m => m.Building_Id, new { @class = "form-control hidden", @readonly = "true", @value = ViewBag.BuildingId })
+
+                                            @*<asp:Label ID="Label4" runat="server" Text="أسم المشترك" CssClass="labelTxt"></asp:Label>*@
+
+                                            @Html.Label("Building_Code", Resources.DefaultResource.CodeTitle, new { @class = "HeadMenuItem" })
+
+                                            @Html.TextBoxFor(m => m.Floor_Id, new { @class = "form-control", @readonly = "true" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6 pull-right">
+                                        <div>
+
+                                            @Html.Label("Building_Name", Resources.DefaultResource.TitleAr, new { @class = "HeadMenuItem", Name = "Building_Name" })
+
+
+                                            @Html.TextBoxFor(m => m.Floor_Name, new { @class = "form-control" })
+
+                                            @Html.ValidationMessageFor(m => m.Floor_Name, Resources.DefaultResource.RequiredMessage, new { @class = "text-danger" })
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 pull-right">
+                                        <div>
+                                            @*<asp:Label ID="Label18" runat="server" Text="رقم الهاتف" CssClass="labelTxt"></asp:Label>*@
+                                            @Html.Label("Building_NameEn", Resources.DefaultResource.Title, new { @class = "HeadMenuItem", Name = "Building_Name" })
+
+                                            @Html.TextBoxFor(m => m.Floor_NameEn, new { @class = "form-control" })
+                                            <span class="text-danger">
+                                                @Html.ValidationMessageFor(m => m.Floor_NameEn, Resources.DefaultResource.RequiredField)
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="kt-portlet__foot">
+                            <div class="kt-form__actions">
+                                <div class="row">
+                                    <div class="col-2">
+                                    </div>
+                                    <div class="col-10">-->
+                            @*<asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="<%$ Resources:DefaultResource, Insert%>" CssClass="btn btn-success" ValidationGroup="DML" />
+                                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="<%$ Resources:DefaultResource, Cancel%>" CssClass="btn btn-secondary" />*@
+
+                            <!--</div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @*for Valiadtion*@
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        function CheckChecked() {
+            $('#showmodal').modal('hide');
+
+        }
+        var form = $("#myform")
+            .removeData("validator")
+            .removeData("unobtrusiveValidation");
+
+        $.validator.unobtrusive.parse(form);
+
+    </script>
+
+
+    @*<div class="modal-footer">*@
+    @*<a class="btn btn-sm btn-danger" href="#" data-dismiss="modal">
+        <%= Resources.DefaultResource.Close %>
+        </a>
+        <asp:LinkButton ID="registerLinkButton" runat="server" CssClass="btn btn-sm btn-success" CommandName="Register" CommandArgument='<%# "TrainingRegistration.aspx?TID=" +  Eval("TrainingID ")+"&TDID=" + Eval("TrainingDateID ")+ "&TTID=" + Eval("TrainingTemplateType ")  %>'>
+        <%= Resources.DefaultResource.Register %></asp:LinkButton>*@
+    @*</div>*@
+</div>
+
+
+}

@@ -1,0 +1,40 @@
+﻿.loginbutton
+{
+	background-color:#ffffff;
+	border:2px;
+	border-style:solid;
+	border-color: #074e99;
+	font-family:Verdana;
+	color: #074e99;
+	font-size:13px;
+}
+
+.logintextbox
+{
+	background-color:#ffffff;
+	border:1px;
+	border-style:solid;
+	border-color:#074e99;
+	font-family:Verdana;
+	font-size:13px;
+}
+
+.logincheckbox
+{
+	font-family:Verdana;
+	font-size:13px;
+}
+
+.loginlable
+{
+	font-family:Verdana;
+	font-size:13px;
+	color: #074e99;
+}
+
+.loginerror
+{
+	font-family:Verdana;
+	font-size:13px;
+	color: red;
+}

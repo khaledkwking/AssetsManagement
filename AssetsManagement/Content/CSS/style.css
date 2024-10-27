@@ -1,0 +1,208 @@
+body
+{
+background-color: #E4E4E4}
+a.link
+{
+font-family: Tahoma; font-size: 8pt; color: #FFFFFF; text-decoration: none}
+a:hover.link
+{
+font-family: Tahoma; font-size: 8pt; color: #F7F7F7; text-decoration: none}
+.gheader
+{
+background-image: url('../images/headlinepiece.jpg'); background-repeat: 
+               repeat-x; background-position: left bottom; font-family:Tahoma; font-size:6pt; color:#000000}
+.welcome
+{
+color: #727272; font-size: 8pt; font-family: Verdana; font-weight: bold}
+.leftbanner
+{
+background-color: #0A1113; background-image: url('../images/leftgrad.jpg'); 
+               background-repeat: repeat-x;}
+.gleft
+{
+background-color: #6AB9C8; background-image: url('../images/jjj.jpg'); 
+               background-repeat: repeat-x;}
+.gsearch
+{
+background-image: url('../images/searchpiece.jpg'); background-repeat: 
+               repeat-x}
+input.field
+{
+border:1px solid #3D6B72; width: 130; height: 18; color:#000000; font-family:Tahoma; font-size:8pt; background-color:#FFFFFF; padding-top:5px; padding-bottom:3px; padding-right:7px}
+a.searchtxt
+{
+color: #045E7E; font-family: Tahoma; font-size: 7pt; text-decoration: 
+               none underline; }
+a:hover.searchtxt
+{
+text-decoration: none; font-size: 7pt; font-family: Tahoma; color: #045E7E}
+.searchtitle
+{
+font-family: Tahoma; font-size: 8pt; color: #555555; }
+.buttons
+{
+background-image: url('../images/tabspiece.jpg');   font-family:Tahoma; font-size:8pt; padding-right:15px }
+.bttext
+{
+font-family: Tahoma; font-size: 8pt; color: #FFFFFF; padding-left: 7px; 
+               padding-right: 4px}
+.headbuttons
+{
+background-image: url('../images/tabsheader.jpg'); background-repeat: repeat-x}
+.news
+{
+font-family: Tahoma; font-size: 8pt; color: #726C50; background-image: 
+               url('../images/newsslice.jpg'); background-repeat: repeat-y}
+.newstxt
+{
+	font-family: Tahoma;
+	font-size: 8pt;
+	color: #000000;
+}
+.gtree
+{
+background-color: #F0F0F0; background-image: url('../images/treeslice.jpg'); 
+               background-repeat: repeat-x}
+.gpageft
+{
+background-color: #B7B6B6; background-image: url('../images/pagefootersl.jpg'); 
+               background-repeat: repeat-x}
+.gpage
+{
+background-color: #F0F0F0; background-image: url('../images/pageslice.jpg'); 
+               background-repeat: repeat-x}
+.gbttable
+{
+background-image:url('../images/newspiece.jpg'); background-repeat:repeat-y; }
+.gtable
+{
+background-color: #D6D6D6}
+.gkasra
+{
+background-color: #C4C6B9}
+.glogin
+{
+background-color: #BDF7FF}
+.treetxt
+{
+color: #B82608; font-family: Tahoma; font-size: 8pt}
+.treetitle
+{
+color: #004C82; font-family: Tahoma; font-size: 8pt}
+.gleft
+{
+background-image: url('../images/iii.jpg'); background-repeat: repeat-x}
+.contentitle
+{
+color: #024B6F; font-family: Tahoma; font-size: 9pt; padding-right: 5px}
+.contentheader
+{
+color: #660000; font-family: Tahoma; font-size: 8pt; padding-right: 7px}
+.content
+{
+color: #112D32; font-family: Tahoma; font-size: 8pt; padding-right: 10px}
+.percentage
+{
+color: #555555; font-family: Tahoma; font-size: 7pt}
+.gnewleft
+{
+background-color: #C0E1EA}
+.glogin
+{
+background-image: url('../images/loginslice.jpg'); background-repeat: repeat-x}
+.gsearch
+{
+background-image: url('../images/searchpiece.jpg'); background-repeat: 
+               repeat-x}
+               
+.Cssbutton
+{
+color: #FFFFFF; font-family: Verdana; font-size: 10pt; font-weight: bold; 
+               width: 70px; border: 0px solid #003171; 
+               background-color: #2ED9EA; background-image: 
+               url('../images/gbutton.jpg'); background-repeat: repeat}
+.Cssbuttonsearch
+{
+color: #FFFFFF; font-family: Verdana; font-size: 10pt; font-weight: bold; 
+               width: 40px; height: 24; border: 1px solid #003171; 
+               background-color: #2ED9EA; background-image: 
+               url('../images/gbutton.jpg'); background-repeat: repeat-x}
+.CssMenuBack
+{
+color: #FFFFFF; font-family: Verdana; font-size: 10pt; font-weight: bold; 
+               width: 70px; height: 24; border: 1px solid #003171; 
+               background-color: #2ED9EA; background-image: 
+               url('../images/gMenu.jpg'); background-repeat: repeat }
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+.reporttitle
+{
+background-image: url('../images/titleslice.jpg'); 
+               background-repeat: repeat-x}
+.contentbg
+{
+background-color: #E4E4E4}
+.btback
+{
+background-color: #ACA99E}
+.previewbt
+{
+font-family: Tahoma; font-size: 14px; color: #383838; width: 126; height: 23; 
+               border: 1px solid #333434; background-image: 
+               url('../images/btslice.jpg'); background-repeat: 
+               repeat-x; font-weight:bold}
+               
+               
+               
+.btback05
+{
+background-image: url('../images/btslice05.jpg'); 
+               background-repeat: repeat-y}
+.Cssbutton04
+{
+font-family: Tahoma; font-size: 14px; color: #00177A; width: 126; height: 23; 
+               border: 1px solid #0020A9; background-image: 
+               url('../images/btslice.jpg'); background-repeat: 
+               repeat-x; font-weight:bold}
+.header05
+{
+background-image: url('../images/headersl05.jpg'); 
+               background-repeat: repeat-y; font-family:Times New Roman; font-size:18px; color:#0020A9}
+.content05
+{
+border: 1px solid #000000; background-color: #EFEFEF}
+
+
+
+.header06
+{
+background-image: url('../images/header06.jpg'); background-repeat: repeat-y}
+
+/*.Titlepage {
+			font-family: 'Droid-Arabic-Kufi bold';
+            font-size: 30px;
+            position: relative;
+            top: 0;
+            margin: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 0px 0px;
+            color: #134774;
+}*/
+

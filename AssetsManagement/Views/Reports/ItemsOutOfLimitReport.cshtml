@@ -1,0 +1,178 @@
+﻿
+@model BOL.ReportViewModel
+@using PagedList.Mvc;
+@using PagedList;
+
+@{ ViewBag.Title = "ItemsOutOfLimitReport";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@*<h2>CarList</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            @Html.Raw(Resources.DefaultResource.YOUAREHERE):
+
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+
+            <a href="/Home/Index" class="kt-subheader__breadcrumbs-link">
+                @Html.Raw(Resources.DefaultResource.Dashboard)
+            </a>
+
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">
+
+                @Html.Raw(Resources.DefaultResource.ItemsStockLimitReport)
+
+            </span>
+        </div>
+    </div>
+</div>
+<div class="kt-subheader-search">
+    <h3 class="kt-subheader-search__title">
+        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearch%>" />*@
+        @Html.Raw(Resources.DefaultResource.GlobalSearch)
+        <span class="kt-subheader-search__desc">
+            @Html.Raw(Resources.DefaultResource.GlobalSearchNote)
+            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, GlobalSearchNote%>" />*@
+        </span>
+    </h3>
+  
+    @using (Html.BeginForm("ItemsOutOfLimitReport", "Reports", FormMethod.Post, new { target = "_blank" }))
+    {
+    @Html.AntiForgeryToken();
+    <div class="kt-form">
+        <div class="kt-grid">
+            <div class="kt-grid__item">
+               
+                 
+           
+                <div class="form-group row  mb-md-5 mt-5  ">
+                    @Html.Label("lblStoreId", Resources.DefaultResource.InventoryName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                    <div class="col-4" style="">
+                        @Html.DropDownListFor(m => m.StoreId, Model.Inventories, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "StoreId", name = "StoreId" })
+                    </div>
+
+                    @Html.Label("lblMainItemsId", Resources.DefaultResource.MainItemsCat, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+
+                    <div class="col-4" style="">
+                        @Html.DropDownListFor(m => m.MainCatId, Model.CatMain, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "MainCatId", name = "MainCatId" })
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                    @Html.Label("lblItemName", Resources.DefaultResource.ItemName, new { @class = "kt-subheader-search__desc col-1 HeadMenuItem" })
+                    <div class="col-8" style="">
+                        @Html.DropDownListFor(m => m.ItemId, Model.Items, Resources.DefaultResource.ListChoose, new { @class = "form-select-lg", style = "width:100%;", id = "ItemId", name = "ItemId" })
+                    </div>
+
+
+               
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 text-center">
+                   
+                        
+
+                     
+                            <button type="submit" class="btn btn-info btn-primary btn-icon-sm" value=@Resources.DefaultResource.Preview name="CmdSave" id="CmdSave" formmethod="post" ValidationGroup="DML">
+
+                                <i class="fa fa-print"></i>
+                                <span class="kt-nav__link-text">
+                                    @Html.Raw(Resources.DefaultResource.Preview)
+                                </span>
+                            </button>
+                            @*<input type="submit" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview />*@
+                            @*<input type="button" class="btn btn-upper btn-bold btn-font-sm kt-subheader-search__submit-btn" value=@Resources.DefaultResource.Preview onclick="window.open('@Url.Action("ShowReport", "Report")')" />*@
+                        
+
+                   
+                    </div>
+                </div>
+
+          
+
+        </div>
+    </div>
+        
+    </div>
+
+
+    }
+    
+    </div> 
+@section scripts{
+    <script>
+
+         $(function () {
+
+                 $("#dropDownListdiv").on("change", "select", function () {
+
+                     var value = $(this).val();
+                     var id = $(this).attr("id");
+                    /* document.getElementById("DisplayMode").value = 1;*/
+                    /* alert(id);*/
+                       $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                             switch (id) {
+                                 case "DeptId":
+
+                                     PopulateDropDown("#EmpId", data.Employees);
+
+
+                                         break;
+
+
+                              }
+                     });
+                 });
+             });
+
+
+        function PopulateDropDown(dropDownId, list) {
+            $(dropDownId).empty();
+            $(dropDownId).append("<option>@Resources.DefaultResource.ListChoose</option>")
+            $.each(list, function (index, row) {
+                if (index == 0) {
+                    $(dropDownId).append("<option value='" + row.Value + "' selected='selected'>" + row.Text + "</option>");
+                } else {
+                    $(dropDownId).append("<option value='" + row.Value + "'>" + row.Text + "</option>")
+                }
+            });
+        }
+
+
+
+        $(function () {
+
+           
+            $("#StoreId").select2();
+          
+
+            $("#MainCatId").select2();
+            $("#ItemId").select2();
+
+
+
+        });
+
+
+
+
+
+
+
+
+    </script>
+}
+
+

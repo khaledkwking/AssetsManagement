@@ -1,0 +1,52 @@
+.background
+{
+	clear: both;
+	background-image: url(../images/blue_menu_btn.jpg);
+	background-repeat: repeat-x;
+	width: 70px;
+	height: 25px;
+}
+
+.rollover
+{
+	clear:both;
+	font-family:Tahoma;
+	font-size: 14px;
+	font-style:normal;
+	color: black;
+	background-image:url(../images/orange_menu_btn.jpg);
+	background-repeat: repeat-x;
+	width: 70px;
+	height: 25px;
+}
+
+.menuitem
+{
+	clear:both;
+	font-family:Tahoma;
+	font-size: 14px;
+	font-style:normal;
+	color: White;
+}
+
+.footer
+{
+	background-image: url(../images/footer_bg.jpg);
+	
+	background-repeat: repeat-x;
+}
+.TopHeader
+{
+	background-image: url(../images/top_bg.jpg);
+	
+	background-repeat: repeat-x;
+}
+.menuitem
+{
+	clear:both;
+	font-family:Verdana ;
+	font-size: 12px;
+	font-style:normal;
+	color: White;
+}
+

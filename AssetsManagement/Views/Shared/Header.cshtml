@@ -1,0 +1,863 @@
+﻿@*@model AssetsManagement.DAL.Office*@
+
+
+
+<div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed d-print-none" style="background-image: url('../../assets/media/bg/BackBlue.png');">
+
+    <!-- begin:: Aside -->
+    <div class="kt-header__brand kt-grid__item" id="kt_header_brand">
+        <div class="kt-header__brand-logo">
+            <a href="/Home/Index/">
+                <img alt="Logo" src="~/assets/media/logos/Toplogo.png" />
+                <h3 class="kt-header__title kt-grid__item" style="text-align :center; font-size :100%">
+                    @*<asp:Literal runat="server" Text="@Html.Raw(Resources.DefaultResource.HeaderTitle)" />*@
+                    @Html.Raw(Resources.DefaultResource.HeaderTitle)
+                </h3>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- end:: Aside -->
+    <!-- begin:: Title -->
+    <!--<h3 class="kt-header__title kt-grid__item">-->
+    @*@Resources.DefaultResource.HeaderTitle*@
+    <!--@Html.Raw(Resources.DefaultResource.MainTitle)-->
+    @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, HeaderTitle%>" />*@
+    <!--</h3>-->
+    <!-- end:: Title -->
+    <!-- begin: Header Menu -->
+    <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+
+    <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
+        <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
+            <ul class="kt-menu__nav ">
+
+                <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true">
+                    <a href="/Home/Index/" class="kt-menu__link ">
+                        <span class="kt-menu__link-text HeadMenuItem">
+                            @Html.Raw(Resources.DefaultResource.Dashboard)
+                            @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, Dashboard%>" />*@
+                        </span>
+
+                    </a>
+                </li>
+
+                @if (ViewContext.Controller.HasPermission("Building", "Accessing") || ViewContext.Controller.HasPermission("Departments", "Accessing") ||
+                    ViewContext.Controller.HasPermission("Employees", "Accessing") || ViewContext.Controller.HasPermission("ItemsData", "Accessing")
+                    || ViewContext.Controller.HasPermission("Main Categories", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text ">
+                        @*<asp:Literal ID="Literal5" runat="server" Text="<%$ Resources:DefaultResource, MyFile%>" />*@
+                        @Html.Raw(Resources.DefaultResource.BasicData)
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("Building", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Buildings/Index/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.Bulidings)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("Departments", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/HR/Departements/" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.Organization)
+
+                    </span>
+                </a>
+            </li>
+}
+
+                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-icon fa fa-building"><span></span></i>
+                                <span class="kt-menu__link-text ">
+
+                                    @Html.Raw(Resources.DefaultResource.Employees)
+                                </span>
+                                <i class="kt-menu__hor-arrow la la-angle-right"></i>
+                            </a>
+                            @*<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle ">
+                                <i class="kt-menu__link-icon fa fa-building"><span></span></i>
+                                <span class="kt-menu__link-text">
+                                    @Html.Raw(Resources.DefaultResource.Employees)
+                                </span>
+                                <i class="kt-menu__hor-arrow la la-angle-right"></i>
+                            </a>*@
+
+                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right" style="max-height: 65em; overflow: auto">
+                                <ul class="kt-menu__subnav">
+                                    @if (ViewContext.Controller.HasPermission("Employees", "Accessing"))
+                                    {
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href="/HR/Employees/" class="kt-menu__link ">
+                            <span class="kt-menu__link-text">
+                                @Html.Raw(Resources.DefaultResource.EmployeesData)
+                            </span>
+                        </a>
+                    </li>}
+
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu " data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-icon flaticon-map"><span></span></i>
+                                <span class="kt-menu__link-text ">
+
+                                    @Html.Raw(Resources.DefaultResource.ItemsData)
+                                </span>
+
+                                @*<li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                        <a href="javascript:;" class="kt-menu__link ">
+                            <i class="kt-menu__link-icon flaticon-map"><span></span></i>
+                            <span class="kt-menu__link-text">
+                                @Html.Raw(Resources.DefaultResource.ItemsData)
+                            </span>*@
+                                <i class="kt-menu__hor-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right" style="max-height: 65em; overflow: auto">
+                                <ul class="kt-menu__subnav">
+                                    @if (ViewContext.Controller.HasPermission("Main Categories", "Accessing"))
+                                    {
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href='@Url.Action("CatMainList", "Items")' class="kt-menu__link ">
+                            <span class="kt-menu__link-text">
+                                @Html.Raw(Resources.DefaultResource.MainItemsCat)
+                            </span>
+                        </a>
+                    </li>}
+                                    @if (ViewContext.Controller.HasPermission("Units", "Accessing"))
+                                    {
+                    <li class="kt-menu__item " aria-haspopup="true">
+                        <a href='@Url.Action("Index", "Items")' class="kt-menu__link ">
+                            <span class="kt-menu__link-text">
+                                @Html.Raw(Resources.DefaultResource.ItemsUnits)
+                            </span>
+                        </a>
+                    </li>
+}
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+
+                    </ul>
+                </div>
+            </li>}
+                @if (ViewContext.Controller.HasPermission("Rooms", "Accessing") || ViewContext.Controller.HasPermission("Suppliers", "Accessing") ||
+                   ViewContext.Controller.HasPermission("Items Search", "Accessing") || ViewContext.Controller.HasPermission("Transfer orders", "Accessing")
+                   || ViewContext.Controller.HasPermission("Change Orders", "Accessing") || ViewContext.Controller.HasPermission("ListDamagedItems", "Accessing")
+                   )
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text ">
+                        @*<asp:Literal ID="Literal5" runat="server" Text="<%$ Resources:DefaultResource, MyFile%>" />*@
+                        @Html.Raw(Resources.DefaultResource.Inventory)
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("Rooms", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("RoomsList", "Buildings", new { StoreFlag = 1 })' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.InventoryData)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("Suppliers", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("SuppliersList", "Inventory")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.Suppliers)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("Items Search", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("ItemsSearchStockList", "Inventory",new { Flag =1 })' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ItemsSeearch)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>}
+
+                        @if (ViewContext.Controller.HasPermission("Transfer orders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("TransferOrderList", "TransferOrders")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.TransferOrdersTitle)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("Transfer orders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("AddEditTransferOrder", "TransferOrders")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AddTransferOrder)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("Change Orders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("ChangeQuantityOrderList", "ChangeQuantityOrders")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ChangeQuantityOrdersTitle)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("Change Orders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("AddEditChangeQuantityOrder", "ChangeQuantityOrders")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AddChangeQuantityOrder)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("ListDamagedItems", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href='@Url.Action("ItemsDamagedStockList", "Inventory")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.DamgedItemsList)
+
+                    </span>
+                </a>
+            </li>
+}
+
+                    </ul>
+                </div>
+            </li>}
+
+                @if (ViewContext.Controller.HasPermission("Assets Transfer", "Accessing") || ViewContext.Controller.HasPermission("HandOver Orders", "Accessing") ||
+                  ViewContext.Controller.HasPermission("Transfer orders", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text HeadMenuItem">
+                        @Html.Raw(Resources.DefaultResource.Assets)
+                        @*<asp:Literal ID="Literal9" runat="server" Text="<%$ Resources:DefaultResource, Gym_Subscription%>" />*@
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+
+                        @if (ViewContext.Controller.HasPermission("Assets Transfer", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href='@Url.Action("AssetItemsList", "Inventory")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-notes"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AssetsTransfer)
+                        @*<asp:Literal ID="Literal12" runat="server" Text="<%$ Resources:DefaultResource, Gym_Subscription_Display%>" />*@
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("HandOver Orders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href=/HandoverOrders/HandoverOrderList/ class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.HandOverOrders)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("HandOver Orders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href=/HandoverOrders/AddEditHandoverOrder/ class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AddHandOverOrders)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("Assets Transfer", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href='@Url.Action("TransferAssetsList", "TransferAssets")' class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-notes"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.TransferAssetsTitle)
+                        @*<asp:Literal ID="Literal12" runat="server" Text="<%$ Resources:DefaultResource, Gym_Subscription_Display%>" />*@
+                    </span>
+                </a>
+            </li>}
+
+
+                    </ul>
+                </div>
+            </li>}
+                @if (ViewContext.Controller.HasPermission("InOrders", "Accessing") || ViewContext.Controller.HasPermission("Vendors", "Accessing") ||
+                  ViewContext.Controller.HasPermission("VendorContracts", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text ">
+                        @*<asp:Literal ID="Literal5" runat="server" Text="<%$ Resources:DefaultResource, MyFile%>" />*@
+                        @Html.Raw(Resources.DefaultResource.Supply)
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("InOrders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Inorders/InOrderList" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.SupplyVouchers)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("InOrders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Inorders/AddEditInOrder/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AddInOrder)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>}
+
+                        @if (ViewContext.Controller.HasPermission("Vendors", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Vendors/VendorsList" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.Vendors)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("VendorContracts", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Vendors/VendorContractsList" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.VendorContracts)
+
+                    </span>
+                </a>
+            </li>}
+
+
+                    </ul>
+                </div>
+            </li>}
+                @if (ViewContext.Controller.HasPermission("OutOrders", "Accessing") || ViewContext.Controller.HasPermission("Destroy Orders", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text ">
+                        @*<asp:Literal ID="Literal5" runat="server" Text="<%$ Resources:DefaultResource, MyFile%>" />*@
+                        @Html.Raw(Resources.DefaultResource.Exchange)
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("OutOrders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Orders/OutOrderList/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ExchangeVouchers)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("OutOrders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/Orders/AddEditOutOrder/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AddOutOrder)
+                        @*<asp:Literal ID="Literal6" runat="server" Text="<%$ Resources:DefaultResource, MyFile_Prices%>" />*@
+                    </span>
+                </a>
+            </li>
+}
+
+                        @if (ViewContext.Controller.HasPermission("Destroy Orders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/DestroyOrders/DestroyOrdersList/" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.DestroyOrders)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("Destroy Orders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/DestroyOrders/AddEditDestroyOrder/" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.AddDestroyOrders)
+
+                    </span>
+                </a>
+            </li>
+}
+
+                    </ul>
+                </div>
+            </li>}
+
+                @if (ViewContext.Controller.HasPermission("OutOrderItemReport", "Accessing") || ViewContext.Controller.HasPermission("ItemsOutOfLimitReport", "Accessing")
+                    || ViewContext.Controller.HasPermission("InOrderItemReport", "Accessing") || ViewContext.Controller.HasPermission("DestroyOrdersItemReport", "Accessing")
+                    || ViewContext.Controller.HasPermission("HandOverOrdersItemReport", "Accessing") || ViewContext.Controller.HasPermission("TransferOrdersItemReport", "Accessing")
+                    || ViewContext.Controller.HasPermission("ChangeQuantityOrdersItemReport", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text HeadMenuItem">
+                        @Html.Raw(Resources.DefaultResource.Reports)
+                        @*<asp:Literal ID="Literal1" runat="server" Text="<%$ Resources:DefaultResource, GymReports%>" />*@
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("OutOrderItemReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/Reports/OutOrderItemReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.OutOrdersReport)
+                        @*<asp:Literal ID="Literal2" runat="server" Text="<%$ Resources:DefaultResource, GymReports_Subscribers%>" />*@
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("ItemsOutOfLimitReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/Reports/ItemsOutOfLimitReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ItemsStockLimitReport)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("InOrderItemReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/ReportsInOrder/InOrderItemReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.InOrderItemReport)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("DestroyOrdersItemReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/ReportsDestroyOrders/DestroyOrdersItemReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon2-chart"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.DestoryOrderItemReport)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("HandOverOrdersItemReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/ReportsHandOverOrders/HandOverOrdersItemReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.HandOverOrderItemReport)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("TransferOrdersItemReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/ReportsTransferOrders/TransferOrdersItemReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon2-chart"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.TransferOrderItemReport)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("ChangeQuantityOrdersItemReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/ReportsChangeQuantityOrders/ChangeQuantityOrdersItemReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-map"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ChangeQuantityOrderItemReport)
+
+                    </span>
+                </a>
+            </li>
+}
+
+                    </ul>
+                </div>
+            </li>
+}
+                @if (ViewContext.Controller.HasPermission("AllOrderItemsReport", "Accessing") || ViewContext.Controller.HasPermission("ItemsStockCardReport", "Accessing") ||
+                 ViewContext.Controller.HasPermission("ItemsStockListReport", "Accessing") || ViewContext.Controller.HasPermission("EmptyRoomsReport", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text HeadMenuItem">
+                        @Html.Raw(Resources.DefaultResource.OtherReports)
+                        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource, Gym_Settings%>" />*@
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("AllOrderItemsReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/Reports/AllOrderItemsReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.Report_InOut)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("ItemsStockCardReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+
+                <a href="/ReportsItemsStock/ItemsStockCardReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ItemsStockCard)
+
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("ItemsStockListReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+
+                <a href="/ReportsItemsStock/ItemsStockListReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.ItemsReport)
+
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("EmptyRoomsReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+
+                <a href="/ReportsEmpRooms/EmptyRoomsReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.EmptyRoomsReport)
+
+                    </span>
+                </a>
+            </li>}
+
+                        @if (ViewContext.Controller.HasPermission("EmptyRoomsReport", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+
+                <a href="/Reports/ItemsStockTotalReport" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.StockReport)
+
+                    </span>
+                </a>
+            </li>}
+
+
+
+                    </ul>
+                </div>
+            </li>
+}
+                @if (ViewContext.Controller.HasPermission("RequestOutOrders", "Accessing") || ViewContext.Controller.HasPermission("RequestOutOrders", "Adding")
+                          )
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text ">
+                      
+                        @Html.Raw(Resources.DefaultResource.RequestOrders)
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @if (ViewContext.Controller.HasPermission("RequestOutOrders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/RequestOutOrders/RequestOutOrderList/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.RequestOrders)
+                      
+                    </span>
+                </a>
+            </li>}
+                        @if (ViewContext.Controller.HasPermission("RequestOutOrders", "Adding"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/RequestOutOrders/AddEditRequestOutOrder/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.RequestOrderAdd)
+                       
+                    </span>
+                </a>
+            </li>
+}
+                        @if (ViewContext.Controller.HasPermission("RequestOutOrders", "Accessing"))
+                        {
+            <li class="kt-menu__item" aria-haspopup="true">
+                <a href="/RequestOutOrders/RequestOutOrderFollowList/" class="kt-menu__link">
+                    <i class="kt-menu__link-icon fa fa-building"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.FollowRequests)
+                     
+                    </span>
+                </a>
+            </li>
+}
+
+
+                    </ul>
+                </div>
+            </li>
+                }
+
+                @if (ViewContext.Controller.HasPermission("Users", "Accessing"))
+                {
+            <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-text HeadMenuItem">
+                        @Html.Raw(Resources.DefaultResource.Settings)
+
+                    </span>
+                    <i class="kt-menu__hor-arrow la la-angle-down"></i>
+                </a>
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                    <ul class="kt-menu__subnav">
+                        @*<li class="kt-menu__item " aria-haspopup="true">
+                    <a href="" class="kt-menu__link ">
+                        <i class="kt-menu__link-icon flaticon-settings-1"></i>
+                        <span class="kt-menu__link-text">
+                            @Html.Raw(Resources.DefaultResource.Settings)
+
+                        </span>
+                    </a>
+                </li>*@
+                        @if (ViewContext.Controller.HasPermission("Users", "Accessing"))
+                        {
+            <li class="kt-menu__item " aria-haspopup="true">
+                <a href="/Users/UsersList" class="kt-menu__link ">
+                    <i class="kt-menu__link-icon flaticon-users"></i>
+                    <span class="kt-menu__link-text">
+                        @Html.Raw(Resources.DefaultResource.PrivilegesAssignment)
+
+                    </span>
+                </a>
+            </li>
+}
+
+
+
+                    </ul>
+                </div>
+            </li>}
+
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- end: Header Menu -->
+    <!-- begin:: Header Topbar -->
+    <div class="kt-header__topbar">
+
+
+        <!--begin: Language bar -->
+        <div class="kt-header__topbar-item kt-header__topbar-item--langs">
+            <div class="kt-header__topbar-wrapper" data-bs-toggle="dropdown" data-offset="10px,0px">
+                <span class="kt-header__topbar-icon kt-header__topbar-icon--brand">
+                    @if (Session["SiteLanguage"] != null)
+                    {
+                        if (Session["SiteLanguage"].ToString() == "ArabicTheme")
+                        {
+        <img src="../../assets/media/flags/KuwaitFlag.png" alt="" /> }
+    else
+    {
+<img src="../../assets/media/flags/UsaFlag.png" alt="" /> }
+
+}
+else
+{
+<img src="../../assets/media/flags/KuwaitFlag.png" alt="" />}
+                </span>
+            </div>
+            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-left dropdown-menu-anim">
+                <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
+                    <li class="kt-nav__item kt-nav__item--active">
+                        @*<asp:LinkButton ID="EnglishLang" runat="server" CssClass="kt-nav__link" OnClick="EnglishLang_Click">*@
+
+                        <a href='@Url.Action("SetLanguage","Home",new { Lang = "en" })' class="kt-nav__link">
+                            <span class="kt-nav__link-icon">
+                                <img src="../../assets/media/flags/UsaFlag.png" alt="" />
+                            </span>
+                            <span class="kt-nav__link-text">English</span>
+                        </a>
+                        @*</asp:LinkButton>*@
+                    </li>
+                    <li class="kt-nav__item">
+                        @*<asp:LinkButton ID="ArabicLang" runat="server" CssClass="kt-nav__link" OnClick="ArabicLang_Click">*@
+                        <a href='@Url.Action("SetLanguage","Home",new { Lang = "ar" })' class="kt-nav__link">
+                            <span class="kt-nav__link-icon">
+                                <img src="../../assets/media/flags/KuwaitFlag.png" alt="" />
+                            </span>
+                            <span class="kt-nav__link-text">عربي</span>
+                        </a>
+                        @*</asp:LinkButton>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--end: Language bar -->
+        <!--begin: User bar -->
+        <div class="kt-header__topbar-item kt-header__topbar-item--user">
+            <div class="kt-header__topbar-wrapper" data-bs-toggle="dropdown" data-offset="10px,0px">
+                <span class="kt-hidden kt-header__topbar-welcome">Hi,</span>
+                <span class="kt-hidden kt-header__topbar-username">Eng. Khaled</span>
+                <img class="kt-hidden" alt="Pic" src="../../assets/media/users/300_21.jpg" />
+                <span class="kt-header__topbar-icon kt-hidden-"><i class="flaticon2-user-outline-symbol"></i></span>
+            </div>
+            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
+
+                <!--begin: Head -->
+                <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(../../assets/media/misc/bg-1.jpg)">
+                    <div class="kt-user-card__avatar">
+                        <img class="kt-hidden" alt="Pic" src="../../assets/media/users/300_25.jpg" />
+
+                        <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                    </div>
+                    <div class="kt-user-card__name">
+                        @*<asp:Label ID="LoggedInUserLabel" runat="server"></asp:Label>*@
+
+                        @if (Session["UserName"] != null)
+                        {
+            @Html.Raw(Session["UserName"].ToString());
+        }
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!--end: Head -->
+                <!--begin: Navigation -->
+
+
+                <div class="kt-notification">
+
+                    <div class="kt-notification__custom">
+                        @*<asp:LinkButton ID="LogoutLinkButton" runat="server" CssClass="btn btn-label-brand btn-sm btn-bold" OnClick="LogoutLinkButton_Click">*@
+                        @*<a onclick="location.href='@Url.Action("Logout", "Home")'" class="btn btn-label-brand btn-sm btn-bold">*@
+
+                        <input type="button" onclick="location.href='@Url.Action("Logout", "Home")'" class="btn btn-label-brand btn-sm btn-bold"
+                               title="@Html.Raw(Resources.DefaultResource.SignOut)" value=" @Html.Raw(Resources.DefaultResource.SignOut)">
+
+                        @*<asp:Literal runat="server" Text="<%$ Resources:DefaultResource,  SignOut%>" />*@
+                        @*</a>*@
+                        @*</asp:LinkButton>*@
+                    </div>
+
+                </div><!--end: Navigation -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,307 @@
+/*
+    APNPX Content Managment System Right to left
+    Created by Mahmoud El-Moghazy
+    mahmoud.abdallah@outlook.com
+*/
+
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'feather';
+    src: url('../Fonts/feather/feather.eot?-9jv4cc');
+    src: url('../Fonts/feather/feather.eot?#iefix-9jv4cc') format('embedded-opentype'), url('../Fonts/feather/feather.woff?-9jv4cc') format('woff'), url('../Fonts/feather/feather.ttf?-9jv4cc') format('truetype'), url('../Fonts/feather/feather.svg?-9jv4cc#feather') format('svg');
+}
+
+/*side to side div title and buttons with little Nav bar*/
+.subNavBar {
+    background-color: #406ff3;
+    width: 100%;
+    height: 60px;
+    padding: 5px 5px 10px 5px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.subNavbarTitle {
+    font-size: 20px;
+    color: #fff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.divTitle {
+    width: 57%;
+    float: left;
+}
+
+.divButtons {
+    float: right;
+}
+
+
+.button, [class*="button-"] {
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 40px !important;
+    height: 40px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    float: left;
+    font: 200 11.3px/40px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    color: #fff;
+    background: radial-gradient(ellipse at center, gray 0%, black 100%);
+    border: none;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -moz-transition: ease 0.35s all;
+    -o-transition: ease 0.35s all;
+    -webkit-transition: ease 0.35s all;
+    transition: ease 0.35s all;
+}
+
+    .button:hover, [class*="button-"]:hover {
+        background: radial-gradient(ellipse at center, lightgray 0%, black 100%);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+.button-hover:hover {
+    line-height: 9.5em;
+}
+
+.button-hover:before {
+    content: attr(data-text);
+    color: #DEEFF5;
+    position: absolute;
+    top: -2.75em;
+}
+
+.dropDownList {
+    /*max-width: 350px;*/
+    width: 100%;
+    vertical-align: top;
+    height: 40px;
+    border: 2px solid #406ff3;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 3px;
+    -webkit-appearance: none;
+    background-image: url(../Images/downarrow.png);
+    background-position-x: 98%;
+    background-position-y: 99%;
+    background-repeat: no-repeat;
+    background-size:30px;
+    text-indent: 0.01px; /*In Firefox*/
+    -ms-text-overflow: '';
+    -o-text-overflow: '';
+    text-overflow: ''; /*In Firefox*/
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:20px;
+    color:#406ff3;
+}
+
+
+
+/*Search Input Field*/
+.input2[type=text] {
+    margin-top: 10px;
+    float: left !important;
+    width: 100%;
+    height: 34px;
+    /*box-sizing: border-box;*/
+    border: 1px solid #ccc;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    font-size: 13px;
+    background-color: white;
+    background-image: url('../Images/searchicon.png');
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    -moz-transition: width 0.4s ease-in-out;
+    -o-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    color: gray;
+    position: relative;
+}
+
+    .input2[type=text]:focus {
+        width: 100%;
+    }
+
+/*Input Field with Animations */
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 1em;
+    max-width: 350px;
+    width: calc(100% - 2em);
+    vertical-align: top;
+}
+
+.input__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    width: 60%;
+    border: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: #aaa;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+    .input__field:focus {
+        outline: none;
+    }
+
+.input__label {
+    display: inline-block;
+    float: right;
+    padding: 0 1em;
+    width: 40%;
+    color: #4800ff;
+    font-weight: bold;
+    font-size: 90.25%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.input__label-content {
+    position: relative;
+    display: block;
+    padding: 1.6em 0;
+    width: 100%;
+}
+
+.graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+}
+
+.icon {
+    color: #ddd;
+    font-size: 150%;
+}
+
+
+/* Yoko */
+.input__field--yoko {
+    z-index: 10;
+    width: 100%;
+    background: transparent;
+    color: #393939;
+    opacity: 1;
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.input__label--yoko {
+    position: relative;
+    width: 100%;
+    color: #393939;
+    text-align: left;
+}
+
+    .input__label--yoko::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        height: 4em;
+        background: #393939;
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        -moz-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        -ms-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        -o-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        -webkit-transform-origin: 50% 100%;
+        -moz-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+        -o-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transition: -webkit-transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.3s;
+    }
+
+    .input__label--yoko::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0.25em;
+        background: #393939;
+        -webkit-transform-origin: 50% 0%;
+        -moz-transform-origin: 50% 0%;
+        -ms-transform-origin: 50% 0%;
+        -o-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
+        -webkit-transition: -webkit-transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+        transition: transform 0.3s;
+    }
+
+.input__label-content--yoko {
+    padding: 0.40em 0;
+}
+
+.input__field--yoko:focus,
+.input--filled .input__field--yoko {
+    opacity: 1;
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    color: #fff;
+}
+
+    .input__field--yoko:focus + .input__label--yoko::before,
+    .input--filled .input__label--yoko::before {
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+        -moz-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+        -ms-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+        -o-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+        transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+    }
+
+    .input__field--yoko:focus + .input__label--yoko,
+    .input--filled .input__label--yoko {
+        pointer-events: none;
+    }
+
+        .input__field--yoko:focus + .input__label--yoko::after,
+        .input--filled .input__label--yoko::after {
+            -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+            -moz-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+            -ms-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+            -o-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+            transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+        }
